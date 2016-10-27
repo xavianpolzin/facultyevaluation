@@ -1,0 +1,43 @@
+
+
+<div class="admin-welcome-page">
+    <div class="helper-ver">
+        <div class="st-wel-admin">
+           <div class="ad-frm-con">
+           		<h4>List Of Subjects </h4>
+           		<h5><a href="<?php echo base_url() ?>subject/add">+ Add a Subjects</a></h5>
+				
+				<div style="overflow-x: auto;">
+					<table>
+					  <tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Option</th>
+					  </tr>
+
+					<?php $counter = 1 ?>
+					<?php foreach($subjects as $subject): ?>
+					<tr>
+					<td><?php echo $counter ?></td>
+					<td><?php echo $subject->name; ?></td>
+					<td><?php echo $subject->description; ?></td>
+					
+					<td><a href="<?php echo base_url() ?>subject/edit?id=<?php echo $subject->id ?>">Edit</a>- <a href="<?php echo base_url() ?>subject/delete?id=<?php echo $subject->id ?>">Delete</a></td>
+					
+					<?php $counter++; ?>
+				</tr>
+				<?php endforeach; ?>
+
+				
+				
+					</table>
+			   </div>
+           </div>
+        </div>
+        
+        <div class="con-fo">
+    	<h2>&copy;Faculty Evaluation 2016</h2>	
+   	  </div>
+    </div>
+</div><!--ends student-welcome-page-->

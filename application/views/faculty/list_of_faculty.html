@@ -1,0 +1,219 @@
+
+<div class="admin-welcome-page">
+    <div class="helper-ver">
+        <div class="st-wel-admin">
+           <div class="ad-frm-con">
+           		<h4>List Of Faculty </h4>
+           		<h5><a href="<?php echo base_url() ?>faculty/add">+ Add a Faculty Member</a></h5>
+				
+				<form role="form" action="<?php echo base_url().'faculty/search_faculty'; ?>" method="post">
+					<div class="form-group">
+						<input type="text" class="form-contorl" name="search" id="search" placeholder="Search by firstName ">
+					</div>
+
+
+					<button type="submit" class="btn btn-info" name="submit">Search</button>
+				</form>
+
+				<div style="overflow-x: auto;">
+					<table>
+					  <tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Option</th>
+						<th>Results</th>
+						<th>Comments</th>
+					  </tr>
+
+					<?php $counterx = 1 ?>
+					<?php foreach($faculties as $faculty): ?>
+					<tr>
+					<td><?php echo $counterx ?></td>
+					<td><a href="<?php echo base_url()?>faculty/profile/<?php echo $faculty->firstName . '.' . $faculty->id ?>"><?php echo ucfirst($faculty->firstName) . ' ' . ucfirst(substr($faculty->middleName,0,1)) .'. ' . ucfirst($faculty->lastName); ?></a></td>
+					
+					
+
+					<td><a href="<?php echo base_url() ?>faculty/edit?id=<?php echo $faculty->id ?>">Edit</a>- <a href="<?php echo base_url() ?>faculty/delete?id=<?php echo $faculty->id ?>">Delete</a></td>
+					<td>
+						<!-- Button trigger modal -->
+						<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
+						  View Results
+						</a>
+
+						<!-- Modal -->
+						<div class="modal fade bs-example-modalb-lg" id="myModal<?php echo $faculty->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						 
+						  <div class="modal-dialog modal-lg" style="width:1300px;">
+						    <div class="modal-content" style="color:#000;">
+						      
+						    <div class="col-md-6">
+
+						      
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>PROFESSIONAL RESPONSIBILITIES</h3>
+									  
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Ch-1</th>
+											<th>Ch-2</th>
+											<th>Ch-3</th>
+											<th>Ch-4</th>
+											<th>Ch-5</th>
+											<th>Ch-6</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $profTotal = 0; ?>
+										<?php foreach($faculty->profAnswers as $profAnswer): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+											
+											<td><?php echo $profAnswer[0]; ?></td>
+											<td><?php echo $profAnswer[1]; ?></td>
+											<td><?php echo $profAnswer[2]; ?></td>
+											<td><?php echo $profAnswer[3]; ?></td>
+											<td><?php echo $profAnswer[4]; ?></td>
+											<td><?php echo $profAnswer[5]; ?></td>
+											<?php $profTotal+= array_sum($profAnswer); ?>
+											<td><?php echo array_sum($profAnswer); ?></td>
+											<?php $counter++; ?>
+											
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $profTotal; ?></th>
+										</tr>
+									  </table>
+								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> = <?php echo $faculty->profScore; ?></div>
+
+								</div> <!--ends table-responsive-->
+
+						       
+						      </div>	
+						      
+						    </div><!--ends col-md-6-->
+
+						    <div class="col-md-6">
+
+						      
+						      <div class="modal-body" style="color:#000;">
+
+						      	
+								  </div>
+						      	<div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px;color:#000; background: #fff; ">
+									  <table class="table">
+									  <h3>INSTRUCTIONAL RESPONSIBILITIES</h3>
+
+									  <tr style="background:#428bca;">
+
+											<th>Qeustion #</th>
+											<th>Ch-1</th>
+											<th>Ch-2</th>
+											<th>Ch-3</th>
+											<th>Ch-4</th>
+											<th>Ch-5</th>
+											<th>Ch-6</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $instructTotal = 0; ?>
+										<?php foreach($faculty->instructAnswers as $instructAnswer): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+											<td><?php echo $instructAnswer[0]; ?></td>
+											<td><?php echo $instructAnswer[1]; ?></td>
+											<td><?php echo $instructAnswer[2]; ?></td>
+											<td><?php echo $instructAnswer[3]; ?></td>
+											<td><?php echo $instructAnswer[4]; ?></td>
+											<td><?php echo $instructAnswer[5]; ?></td>
+											<?php $instructTotal+= array_sum($instructAnswer); ?>
+											<td><?php echo array_sum($instructAnswer); ?></td>
+											<?php $counter++; ?>
+											
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+											<td>Total</td>
+											<th><?php echo $instructTotal; ?></th>
+										</tr>
+										
+								
+
+						      </div>
+
+									  </table>
+							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> =<?php echo $faculty->instrucScore; ?></div>
+								</div> <!--ends table-responsive-->
+						       
+						     
+						    </div><!--ends col-md-6-->
+						    </div>
+						  </div>
+						</div>
+									
+					</td>
+					<?php $counterx++; ?>
+					<td>
+						<a href="" data-toggle="modal" data-target="#commentModal<?php echo $faculty->id ?>" >
+						  	View Comments
+						</a>
+
+						<!-- Modal -->
+						<div class="modal fade" id="commentModal<?php echo $faculty->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="color:#000;">
+						  <div class="modal-dialog">
+						    <div class="modal-content" style="color:#000;">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title" id="myModalLabel">Comments and Suggestions</h4>
+						      </div>
+						      <?php foreach($faculty->comments as $comment): ?>
+						      <?php if(!empty($comment[1])): ?>
+						      <div class="modal-body commnt-p" style="border-bottom:1px solid #ccc;">
+						       		<p><?php echo $comment[1]; ?></p>
+						      </div>
+
+						      <?php endif; ?>
+						 	 <?php  endforeach;?>
+						    
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						    
+						      </div><!--ends modal-footer-->
+						    </div><!--ends modal-content-->
+						  </div><!--ends moadl-dialog-->
+						</div><!--ends modal-->
+
+					</td>
+				</tr>
+
+
+
+				<?php endforeach; ?>
+				
+					</table>
+			   </div>
+           </div>
+        </div>
+        
+        <div class="con-fo">
+    	<h2>&copy;Faculty Evaluation 2016</h2>	
+   	  </div>
+    </div>
+</div><!--ends student-welcome-page-->
