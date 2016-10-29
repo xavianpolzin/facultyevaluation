@@ -1,7 +1,7 @@
 <?php
 
 class Home extends CI_Controller{
-	
+
 
 	function __construct(){
 
@@ -9,16 +9,16 @@ class Home extends CI_Controller{
 
 		$this->load->helper('url');
 		$this->load->library('session');
-	}	
+	}
 
 
 	public function index(){
 
 
 		if($this->session->userdata('loggedIn')){
-		
+
 			$userLoggedIn = $this->session->userdata('loggedIn');
-		
+
 			if($userLoggedIn['accessLevel'] == "admin"){
 				$this->output->set_template('admin');
 				$this->load->view('admin_home.html');
@@ -26,8 +26,8 @@ class Home extends CI_Controller{
 				$this->output->set_template('faculty');
 				$this->load->view('faculty_home.html');
 			}else if($userLoggedIn['accessLevel'] == "staff"){
-				$this->output->set_template('staff_template');
-				$this->load->view('staff_home.html');
+				$this->output->set_template('admin');
+				$this->load->view('admin_home.html');
 			}
 
 		}else{
@@ -42,4 +42,4 @@ class Home extends CI_Controller{
 		}
 
 	}
-}	
+}
