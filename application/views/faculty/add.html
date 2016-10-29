@@ -1,11 +1,11 @@
 <?php if($successMessage): ?>
 
   <div class="alert alert-success">
-  
-     
+
+
       <p><?php echo $successMessage ?></p>
 
-  
+
 </div>
 
 <?php endif; ?>
@@ -31,88 +31,49 @@
     <h1>Semester</h1>
     <div class="ch-handle-ck-hl">
         <label for="">1st Semester</label>
-        <input type="checkbox" name="">
+        <input type="checkbox" name="semesters[]" value="1">
     </div>
 
     <div class="ch-handle-ck-hl">
         <label for="">2nd Semester</label>
-        <input type="checkbox" name="">
+        <input type="checkbox" name="semesters[]" value="2">
     </div>
 
 </div><!--ends ch-handle-holder-->
-  
+
 <div class="ch-handle-holder">
 
     <h1>Subjects' Handled</h1>
+    <?php foreach($subjects as $subject): ?>
     <div class="ch-handle-ck-hl">
-        <label for="">Test Subject 1</label>
-        <input type="checkbox" name="">
+        <label for=""><?= $subject->name?></label>
+        <input type="checkbox" name="subjects[]" value="<?= $subject->id ?>">
     </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Subject 2</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Subject 3</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Subject 4</label>
-        <input type="checkbox" name="">
-    </div>
+  <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
 
 
 <div class="ch-handle-holder">
 
     <h1>Courses' Handled</h1>
+    <?php foreach($courses as $course): ?>
     <div class="ch-handle-ck-hl">
-        <label for="">Test course 1</label>
-        <input type="checkbox" name="">
+        <label for=""><?= $course->name ?></label>
+        <input type="checkbox" name="courses[]" value="<?= $course->id ?>">
     </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test course 2</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test course 3</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test course 4</label>
-        <input type="checkbox" name="">
-    </div>
+  <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
 
 
 <div class="ch-handle-holder">
 
     <h1>Section' Handled</h1>
+    <?php foreach($sections as $section): ?>
     <div class="ch-handle-ck-hl">
-        <label for="">Test Section 1</label>
-        <input type="checkbox" name="">
+        <label for=""><?=$section->name ?></label>
+        <input type="checkbox" name="sections[]" value="<?= $section->id ?>">
     </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Section 2</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Section 3</label>
-        <input type="checkbox" name="">
-    </div>
-
-    <div class="ch-handle-ck-hl">
-        <label for="">Test Section 4</label>
-        <input type="checkbox" name="">
-    </div>
+  <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
 
   <input type="submit" class="btn btn-default" value="Submit"></input>

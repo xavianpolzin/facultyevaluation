@@ -4,557 +4,556 @@
   <input type="hidden" name="currentStep" value="2" />
   <input type="hidden" name="uid" value="<?php echo $uid ?>" >
          <div class="form_holder_f">
-              
+
                       <ol>
-                      
+
                           <li>
 
-                              <?php 
+                              <?php
 
 
                                   $answers = $prof_responsibilities;
 
                                ?>
-                          
-                              <h3>Is the teacher responsible for instructing the students in the subject content?</h3>
-                                              
-                                  <input type="radio" name="answers[0]" id="question-1-answers-A" value="0" />
-                                  <label for="question-1-answers-A">Never</label>
-                         
-                          
-                          
-                                  <input type="radio" name="answers[0]" id="question-1-answers-B" value="1" />
-                                  <label for="question-1-answers-B">Strongly Disagree</label>
-                
-                                
-                         
-                                  <input type="radio" name="answers[0]" id="question-1-answers-C" value="2" />
-                                  <label for="question-1-answers-C">Disagree</label>
-                           
 
-                          
-                                  <input type="radio" name="answers[0]" id="question-1-answers-D" value="3" />
+                              <h3>Is the teacher responsible for instructing the students in the subject content?</h3>
+
+                                  <input type="radio" <?php if($prof_responsibilities[0] == 0) {echo "checked";} ?> name="answers[0]" id="question-1-answers-A" value="0" />
+                                  <label for="question-1-answers-A">Never</label>
+
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[0] == 1) {echo "checked";} ?>  name="answers[0]" id="question-1-answers-B" value="1" />
+                                  <label for="question-1-answers-B">Strongly Disagree</label>
+
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[0] == 2) {echo "checked";}  ?>name="answers[0]" id="question-1-answers-C" value="2" />
+                                  <label for="question-1-answers-C">Disagree</label>
+
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[0] == 3) {echo "checked";} ?>  name="answers[0]" id="question-1-answers-D" value="3" />
                                   <label for="question-1-answers-D">Neutral</label>
 
-                               
-                   
 
-                                  <input type="radio" name="answers[0]" id="question-1-answers-E" value="4" />
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[0] == 4) {echo "checked";} ?>  name="answers[0]" id="question-1-answers-E" value="4" />
                                   <label for="question-1-answers-E">Agree</label>
 
-     
 
-                                  <input type="radio" name="answers[0]" id="question-1-answers-F" value="5" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[0] == 5) {echo "checked";} ?> name="answers[0]" id="question-1-answers-F" value="5" />
                                   <label for="question-1-answers-F">Strongly Agree</label>
 
-                          
-                                 
-                           
-                                  
+
+
+
+
                           </li>
-                          
+
                           <li>
-                          
+
                               <h3> Is the teacher responsible for establishing classroom procedures/policies for the local and the remote sites?</h3>
-                              
-                                  <input type="radio" name="answers[1]" id="question-2-answers-A" value="0" />
+
+                                  <input type="radio"<?php if($prof_responsibilities[1] == 0) {echo "checked";} ?> name="answers[1]" id="question-2-answers-A" value="0" />
                                   <label for="question-2-answers-A">Never</label>
 
-                              
-                
-                                  <input type="radio" name="answers[1]" id="question-2-answers-B" value="1" />
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[1] == 1) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-B" value="1" />
                                   <label for="question-2-answers-B">Strongly Disagree</label>
-                     
-                              
-                       
-                                  <input type="radio" name="answers[1]" id="question-2-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[1] == 2) {echo "checked";} ?> name="answers[1]" id="question-2-answers-C" value="2" />
                                   <label for="question-2-answers-C">Disagree</label>
-                
-                              
-               
-                                  <input type="radio" name="answers[1]" id="question-2-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[1] == 3) {echo "checked";} ?> name="answers[1]" id="question-2-answers-D" value="3" />
                                   <label for="question-2-answers-D">Neutral</label>
 
-                              
-                                  <input type="radio" name="answers[1]" id="question-2-answers-E" value="4" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[1] == 4) {echo "checked";} ?> name="answers[1]" id="question-2-answers-E" value="4" />
                                   <label for="question-2-answers-E">Agree</label>
 
-                              
-                                  <input type="radio" name="answers[1]" id="question-2-answers-F" value="5" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[1] == 5) {echo "checked";} ?> name="answers[1]" id="question-2-answers-F" value="5" />
                                   <label for="question-2-answers-F">Strongly Agree</label>
-                               
 
 
-                            
 
-                          
+
+
+
                           </li>
-                          
+
                           <li>
-                          
+
                               <h3>How often did the teacher ensure that the equipment is plugged into the electrical outlet and into the network drop?</h3>
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[2] == 0) {echo "checked";} ?>  name="answers[2]" id="question-3-answers-A" value="0" />
                                   <label for="question-3-answers-A">Never</label>
-                              
-                              
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-B" value="1" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[2] == 1) {echo "checked";} ?>  name="answers[2]" id="question-3-answers-B" value="1" />
                                   <label for="question-3-answers-B">Strongly Disagree</label>
-                              
-                              
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-C" value="2" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[2] == 2) {echo "checked";} ?> name="answers[2]" id="question-3-answers-C" value="2" />
                                   <label for="question-3-answers-C">Disagree</label>
-                              
-                              
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-D" value="3" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[2] == 3) {echo "checked";} ?> name="answers[2]" id="question-3-answers-D" value="3" />
                                   <label for="question-3-answers-D">Neutral</label>
 
-                              
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-E" value="4" />
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[2] == 4) {echo "checked";} ?> name="answers[2]" id="question-3-answers-E" value="4" />
                                   <label for="question-3-answers-E">Agree</label>
 
-                              
-                              
-                                  <input type="radio" name="answers[2]" id="question-3-answers-F" value="5" />
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[2] == 5) {echo "checked";} ?> name="answers[2]" id="question-3-answers-F" value="5" />
                                   <label for="question-3-answers-F">Strongly Agree</label>
 
-                              
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Does the instructor follows the policies, regulations, and procedures of the school?</h3>
-                              
-                                  <input type="radio" name="answers[3]" id="question-4-answers-A" value="0" />
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 0) {echo "checked";} ?> name="answers[3]" id="question-4-answers-A" value="0" />
                                   <label for="question-4-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[3]" id="question-4-answers-B" value="1" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 1) {echo "checked";} ?> name="answers[3]" id="question-4-answers-B" value="1" />
                                   <label for="question-4-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[3]" id="question-4-answers-C" value="2" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 2) {echo "checked";} ?> name="answers[3]" id="question-4-answers-C" value="2" />
                                   <label for="question-4-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[3]" id="question-4-answers-D" value="3" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 3) {echo "checked";} ?> name="answers[3]" id="question-4-answers-D" value="3" />
                                   <label for="question-4-answers-D">Neutral</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[3]" id="question-4-answers-E" value="4" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 4) {echo "checked";} ?> name="answers[3]" id="question-4-answers-E" value="4" />
                                   <label for="question-4-answers-E">Agree</label>
 
-                              
-                                  
-                                  <input type="radio" name="answers[3]" id="question-4-answers-F" value="5" />
-                                  <label for="question-4-answers-F">Strongly Agree</label>                           
-                                
-                          
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[3] == 5) {echo "checked";} ?> name="answers[3]" id="question-4-answers-F" value="5" />
+                                  <label for="question-4-answers-F">Strongly Agree</label>
+
+
                           </li>
 
                            <li>
-                          
+
                               <h3>Did the teacher ensure that the equipment is plugged into the electrical outlet and into the network drop? </h3>
-                              
-                                  <input type="radio" name="answers[4]" id="question-5-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[4] == 0) {echo "checked";} ?>  name="answers[4]" id="question-5-answers-A" value="0" />
                                   <label for="question-5-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[4]" id="question-5-answers-B" value="1" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[4] == 1) {echo "checked";} ?> name="answers[4]" id="question-5-answers-B" value="1" />
                                   <label for="question-5-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[4]" id="question-5-answers-C" value="2" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[4] == 2) {echo "checked";} ?> name="answers[4]" id="question-5-answers-C" value="2" />
                                   <label for="question-5-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[4]" id="question-5-answers-D" value="3" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[4] == 3) {echo "checked";} ?> name="answers[4]" id="question-5-answers-D" value="3" />
                                   <label for="question-5-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[4]" id="question-5-answers-E" value="4" />
+
+
+                                  <input type="radio" name="answers[4]"  <?php if($prof_responsibilities[4] == 4) {echo "checked";} ?>id="question-5-answers-E" value="4" />
                                   <label for="question-5-answers-E">Agree</label>
 
-                               
-                           
-                                  <input type="radio" name="answers[4]" id="question-5-answers-F" value="5" />
+
+
+                                  <input type="radio" name="answers[4]"  <?php if($prof_responsibilities[4] == 5) {echo "checked";} ?> id="question-5-answers-F" value="5" />
                                   <label for="question-5-answers-F">Strongly Agree</label>
 
 
-                             
-                          
+
+
                           </li>
-                          
+
                           <li>
-                          
+
                               <h3>Does the instructor participates in activities that will enhance his/her professional skills </h3>
-                              
-                                  <input type="radio" name="answers[5]" id="question-6-answers-A" value="0" />
+
+                                  <input type="radio"  <?php if($prof_responsibilities[5] == 0) {echo "checked";}?> name="answers[5]" id="question-6-answers-A" value="0" />
                                   <label for="question-6-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[5]" id="question-6-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[5] == 1) {echo "checked";}?>  name="answers[5]" id="question-6-answers-B" value="1" />
                                   <label for="question-6-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[5]" id="question-6-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[5] == 2) {echo "checked";}?>  name="answers[5]" id="question-6-answers-C" value="2" />
                                   <label for="question-6-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[5]" id="question-6-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[5] == 3) {echo "checked";}?> name="answers[5]" id="question-6-answers-D" value="3" />
                                   <label for="question-6-answers-D">Neutral</label>
 
-                             
-                           
-                                  <input type="radio" name="answers[5]" id="question-6-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[5] == 4) {echo "checked";}?>  name="answers[5]" id="question-6-answers-E" value="4" />
                                   <label for="question-6-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[5]" id="question-6-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[5] == 5) {echo "checked";}?>  name="answers[5]" id="question-6-answers-F" value="5" />
                                   <label for="question-6-answers-F">Strongly Agree</label>
 
 
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Does the instructor participates in activities that will enhance his/her professional skills </h3>
-                              
-                                  <input type="radio" name="answers[6]" id="question-7-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 0) {echo "checked";}?>  name="answers[6]" id="question-7-answers-A" value="0" />
                                   <label for="question-7-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[6]" id="question-7-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 1) {echo "checked";}?>   name="answers[6]" id="question-7-answers-B" value="1" />
                                   <label for="question-7-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[6]" id="question-7-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 2) {echo "checked";}?>   name="answers[6]" id="question-7-answers-C" value="2" />
                                   <label for="question-7-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[6]" id="question-7-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 3) {echo "checked";}?>   name="answers[6]" id="question-7-answers-D" value="3" />
                                   <label for="question-7-answers-D">Neutral</label>
-                              
-                           
-                                  <input type="radio" name="answers[6]" id="question-7-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 4) {echo "checked";}?>   name="answers[6]" id="question-7-answers-E" value="4" />
                                   <label for="question-7-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[6]" id="question-7-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[6] == 5) {echo "checked";}?>   name="answers[6]" id="question-7-answers-F" value="5" />
                                   <label for="question-7-answers-F">Strongly Agree</label>
-                          
+
                           </li>
                           <li>
-                          
-                              <h3>Does the instructor shows respect for students, peers and administration through his/her words and actions 
+
+                              <h3>Does the instructor shows respect for students, peers and administration through his/her words and actions
   </h3>
-                              
-                                  <input type="radio" name="answers[7]" id="question-8-answers-A" value="0" />
+
+                                  <input type="radio"<?php if($prof_responsibilities[7] == 0) {echo "checked";}?>   name="answers[7]" id="question-8-answers-A" value="0" />
                                   <label for="question-8-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[7]" id="question-8-answers-B" value="1" />
+
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[7] == 1) {echo "checked";}?>   name="answers[7]" id="question-8-answers-B" value="1" />
                                   <label for="question-8-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[7]" id="question-8-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[7] == 2) {echo "checked";}?>  name="answers[7]" id="question-8-answers-C" value="2" />
                                   <label for="question-8-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[7]" id="question-8-answers-D" value="3" />
+
+
+
+                                  <input type="radio"<?php if($prof_responsibilities[7] == 3) {echo "checked";}?>   name="answers[7]" id="question-8-answers-D" value="3" />
                                   <label for="question-8-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[7]" id="question-8-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[7] == 4) {echo "checked";}?>  name="answers[7]" id="question-8-answers-E" value="4" />
                                   <label for="question-8-answers-E">Agree</label>
-                              
-                           
-                                  <input type="radio" name="answers[7]" id="question-8-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[7] == 5) {echo "checked";}?>  name="answers[7]" id="question-8-answers-F" value="5" />
                                   <label for="question-8-answers-F">Strongly Agree</label>
-                          
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Does the instructor shows respect for students, peers and administration by being punctual and prepared for class, work and meetings </h3>
-                              
-                                  <input type="radio" name="answers[8]" id="question-9-answers-A" value="0" />
+
+                                  <input type="radio"<?php if($prof_responsibilities[8] == 0) {echo "checked";}?>   name="answers[8]" id="question-9-answers-A" value="0" />
                                   <label for="question-9-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[8]" id="question-9-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[8] == 1) {echo "checked";}?>  name="answers[8]" id="question-9-answers-B" value="1" />
                                   <label for="question-9-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[8]" id="question-9-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[8] == 2) {echo "checked";}?>  name="answers[8]" id="question-9-answers-C" value="2" />
                                   <label for="question-9-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[8]" id="question-9-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[8] == 3) {echo "checked";}?>  name="answers[8]" id="question-9-answers-D" value="3" />
                                   <label for="question-9-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[8]" id="question-9-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[8] == 4) {echo "checked";}?>  name="answers[8]" id="question-9-answers-E" value="4" />
                                   <label for="question-8-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[8]" id="question-9-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[8] == 5) {echo "checked";}?>  name="answers[8]" id="question-9-answers-F" value="5" />
                                   <label for="question-8-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Developing and maintaining positive relations with students. </h3>
-                              
-                                  <input type="radio" name="answers[9]" id="question-10-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 0) {echo "checked";}?>  name="answers[9]" id="question-10-answers-A" value="0" />
                                   <label for="question-9-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[9]" id="question-10-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 1) {echo "checked";}?> name="answers[9]" id="question-10-answers-B" value="1" />
                                   <label for="question-9-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[9]" id="question-10-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 2) {echo "checked";}?> name="answers[9]" id="question-10-answers-C" value="2" />
                                   <label for="question-9-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[9]" id="question-10-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 3) {echo "checked";}?> name="answers[9]" id="question-10-answers-D" value="3" />
                                   <label for="question-9-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[9]" id="question-10-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 4) {echo "checked";}?> name="answers[9]" id="question-10-answers-E" value="4" />
                                   <label for="question-9-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[9]" id="question-10-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[9] == 5) {echo "checked";}?> name="answers[9]" id="question-10-answers-F" value="5" />
                                   <label for="question-9-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Willing to share successful teaching techniques and materials.</h3>
-                              
-                                  <input type="radio" name="answers[10]" id="question-11-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 0) {echo "checked";}?> name="answers[10]" id="question-11-answers-A" value="0" />
                                   <label for="question-11-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[10]" id="question-11-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 1) {echo "checked";}?> name="answers[10]" id="question-11-answers-B" value="1" />
                                   <label for="question-11-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[10]" id="question-11-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 2) {echo "checked";}?> name="answers[10]" id="question-11-answers-C" value="2" />
                                   <label for="question-11-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[10]" id="question-11-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 3) {echo "checked";}?> name="answers[10]" id="question-11-answers-D" value="3" />
                                   <label for="question-11-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[10]" id="question-11-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 4) {echo "checked";}?> name="answers[10]" id="question-11-answers-E" value="4" />
                                   <label for="question-11-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[10]" id="question-11-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[10] == 5) {echo "checked";}?> name="answers[10]" id="question-11-answers-F" value="5" />
                                   <label for="question-11-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
 
                           <li>
-                          
+
                               <h3>Maintaining confidentiality in sensitive matters.</h3>
-                              
-                                  <input type="radio" name="answers[11]" id="question-12-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 0) {echo "checked";}?> name="answers[11]" id="question-12-answers-A" value="0" />
                                   <label for="question-12-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[11]" id="question-12-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 1) {echo "checked";}?> name="answers[11]" id="question-12-answers-B" value="1" />
                                   <label for="question-12-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[11]" id="question-12-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 2) {echo "checked";}?> name="answers[11]" id="question-12-answers-C" value="2" />
                                   <label for="question-12-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[11]" id="question-12-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 3) {echo "checked";}?> name="answers[11]" id="question-12-answers-D" value="3" />
                                   <label for="question-12-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[11]" id="question-12-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 4) {echo "checked";}?> name="answers[11]" id="question-12-answers-E" value="4" />
                                   <label for="question-12-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[11]" id="question-12-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[11] == 5) {echo "checked";}?> name="answers[11]" id="question-12-answers-F" value="5" />
                                   <label for="question-12-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Working to develop positive relationships with parents.</h3>
-                              
-                                  <input type="radio" name="answers[12]" id="question-13-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 0) {echo "checked";}?> name="answers[12]" id="question-13-answers-A" value="0" />
                                   <label for="question-13-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[12]" id="question-13-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 1) {echo "checked";}?> name="answers[12]" id="question-13-answers-B" value="1" />
                                   <label for="question-13-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[12]" id="question-13-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 2) {echo "checked";}?> name="answers[12]" id="question-13-answers-C" value="2" />
                                   <label for="question-13-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[12]" id="question-13-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 3) {echo "checked";}?> name="answers[12]" id="question-13-answers-D" value="3" />
                                   <label for="question-13-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[12]" id="question-13-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 4) {echo "checked";}?> name="answers[12]" id="question-13-answers-E" value="4" />
                                   <label for="question-13-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[12]" id="question-13-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[12] == 5) {echo "checked";}?> name="answers[12]" id="question-13-answers-F" value="5" />
                                   <label for="question-13-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Providing a positive classroom environment</h3>
-                              
-                                  <input type="radio" name="answers[13]" id="question-14-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 0) {echo "checked";}?> name="answers[13]" id="question-14-answers-A" value="0" />
                                   <label for="question-14-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[13]" id="question-14-answers-B" value="1" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 1) {echo "checked";}?> name="answers[13]" id="question-14-answers-B" value="1" />
                                   <label for="question-14-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[13]" id="question-14-answers-C" value="2" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 2) {echo "checked";}?> name="answers[13]" id="question-14-answers-C" value="2" />
                                   <label for="question-14-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[13]" id="question-14-answers-D" value="3" />
+
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 3) {echo "checked";}?> name="answers[13]" id="question-14-answers-D" value="3" />
                                   <label for="question-14-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[13]" id="question-14-answers-E" value="4" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 4) {echo "checked";}?> name="answers[13]" id="question-14-answers-E" value="4" />
                                   <label for="question-14-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[13]" id="question-14-answers-F" value="5" />
+
+
+                                  <input type="radio" <?php if($prof_responsibilities[13] == 5) {echo "checked";}?> name="answers[13]" id="question-14-answers-F" value="5" />
                                   <label for="question-14-answers-F">Strongly Agree</label>
-                           
-                          
+
+
                           </li>
 
                           <li>
-                          
+
                               <h3>Aligning what is taught with the school curriculum maps and state standards.</h3>
-                              
-                                  <input type="radio" name="answers[14]" id="question-15-answers-A" value="0" />
+
+                                  <input type="radio" <?php if($prof_responsibilities[14] == 0) {echo "checked";}?> name="answers[14]" id="question-15-answers-A" value="0" />
                                   <label for="question-15-answers-A">Never</label>
-                             
-                              
-                              
-                                  <input type="radio" name="answers[14]" id="question-15-answers-B" value="1" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[14] == 1) {echo "checked";}?> name="answers[14]" id="question-15-answers-B" value="1" />
                                   <label for="question-15-answers-B">Strongly Disagree</label>
-                              
-                              
-                       
-                                  <input type="radio" name="answers[14]" id="question-15-answers-C" value="2" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[14] == 2) {echo "checked";}?> name="answers[14]" id="question-15-answers-C" value="2" />
                                   <label for="question-15-answers-C">Disagree</label>
-                              
-                              
-                           
-                                  <input type="radio" name="answers[14]" id="question-15-answers-D" value="3" />
+
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[14] == 3) {echo "checked";}?> name="answers[14]" id="question-15-answers-D" value="3" />
                                   <label for="question-15-answers-D">Neutral</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[14]" id="question-15-answers-E" value="4" />
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[14] == 4) {echo "checked";}?> name="answers[14]" id="question-15-answers-E" value="4" />
                                   <label for="question-15-answers-E">Agree</label>
 
-                              
-                           
-                                  <input type="radio" name="answers[14]" id="question-15-answers-F" value="5" />
+
+
+                                  <input type="radio"  <?php if($prof_responsibilities[14] == 5) {echo "checked";}?> name="answers[14]" id="question-15-answers-F" value="5" />
                                   <label for="question-15-answers-F">Strongly Agree</label>
-                           
-                          
-                          </li>                          
+
+
+                          </li>
                        </ol>
 
                        <ul class="pager" style="height:50px;">
+                         <?php if($studentCode!=''): ?>
                         <li><a href="<?php echo base_url(); ?>evaluation/start?type=student&uid=<?php echo $uid ?>&step=1">Previous</a></li>
+                      <?php endif; ?>
                           <input type="submit" name="next" value="Next" class="nxtOpStyle" />
                       </ul>
         </form>
 
         </div><!--ends form-holder-->
-
-
-

@@ -3,7 +3,11 @@
 <div class="row">
 
 	<div class="evaluationsuccess">
+		<?php if($isStudent): ?>
 	<h1>Thank you for joining us Students!</h1>
+<?php else: ?>
+	<h1>Thank you for joining us Faculty!</h1>
+<?php endif; ?>
       	<h1>Evaluation Success!</h1>
 
     </div><!--evaluationsuccess-->

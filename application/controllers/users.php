@@ -1,7 +1,7 @@
 <?php
 
 class Users extends Security{
-	
+
 
 	function __construct(){
 
@@ -9,7 +9,7 @@ class Users extends Security{
 
 		$this->load->helper('url');
 		$this->load->library('session');
-	}	
+	}
 
 
 	public function index(){
@@ -21,7 +21,7 @@ class Users extends Security{
 				'users' =>$this->User->GetAll()
 			);
 
-		
+
 		$this->load->view('user/user_list.html', $data);
 	}
 
@@ -30,18 +30,17 @@ class Users extends Security{
 
 	public function add(){
 
-		
+
 		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
 
 
-		
+
 		if($this->input->post()){
 
 
 			$this->load->Model('User');
 			$params = $this->input->post();
 
-			
 			if($this->User->Save($params)){
 
 
@@ -56,8 +55,9 @@ class Users extends Security{
 		}
 
 
-		$this->load->view('user/add.html',array('successMessage'=>$successMessage));
+		$this->load->Model('FacultyModel');
 
+		$this->load->view('user/add.html',array('successMessage'=>$successMessage,'faculties' =>$this->FacultyModel->GetAll()));
 	}
 
 
@@ -73,7 +73,7 @@ class Users extends Security{
 
 			$params = $this->input->post();
 
-			
+
 			if($this->User->update($params,$id)){
 
 
@@ -104,6 +104,3 @@ class Users extends Security{
 		redirect('/users');
 	}
 }
-
-
-

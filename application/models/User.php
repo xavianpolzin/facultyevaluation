@@ -8,6 +8,7 @@ class User extends CI_Model{
 	var $fname = '';
 	var $lname = '';
 	var $password = '';
+	var $facultyId = 0;
 
 
 	function __construct(){
@@ -20,18 +21,27 @@ class User extends CI_Model{
 
 	public function LoginUsingUsernameAndPassword($username,$password)
 	{
-		$row = $this->db->get_where('users',array('username'=>$username,'password'=>$password))->row();
-		
+		//$row = $this->db->get_where('users',array('username'=>$username,'password'=>$password))->row();
+		$row = $this->db->get_where('users',array('username'=>$username))->row();
+
 		$user = new User();
-		
-		if($row){
+
+		if($row ){
+
+		$this->load->library('encrypt');
+		$passwordx= $this->encrypt->decode($row->password);
+
+		if($passwordx == $password){
+
 			$user->id= $row->id;
 			$user->accessLevel = $row->accessLevel;
 			$user->username = $row->username;
-			
+			$user->facultyId = $row->faculty_id;
 		}
-		
-		
+
+		}
+
+
 		return $user;
 	}
 
@@ -62,23 +72,23 @@ class User extends CI_Model{
 	public function Save($params){
 
 		$this->load->library('encrypt');
-
-		$password = $this->encrypt->sha1($params['password']);
+		$password = $this->encrypt->encode($params['password']);
 
 
 		$users = array(
 
-					
+
 			'username' => $params['username'],
 			'fname' => $params['fname'],
 			'lname' => $params['lname'],
 			'password' => $password,
 
-			'accessLevel' => $params['accessLevel']
+			'accessLevel' => $params['accessLevel'],
+			'faculty_id' => $params['faculty']
 			);
 
 
-		
+
 		$this->db->insert('users',$users);
 		$lastInsertedID = $this->db->insert_id();
 
@@ -88,7 +98,7 @@ class User extends CI_Model{
 	}
 
 	public function delete($id){
-		$this->db->delete('users', array('id' => $id)); 
+		$this->db->delete('users', array('id' => $id));
 		return $this->db->affected_rows();
 	}
 
@@ -115,7 +125,7 @@ class User extends CI_Model{
 			$users->lname = $row->lname;
 			$users->password = $row->password;
 			$users->accessLevel = $row->accessLevel;
-		
+
 
 			return $users;
 
@@ -129,17 +139,10 @@ class User extends CI_Model{
 }
 
 class UserAccessLevel{
-	
+
 
 	const  ADMIN = 'admin';
 	const  FACULTY = 'faculty';
 	const  STAFF = 'staff';
 
 }
-
-
-
-
-
-
-

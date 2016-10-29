@@ -45,19 +45,19 @@ class Student extends CI_Controller{
 
 				$this->load->library('session');
 
-				$uid = md5(uniqid(rand(), true));				
+				$uid = md5(uniqid(rand(), true));
 
 
 				$data = array(
 
 					'uid' =>$uid,
 					'studentCode' =>$code,
-					'facultyId' =>'0',
+					'facultyId' =>'',
 					'date' => '',
-					'prof_responsibilities' =>array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
+					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
 					'instruc_responsibilities' =>array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 
-			
+
 				);
 
 

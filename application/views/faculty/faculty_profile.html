@@ -1,9 +1,9 @@
 <div class="row">
-	<div class="col-md-4"> 
-<center>	
+	<div class="col-md-4">
+<center>
 <div class="fileupload fileupload-new" data-provides="fileupload">
 <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
-	
+
 	<div>
 		<span class="btn btn-default btn-file">
 			<span class="fileupload-new">Select image</span>
@@ -16,7 +16,7 @@
 	</div><!--ends col-md-6-->
 
 	<div class="col-md-8">
-		
+
 		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
 		  <li class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
 		  <li class=""><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
@@ -28,24 +28,180 @@
 <!--Profile content-->
 
   <div class="tab-pane fade active in prof-cs" id="Profile">
- 
+
     <label for="name">Fullname : <?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></label>
 
     <br>
-    <label for="Sy">School Year / Semester :</label>
+    <label for="Sy">School Year / Semester :
+
+			<?php foreach($faculty->semester as $semester): ?>
+
+				<?=$semester['name']; ?>st Semester,
+
+<?php endforeach; ?>
+		</label>
 
     <br>
     <label for="subject">Subject Handled : </label>
 
+		<?php foreach($faculty->subjects as $subject): ?>
 
+		<?= $subject['name']; ?>,
+
+	<?php endforeach; ?>
        <br>
-    <label for="subject">Course Handled : </label>
+    <label for="subject">Course Handled :
+			<?php foreach($faculty->courses as $course): ?>
+
+				<?=$course['name']; ?>,
+
+			<?php endforeach; ?>
+		 </label>
     <br>
-    <label for="subject">Section Handled : </label>
+    <label for="subject">Section Handled :
+
+			<?php foreach($faculty->sections as $section): ?>
+
+				<?= $section['name']; ?>,
+
+			<?php endforeach; ?>
+		</label>
         <br>
     <label for="subject">Faculty Itself Evaluation Result : </label>
+
+		<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
+						  View Results
+						</a>
+
+						<!-- Modal -->
+						<div class="modal fade bs-example-modalb-lg" id="myModal<?php echo $faculty->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+						  <div class="modal-dialog modal-lg" style="width:1300px;">
+						    <div class="modal-content" style="color:#000;">
+
+						    <div class="col-md-6">
+
+
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>PROFESSIONAL RESPONSIBILITIES</h3>
+
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Ch-1</th>
+											<th>Ch-2</th>
+											<th>Ch-3</th>
+											<th>Ch-4</th>
+											<th>Ch-5</th>
+											<th>Ch-6</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $profTotal = 0; ?>
+										<?php foreach($faculty->profAnswers as $profAnswer): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+
+											<td><?php echo $profAnswer[0]; ?></td>
+											<td><?php echo $profAnswer[1]; ?></td>
+											<td><?php echo $profAnswer[2]; ?></td>
+											<td><?php echo $profAnswer[3]; ?></td>
+											<td><?php echo $profAnswer[4]; ?></td>
+											<td><?php echo $profAnswer[5]; ?></td>
+											<?php $profTotal+= array_sum($profAnswer); ?>
+											<td><?php echo array_sum($profAnswer); ?></td>
+											<?php $counter++; ?>
+
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $profTotal; ?></th>
+										</tr>
+									  </table>
+								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/15 = <?php echo $profTotal/15; ?></div>
+
+								</div> <!--ends table-responsive-->
+
+
+						      </div>
+
+						    </div><!--ends col-md-6-->
+
+						    <div class="col-md-6">
+
+
+						      <div class="modal-body" style="color:#000;">
+
+
+								  </div>
+						      	<div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px;color:#000; background: #fff; ">
+									  <table class="table">
+									  <h3>INSTRUCTIONAL RESPONSIBILITIES</h3>
+
+									  <tr style="background:#428bca;">
+
+											<th>Qeustion #</th>
+											<th>Ch-1</th>
+											<th>Ch-2</th>
+											<th>Ch-3</th>
+											<th>Ch-4</th>
+											<th>Ch-5</th>
+											<th>Ch-6</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $instructTotal = 0; ?>
+										<?php foreach($faculty->instructAnswers as $instructAnswer): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+											<td><?php echo $instructAnswer[0]; ?></td>
+											<td><?php echo $instructAnswer[1]; ?></td>
+											<td><?php echo $instructAnswer[2]; ?></td>
+											<td><?php echo $instructAnswer[3]; ?></td>
+											<td><?php echo $instructAnswer[4]; ?></td>
+											<td><?php echo $instructAnswer[5]; ?></td>
+											<?php $instructTotal+= array_sum($instructAnswer); ?>
+											<td><?php echo array_sum($instructAnswer); ?></td>
+											<?php $counter++; ?>
+
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+											<td>Total</td>
+											<th><?php echo $instructTotal; ?></th>
+										</tr>
+
+
+
+						      </div>
+
+									  </table>
+							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/15 =<?php echo $instructTotal/15; ?></div>
+								</div> <!--ends table-responsive-->
+
+
+						    </div><!--ends col-md-6-->
+						    </div>
+						  </div>
+						</div>
+
         <br>
-    <label for="subject">Overall Result : </label>
+    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES = <?php echo $profTotal/15 ?> | INSTRUCTIONAL RESPONSIBILITIES = <?php echo $instructTotal/15 ?> </label>
 
     <br>
     <input type="button" name="" value="Print All Details">
@@ -53,7 +209,7 @@
  </div> <!--ends tab-pane-->
 
 
-  
+
 </div>
 	</div><!--ends col-md-6-->
 </div>

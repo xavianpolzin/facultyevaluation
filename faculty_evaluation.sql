@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2016 at 04:21 AM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Generation Time: Oct 29, 2016 at 05:01 AM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `faculty_evaluation`
@@ -26,12 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `code`
 --
 
-CREATE TABLE IF NOT EXISTS `code` (
-`id` int(11) NOT NULL,
+CREATE TABLE `code` (
+  `id` int(11) NOT NULL,
   `code` varchar(50) NOT NULL,
   `status` enum('for-printing','active','inactive') NOT NULL,
   `createdOn` datetime NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `code`
@@ -80,11 +80,11 @@ INSERT INTO `code` (`id`, `code`, `status`, `createdOn`) VALUES
 -- Table structure for table `course`
 --
 
-CREATE TABLE IF NOT EXISTS `course` (
-`id` int(11) NOT NULL,
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `course`
@@ -101,8 +101,8 @@ INSERT INTO `course` (`id`, `name`, `description`) VALUES
 -- Table structure for table `evaluation`
 --
 
-CREATE TABLE IF NOT EXISTS `evaluation` (
-`id` int(11) NOT NULL,
+CREATE TABLE `evaluation` (
+  `id` int(11) NOT NULL,
   `facultyId` int(11) NOT NULL,
   `type` enum('Faculty','Student') NOT NULL,
   `date` date NOT NULL,
@@ -110,14 +110,15 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   `profScore` int(11) NOT NULL,
   `instrucScore` int(11) NOT NULL,
   `comment` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `evaluation`
 --
 
 INSERT INTO `evaluation` (`id`, `facultyId`, `type`, `date`, `evaluatedBy`, `profScore`, `instrucScore`, `comment`) VALUES
-(2, 2, 'Student', '2016-10-23', 'dCU8ZYc0eO6rCN2', 30, 23, 'test co');
+(2, 2, 'Student', '2016-10-23', 'dCU8ZYc0eO6rCN2', 30, 23, 'test co'),
+(4, 11, 'Faculty', '2016-10-29', '', 43, 66, 'test\r\n');
 
 -- --------------------------------------------------------
 
@@ -125,12 +126,12 @@ INSERT INTO `evaluation` (`id`, `facultyId`, `type`, `date`, `evaluatedBy`, `pro
 -- Table structure for table `faculties`
 --
 
-CREATE TABLE IF NOT EXISTS `faculties` (
-`id` int(11) NOT NULL,
+CREATE TABLE `faculties` (
+  `id` int(11) NOT NULL,
   `firstName` varchar(50) NOT NULL,
   `middleName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `faculties`
@@ -143,7 +144,85 @@ INSERT INTO `faculties` (`id`, `firstName`, `middleName`, `lastName`) VALUES
 (5, 'asdfsdfsadf', 'af', 'qeqwr'),
 (6, 'asldkflkj', 'ljljflkj', 'ljfasljkflaj'),
 (7, 'sldfklakj', 'lkj', 'ljljldfj'),
-(8, 'knlj', 'ljljljl', 'j;l');
+(8, 'knlj', 'ljljljl', 'j;l'),
+(9, 'diamodn', 'm', 'platitas'),
+(10, 'testetet', 'test', 'ttetestt'),
+(11, 'fadf', 'dsfa', 'sdfdfd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_course`
+--
+
+CREATE TABLE `faculty_course` (
+  `faculty_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty_course`
+--
+
+INSERT INTO `faculty_course` (`faculty_id`, `course_id`) VALUES
+(11, 1),
+(11, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_section`
+--
+
+CREATE TABLE `faculty_section` (
+  `faculty_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty_section`
+--
+
+INSERT INTO `faculty_section` (`faculty_id`, `section_id`) VALUES
+(11, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_semester`
+--
+
+CREATE TABLE `faculty_semester` (
+  `faculty_id` int(11) NOT NULL,
+  `semester` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty_semester`
+--
+
+INSERT INTO `faculty_semester` (`faculty_id`, `semester`) VALUES
+(11, 1),
+(11, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty_subjects`
+--
+
+CREATE TABLE `faculty_subjects` (
+  `faculty_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty_subjects`
+--
+
+INSERT INTO `faculty_subjects` (`faculty_id`, `subject_id`) VALUES
+(11, 2),
+(11, 3);
 
 -- --------------------------------------------------------
 
@@ -151,8 +230,8 @@ INSERT INTO `faculties` (`id`, `firstName`, `middleName`, `lastName`) VALUES
 -- Table structure for table `instructional_answer`
 --
 
-CREATE TABLE IF NOT EXISTS `instructional_answer` (
-`id` int(11) NOT NULL,
+CREATE TABLE `instructional_answer` (
+  `id` int(11) NOT NULL,
   `evaluation_id` int(11) NOT NULL,
   `choice_1` int(11) NOT NULL DEFAULT '0',
   `choice_2` int(11) NOT NULL DEFAULT '0',
@@ -161,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `instructional_answer` (
   `choice_5` int(11) NOT NULL DEFAULT '0',
   `choice_6` int(11) NOT NULL DEFAULT '0',
   `num` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `instructional_answer`
@@ -182,7 +261,25 @@ INSERT INTO `instructional_answer` (`id`, `evaluation_id`, `choice_1`, `choice_2
 (27, 2, 0, 1, 0, 0, 0, 0, 12),
 (28, 2, 0, 0, 0, 0, 0, 5, 13),
 (29, 2, 0, 0, 2, 0, 0, 0, 14),
-(30, 2, 0, 0, 0, 0, 0, 0, 15);
+(30, 2, 0, 0, 0, 0, 0, 0, 15),
+(31, 3, 0, 0, 0, 0, 0, 5, 1),
+(32, 3, 0, 0, 0, 0, 0, 5, 2),
+(33, 3, 0, 0, 0, 0, 0, 5, 3),
+(34, 4, 0, 0, 0, 0, 0, 5, 1),
+(35, 4, 0, 0, 0, 0, 4, 0, 2),
+(36, 4, 0, 0, 0, 0, 4, 0, 3),
+(37, 4, 0, 0, 0, 0, 0, 5, 4),
+(38, 4, 0, 0, 0, 0, 0, 5, 5),
+(39, 4, 0, 0, 0, 0, 4, 0, 6),
+(40, 4, 0, 0, 0, 0, 0, 5, 7),
+(41, 4, 0, 0, 0, 0, 4, 0, 8),
+(42, 4, 0, 0, 0, 0, 4, 0, 9),
+(43, 4, 0, 0, 0, 0, 0, 5, 10),
+(44, 4, 0, 0, 0, 0, 0, 5, 11),
+(45, 4, 0, 0, 0, 0, 4, 0, 12),
+(46, 4, 0, 0, 0, 3, 0, 0, 13),
+(47, 4, 0, 0, 0, 0, 4, 0, 14),
+(48, 4, 0, 0, 0, 0, 0, 5, 15);
 
 -- --------------------------------------------------------
 
@@ -190,8 +287,8 @@ INSERT INTO `instructional_answer` (`id`, `evaluation_id`, `choice_1`, `choice_2
 -- Table structure for table `professional_answer`
 --
 
-CREATE TABLE IF NOT EXISTS `professional_answer` (
-`id` int(11) NOT NULL,
+CREATE TABLE `professional_answer` (
+  `id` int(11) NOT NULL,
   `evaluation_id` int(11) NOT NULL,
   `choice_1` int(11) NOT NULL DEFAULT '0',
   `choice_2` int(11) NOT NULL DEFAULT '0',
@@ -200,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `professional_answer` (
   `choice_5` int(11) NOT NULL DEFAULT '0',
   `choice_6` int(11) NOT NULL DEFAULT '0',
   `num` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `professional_answer`
@@ -221,7 +318,37 @@ INSERT INTO `professional_answer` (`id`, `evaluation_id`, `choice_1`, `choice_2`
 (27, 2, 0, 0, 0, 0, 4, 0, 12),
 (28, 2, 0, 0, 0, 0, 0, 5, 13),
 (29, 2, 0, 0, 0, 0, 0, 0, 14),
-(30, 2, 0, 0, 0, 0, 0, 0, 15);
+(30, 2, 0, 0, 0, 0, 0, 0, 15),
+(31, 3, 0, 0, 0, 0, 4, 0, 1),
+(32, 3, 0, 0, 0, 3, 0, 0, 2),
+(33, 3, 0, 0, 0, 0, 4, 0, 3),
+(34, 3, 0, 0, 0, 3, 0, 0, 4),
+(35, 3, 0, 1, 0, 0, 0, 0, 5),
+(36, 3, 0, 0, 0, 0, 0, 5, 6),
+(37, 3, 0, 0, 0, 0, 0, 5, 7),
+(38, 3, 0, 0, 2, 0, 0, 0, 8),
+(39, 3, 0, 0, 0, 3, 0, 0, 9),
+(40, 3, 0, 1, 0, 0, 0, 0, 10),
+(41, 3, 0, 0, 0, 0, 4, 0, 11),
+(42, 3, 0, 0, 0, 3, 0, 0, 12),
+(43, 3, 0, 0, 0, 0, 0, 5, 13),
+(44, 3, 0, 0, 0, 0, 4, 0, 14),
+(45, 3, 0, 0, 0, 3, 0, 0, 15),
+(46, 4, 0, 0, 0, 0, 0, 5, 1),
+(47, 4, 0, 0, 0, 0, 0, 5, 2),
+(48, 4, 0, 0, 0, 0, 0, 5, 3),
+(49, 4, 0, 0, 0, 0, 0, 0, 4),
+(50, 4, 0, 0, 0, 0, 0, 0, 5),
+(51, 4, 0, 1, 0, 0, 0, 0, 6),
+(52, 4, 0, 1, 0, 0, 0, 0, 7),
+(53, 4, 0, 1, 0, 0, 0, 0, 8),
+(54, 4, 0, 0, 2, 0, 0, 0, 9),
+(55, 4, 0, 0, 0, 3, 0, 0, 10),
+(56, 4, 0, 0, 0, 0, 4, 0, 11),
+(57, 4, 0, 0, 0, 0, 4, 0, 12),
+(58, 4, 0, 0, 0, 0, 0, 5, 13),
+(59, 4, 0, 0, 0, 3, 0, 0, 14),
+(60, 4, 0, 0, 0, 0, 4, 0, 15);
 
 -- --------------------------------------------------------
 
@@ -229,22 +356,21 @@ INSERT INTO `professional_answer` (`id`, `evaluation_id`, `choice_1`, `choice_2`
 -- Table structure for table `schedules`
 --
 
-CREATE TABLE IF NOT EXISTS `schedules` (
-`id` int(11) NOT NULL,
+CREATE TABLE `schedules` (
+  `id` int(11) NOT NULL,
   `days` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `section_id` int(11) NOT NULL,
   `from_time` varchar(50) NOT NULL,
   `to_time` varchar(50) NOT NULL,
   `faculty_id` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `schedules`
 --
 
 INSERT INTO `schedules` (`id`, `days`, `subject_id`, `section_id`, `from_time`, `to_time`, `faculty_id`) VALUES
-(1, 2, 3, 1, '1', '5', 2),
 (2, 38, 3, 1, '11', '22', 2);
 
 -- --------------------------------------------------------
@@ -253,11 +379,11 @@ INSERT INTO `schedules` (`id`, `days`, `subject_id`, `section_id`, `from_time`, 
 -- Table structure for table `sections`
 --
 
-CREATE TABLE IF NOT EXISTS `sections` (
-`id` int(11) NOT NULL,
+CREATE TABLE `sections` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sections`
@@ -272,18 +398,18 @@ INSERT INTO `sections` (`id`, `name`, `description`) VALUES
 -- Table structure for table `subjects`
 --
 
-CREATE TABLE IF NOT EXISTS `subjects` (
-`id` int(11) NOT NULL,
+CREATE TABLE `subjects` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
 --
 
 INSERT INTO `subjects` (`id`, `name`, `description`) VALUES
-(2, '', ''),
+(2, 'test subject', 'test subject'),
 (3, 'af', 'dsf');
 
 -- --------------------------------------------------------
@@ -292,10 +418,10 @@ INSERT INTO `subjects` (`id`, `name`, `description`) VALUES
 -- Table structure for table `temp_codes`
 --
 
-CREATE TABLE IF NOT EXISTS `temp_codes` (
-`id` int(11) NOT NULL,
+CREATE TABLE `temp_codes` (
+  `id` int(11) NOT NULL,
   `code` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_codes`
@@ -344,22 +470,27 @@ INSERT INTO `temp_codes` (`id`, `code`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `password` text NOT NULL,
-  `accessLevel` varchar(30) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `accessLevel` varchar(30) NOT NULL,
+  `faculty_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `fname`, `lname`, `password`, `accessLevel`) VALUES
-(12, 'admin', 'test ad', 'test ', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'admin'),
-(13, 'testuser', 'test na', 'test', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'faculty');
+INSERT INTO `users` (`id`, `username`, `fname`, `lname`, `password`, `accessLevel`, `faculty_id`) VALUES
+(13, 'testuser', 'test na', 'test', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'faculty', 0),
+(14, 'dorimon', 'diamond', 'diamond', 'YvOk3Dkyvd/pK8DG3UK6WfkPm62nHiIezEPzMdA9nUiAp+Bthin7M9N4F+7WdGEkdWxVxmML5k9JnPcHfAYHLA==', 'admin', 0),
+(15, 'staff1', 'staf', 'staf', 'S93a/bmoEARENiFqM039VU7jcTvb5R3ZooeFEerqF6l1QPFFbmLhDb+pBiRO1bHBK0pMUccXoWE11mf1CnY/ng==', 'staff', 0),
+(16, 'faculty', 'faculyt', 'faculty', '1o4jpBDURsenH4OI4zHKD4kD6tHigoOMtd8WIEo+FFQ1dnhnRiZqZSdWYN5IUSGGFS/+kF4o3jeUTmGYIChwFg==', 'faculty', 11),
+(17, 'staff2', 'staff', 'staf', 'NXZmGr2CphPCMiFKjUvG6ODDZGAHiJtwyMvs+muwyMSnAq+salKed0W43oWRk8YNgrdUxyH5mJTJj8POosA+Ug==', 'faculty', 9),
+(18, 'admin', 'admin', 'admin', '1Buvq5e8BQUuuS+UZFabA3oKmEM8Q0WU7rSlV1z9qNAr88cHYpPhLJ4biO8QS02aGiv8IvJNMDVyTTIgxzlcAg==', 'admin', 0);
 
 --
 -- Indexes for dumped tables
@@ -369,67 +500,67 @@ INSERT INTO `users` (`id`, `username`, `fname`, `lname`, `password`, `accessLeve
 -- Indexes for table `code`
 --
 ALTER TABLE `code`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `course`
 --
 ALTER TABLE `course`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `evaluation`
 --
 ALTER TABLE `evaluation`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `faculties`
 --
 ALTER TABLE `faculties`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `instructional_answer`
 --
 ALTER TABLE `instructional_answer`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `professional_answer`
 --
 ALTER TABLE `professional_answer`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sections`
 --
 ALTER TABLE `sections`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `temp_codes`
 --
 ALTER TABLE `temp_codes`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -439,57 +570,57 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `code`
 --
 ALTER TABLE `code`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `evaluation`
 --
 ALTER TABLE `evaluation`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `faculties`
 --
 ALTER TABLE `faculties`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `instructional_answer`
 --
 ALTER TABLE `instructional_answer`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `professional_answer`
 --
 ALTER TABLE `professional_answer`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `temp_codes`
 --
 ALTER TABLE `temp_codes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -19,7 +19,7 @@ class Login extends CI_Controller{
 	private function SetUserSession($user)
 	{
 		$this->load->library('session');
-		
+
 		$data = array(
 			//'firstName' => $user->firstName,
 			//'lastName' => $user->lastName,
@@ -27,11 +27,11 @@ class Login extends CI_Controller{
 			'id'	=> $user->id,
 			'accessLevel' => $user->accessLevel,
 			'username' => $user->username
-				
+
 		);
-		
+
 		$this->session->set_userdata('loggedIn',$data);
-		
+
 	}
 
 	public function index(){
@@ -58,11 +58,8 @@ class Login extends CI_Controller{
 
 				if($username && $password){
 
-					$this->load->library('encrypt');
-
-					$password = $this->encrypt->sha1($password);
-
-
+					//$this->load->library('encrypt');
+					//$password = $this->encrypt->encode($password);
 					$user = $this->User->LoginUsingUsernameAndPassword($username,$password);
 
 					if($user->id > 0){
@@ -88,13 +85,15 @@ class Login extends CI_Controller{
 				redirect('/login');
 			}
 
+			$this->load->library('encrypt');
 
 			$this->output->set_template('default');
 			$data = array(
 				'isUsernameEmpty'=>$isUsernameEmpty,
 				'isPasswordEmpty'=>$isPasswordEmpty,
 				'hasErrors'=>$hasErrors,
-				'isInvalidUsernamePassword'=>$isInvalidUsernamePassword
+				'isInvalidUsernamePassword'=>$isInvalidUsernamePassword,
+				'password'=>$this->encrypt->encode('test')
 				);
 			$this->load->view('login.html',$data);
 

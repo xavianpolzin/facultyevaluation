@@ -3,18 +3,19 @@
 
 <div class="col-lg-6 mb-lg-st" style="">
 
-<div class="login_form"> 
+<div class="login_form">
 
+<?php echo $password   ?>
 
 <div class="student-welcome-page">
     <div class="helper-ver">
         <div class="st-wel-content">
         <form role="form" action="" method="post">
-          
+
           <h4>Administrator Login</h4>
           <h2>FACULTY EVALUATION SYSTEM</h2>
           <p>A Thesis in 2016</p>
-          
+
           <?php if($hasErrors && $isInvalidUsernamePassword): ?>
 <div class="">
     <p>Invalid Username/password.</p>
@@ -37,21 +38,21 @@
             </div>
                   <?php endif; ?>
             </div>
-                
+
           <br>
 
           <input type="hidden" name="token" value="" />
           <input type="submit" value="Login" class="sub-stud-code">
-        
+
         </form>
 
         </div>
-        
+
         <div class="ad-st-rm">
           <p>If you're not an admin, please go to the <a href="<?php echo base_url();?>">student page.</a> Thank you!</p>
         </div>
         <div class="con-fo">
-      <h2>&copy;Faculty Evaluation 2016</h2>  
+      <h2>&copy;Faculty Evaluation 2016</h2>
       </div>
     </div>
 </div><!--ends student-welcome-page-->

@@ -20,9 +20,14 @@ class Evaluation extends CI_Controller{
 
 		$evaluation = $this->session->userdata('evaluation');
 
+		if($evaluation == null){
+			redirect('/');
+		}
+
 		$uid = $this->input->post('uid');
 		$currentUid = $evaluation['uid'];
 		$currentStep = $this->input->post('currentStep');
+
 
 
 		if($this->input->post()){
@@ -42,19 +47,38 @@ class Evaluation extends CI_Controller{
 
 					redirect("/evaluation/start?type=student&uid=$uid&step=2");
 					break;
-				
+
 				case 2:
 
 
 
 					$answers = $this->input->post('answers');
 
-
 					$evaluation['prof_responsibilities'] = $answers;
 
 					$this->session->set_userdata('evaluation',$evaluation);
 
+					if(sizeof($answers) != 15){
+						for ($i=0; $i < 15; $i++) {
+							if(!isset($answers[$i])){
+								$answers[$i] = -1;
+							}
+						}
+
+					$evaluation['prof_responsibilities'] = $answers;
+					$this->session->set_userdata('evaluation',$evaluation);
+					  if($evaluation['studentCode']!=''){
+							redirect("/evaluation/start?type=student&uid=$uid&step=2");
+						}else{
+							redirect("/evaluation/start?type=faculty&uid=$uid&step=2");
+						}
+					}
+					if($evaluation['studentCode']!=''){
 					redirect("/evaluation/start?type=student&uid=$uid&step=3");
+				}else{
+
+					redirect("/evaluation/start?type=faculty&uid=$uid&step=3");
+				}
 					break;
 
 
@@ -62,15 +86,31 @@ class Evaluation extends CI_Controller{
 
 
 
-					$instrucAnswer = $this->input->post('answers');	
+					$instrucAnswer = $this->input->post('answers');
 					$comment = $this->input->post('comment');
 
 					$profAnswer = $evaluation['prof_responsibilities'];
+
+					$isStudent = $evaluation['studentCode'] !='' ? true: false;
+
+
+					if(sizeof($instrucAnswer)!=15){
+
+						if($evaluation['studentCode']!=''){
+					redirect("/evaluation/start?type=student&uid=$uid&step=3");
+				}else{
+
+					redirect("/evaluation/start?type=faculty&uid=$uid&step=3");
+				}
+
+					}
 
 
 					//$evaluation['instruc_responsibilities'] = $answers;
 
 					$this->load->Model('EvaluationModel');
+
+
 
 
 					$data = array(
@@ -82,6 +122,10 @@ class Evaluation extends CI_Controller{
 						'profScore' => array_sum($profAnswer),
 						'comment' => $comment
 						);
+
+						if($evaluation['studentCode']==''){
+							$data['type'] = 'Faculty';
+						}
 
 					$insertedId = $this->EvaluationModel->Save($data);
 
@@ -124,22 +168,27 @@ class Evaluation extends CI_Controller{
 
 
 					$this->session->unset_userdata('evaluation');
-		
-					$this->session->sess_destroy();
-					
+
+					//$this->session->sess_destroy();
+
+					if($isStudent){
 					redirect("/evaluation/success?type=student&uid=$uid");
+				}else{
+
+					redirect("/evaluation/success?type=faculty&uid=$uid");
+				}
 
 
 					break;
 				default:
-					
+
 
 
 
 					break;
 			}
 
-			
+
 
 		}else{
 
@@ -150,9 +199,10 @@ class Evaluation extends CI_Controller{
 
 	public function success(){
 
+		$isStudent = $this->input->get('type') == 'Student' ? true: false;
 
 		$this->output->set_template('default');
-		$this->load->view('evaluation_success.html');
+		$this->load->view('evaluation_success.html',array('isStudent'=>$isStudent));
 
 
 	}
@@ -175,13 +225,22 @@ class Evaluation extends CI_Controller{
 			$step = $this->input->get('step');
 			$type = $this->input->get('type');
 
+			if($type=='faculty'){
+				$evaluation['date'] = date("Y-m-d");
+
+				$this->session->set_userdata('evaluation',$evaluation);
+			}
+			//var_dump($evaluation);
+
 			switch ($step) {
 				case 1:
-					
-					$this->ShowStepOne($evaluation);
+
+					if($type=='student'){
+						$this->ShowStepOne($evaluation);
+					}
 
 					break;
-				
+
 				case 2:
 
 					$this->ShowStepTwo($evaluation);
@@ -194,7 +253,7 @@ class Evaluation extends CI_Controller{
 
 					break;
 				default:
-					
+
 					break;
 			}
 
@@ -208,10 +267,10 @@ class Evaluation extends CI_Controller{
 
 	function ShowStepOne($data){
 
-		
+
 
 		$this->load->Model('FacultyModel');
-		
+
 
 
 		$data['faculties'] =  $this->FacultyModel->GetAll();
@@ -223,7 +282,7 @@ class Evaluation extends CI_Controller{
 
 	function ShowStepTwo($data){
 
-
+		//var_dump($data);
 		$this->output->set_template('default');
 		$this->load->view("student_form.html",$data);
 

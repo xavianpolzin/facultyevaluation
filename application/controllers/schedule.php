@@ -1,7 +1,7 @@
 <?php
 
 class schedule extends Security{
-	
+
 
 	function __construct(){
 
@@ -9,7 +9,7 @@ class schedule extends Security{
 
 		$this->load->helper('url');
 		$this->load->library('session');
-	}	
+	}
 
 
 	public function index(){
@@ -29,11 +29,11 @@ class schedule extends Security{
 	}
 
 
-	
+
 
 	public function add(){
 
-		
+
 		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
 
 
@@ -45,7 +45,7 @@ class schedule extends Security{
 					  //_POST
 			$params = $this->input->post();
 
-			
+
 			if($this->ScheduleModel->Save($params)){
 
 
@@ -77,7 +77,7 @@ class schedule extends Security{
 
 			$params = $this->input->post();
 
-			
+
 			if($this->ScheduleModel->update($params,$id)){
 
 					$this->session->set_flashdata('successMessage','Successfully edited..');
@@ -97,13 +97,13 @@ class schedule extends Security{
 		$this->load->view('/faculty/faculty_profile#Schedule', array('schedule'=>$schedule,'id'=>$id,'successMessage'=>$successMessage));
 	}
 
-	public function delete(){
+	public function delete($fnameid){
 
 		$this->load->Model('ScheduleModel');
 		$id = $this->input->get('id');
 
 		$this->ScheduleModel->delete($id);
 
-		redirect('/faculty');
+		redirect('/faculty/schedule/'. $fnameid);
 	}
 }
