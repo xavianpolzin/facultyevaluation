@@ -13,7 +13,7 @@ class FacultySubjectModel extends CI_Model{
 	}
 
   function Save($params){
-		$this->db->insert('faculty_subject',$params);
+		$this->db->insert('faculty_subjects',$params);
   }
 
 

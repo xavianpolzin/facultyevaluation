@@ -26,7 +26,7 @@ class CodeModel extends CI_Model{
 
 		$this->db->update('code', array('status'=>'inactive'), "code = '$code'");
 		return $this->db->affected_rows();
-	
+
 	}
 
 	public function SetActive($code){
@@ -48,7 +48,7 @@ class CodeModel extends CI_Model{
 		return $query->result();
 	}
 }
-	
+
 
 	public function Exists($code){
 
@@ -58,12 +58,12 @@ class CodeModel extends CI_Model{
 		$this->db->where('status !=','inactive');
 
 		$row = $this->db->get('code')->row();
-		
+
 		$code = new CodeModel();
 
-		
+
 		if($row){
-		
+
 			$code->id = $row->id;
 			$code->code = $row->code;
 			$code->status = $row->status;
@@ -77,11 +77,11 @@ class CodeModel extends CI_Model{
 	public function NotExists($code){
 
 		$row = $this->db->get_where('code',array('code'=>$code))->row();
-		
-		
+
+
 		if($row){
 			return false;
-			
+
 		}else{
 
 			return true;
@@ -104,9 +104,37 @@ class CodeModel extends CI_Model{
 
 		return $rows;
 
-		
+
 
 	}
+
+
+	public function GetAllForPrinting(){
+
+
+		$this->db->where('status','for-printing');
+
+		$query = $this->db->get('code');
+
+		$rows = array();
+
+		foreach($query->result() as $row){
+
+
+				$code = new CodeModel();
+
+
+				$code->id = $row->id;
+				$code->code = $row->code;
+				$code->createdOn = $row->createdOn;
+				$code->status = $row->status;
+
+				$rows[] = $code;
+		}
+
+		return $rows;
+	}
+
 
 
 	public function GetAll(){
@@ -177,7 +205,7 @@ public function GetAllWithPagenation($limit,$offset){
 
 
 		$sections = array(
-					
+
 			'code' => $code,
 			'status' => 'for-printing'
 			);
@@ -207,7 +235,7 @@ public function GetAllWithPagenation($limit,$offset){
 
         $this->db->limit($limit, $offset);;
         $query = $this->db->get("code");
- 
+
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
                 $data[] = $row;
