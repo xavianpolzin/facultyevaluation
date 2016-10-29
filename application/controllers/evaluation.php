@@ -199,7 +199,7 @@ class Evaluation extends CI_Controller{
 
 	public function success(){
 
-		$isStudent = $this->input->get('type') == 'Student' ? true: false;
+		$isStudent = $this->input->get('type') == 'student' ? true: false;
 
 		$this->output->set_template('default');
 		$this->load->view('evaluation_success.html',array('isStudent'=>$isStudent));
