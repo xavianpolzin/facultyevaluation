@@ -1,11 +1,11 @@
 <?php if($successMessage): ?>
 
   <div class="alert alert-success">
-  
-     
+
+
       <p><?php echo $successMessage ?></p>
 
-  
+
 </div>
 
 <?php endif; ?>
@@ -14,23 +14,23 @@
 <form role="form" method="post" action="">
   <div class="form-group col-md-4">
     <label for="accessLevelinput">Admin</label>
-    <input type="checkbox" class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="admin">
+    <input type="checkbox" <?php if($users->accessLevel=='admin'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="admin">
   </div>
 
   <div class="form-group col-md-4">
     <label for="accessLevelinput">Staff</label>
-    <input type="checkbox" class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
+    <input type="checkbox" <?php if($users->accessLevel=='staff'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
 
 <div class="form-group col-md-4">
     <label for="accessLevelinput">faculty</label>
-    <input type="checkbox" class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
+    <input type="checkbox" <?php if($users->accessLevel=='faculty'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
   </div>
 
 
   <div class="form-group">
     <label for="usernameinput">Username</label>
-    <input type="text" class="form-control" id="username" name="username" placeholder="Input User" value="<?php echo $users->username?>">
+    <input type="text" readonly class="form-control" id="username" name="username" placeholder="Input User" value="<?php echo $users->username?>">
   </div>
 
   <div class="form-group">
@@ -43,10 +43,20 @@
     <input type="text" class="form-control" id="lname" name="lname" placeholder="Input Last Name" value="<?php echo $users->lname?>">
   </div>
 
- 
+
+  <div class="form-group">
+    <label for="passwordinput">Link account to Faculty for Evaluation Porpuses</label>
+    <select class="form-control" name = "faculty">
+      <option value="0"> --- select one -- </option>
+    <?php foreach($faculties as $faculty): ?>
+      <option <?php if($faculty->id == $users->faculty_id) {echo "selected";} ?> value="<?=$faculty->id ?>"><?=$faculty->firstName  ?>  </option>
 
 
-  
-  
+    <?php endforeach; ?>
+  </select>
+  </div>
+
+
+
   <input type="submit" class="btn btn-default" value="Submit"></input>
 </form>

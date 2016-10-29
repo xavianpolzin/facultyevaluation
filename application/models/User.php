@@ -103,9 +103,26 @@ class User extends CI_Model{
 	}
 
 	public function update($params,$id){
-		$this->db->update('users', $params, "id = $id");
+
+	$users = array(
+
+
+			'username' => $params['username'],
+			'fname' => $params['fname'],
+			'lname' => $params['lname'],
+			'accessLevel' => $params['accessLevel'],
+			'faculty_id' => $params['faculty']
+			);
+
+		$this->db->update('users', $users, "id = $id");
 		return $this->db->affected_rows();
 
+	}
+	public function UsernameExists($username){
+
+		$res =  $this->db->get_where('users', array('username' => $username));
+
+		return $res->num_rows() > 0 ? true: false;
 	}
 
 	public function find_by_id($id) {
@@ -116,7 +133,7 @@ class User extends CI_Model{
 
    	 	$row = $sql->row();
 
-   	 	if ($row->id>0){
+   	 	if ($row && $row->id>0){
 
 			$users = new User();
 			$users->id = $row->id;
@@ -125,6 +142,7 @@ class User extends CI_Model{
 			$users->lname = $row->lname;
 			$users->password = $row->password;
 			$users->accessLevel = $row->accessLevel;
+			$users->faculty_id = $row->faculty_id;
 
 
 			return $users;

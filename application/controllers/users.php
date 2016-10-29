@@ -11,14 +11,47 @@ class Users extends Security{
 		$this->load->library('session');
 	}
 
+	public function changepass(){
+
+		$id = $this->input->get('id');
+		$successMessage = $this->session->flashdata('message') ? $this->session->flashdata('message') : '';
+
+			$this->load->Model('User');
+			$data = $this->User->find_by_id($id);
+
+
+			if($params=$this->input->post()){
+
+				$this->load->library('encrypt');
+				$passwordx= $this->encrypt->decode($data->password);
+					if($params['current_pass'] != $passwordx){
+
+						$this->session->set_flashdata('successMessage','Current Password did not match	');
+
+						redirect('/users/changepass?id='.$id);
+					}
+
+
+			}
+
+		if($id && $data->id>0){
+			$this->load->view('user/changepassword.html', array('user'=>$data,'successMessage'=>$successMessage));
+		}else{
+			redirect('/users');
+		}
+	}
+
 
 	public function index(){
 
 			$this->load->Model('User');
 
+		$message = $this->session->flashdata('message') ? $this->session->flashdata('message') : '';
+
 
 		$data = array(
-				'users' =>$this->User->GetAll()
+				'users' =>$this->User->GetAll(),
+				'message'=>$message
 			);
 
 
@@ -40,6 +73,22 @@ class Users extends Security{
 
 			$this->load->Model('User');
 			$params = $this->input->post();
+
+			$existsUsername = $this->User->UsernameExists($params['username']);
+
+			if($params['username'] =='admin'){
+
+					$this->session->set_flashdata('successMessage','Username admin cannot be used.	');
+					redirect('/users/add');
+
+			}
+
+			if($existsUsername){
+
+					$this->session->set_flashdata('successMessage','Username '. $$params['username'] .' already exists.');
+					redirect('/users/add');
+
+			}
 
 			if($this->User->Save($params)){
 
@@ -90,8 +139,9 @@ class Users extends Security{
 
 
 		$users = $this->User->find_by_id($id);
+		$this->load->Model('FacultyModel');
 
-		$this->load->view('user/edit.html', array('users'=>$users,'id'=>$id,'successMessage'=>$successMessage));
+		$this->load->view('user/edit.html', array('users'=>$users,'id'=>$id,'successMessage'=>$successMessage,'faculties'=>$this->FacultyModel->GetAll()));
 	}
 
 	public function delete(){
@@ -99,8 +149,17 @@ class Users extends Security{
 		$this->load->Model('User');
 		$id = $this->input->get('id');
 
+		$user = $this->User->find_by_id($id);
+
+		if($user->username == 'admin' && $user->accessLevel =='admin'){
+
+			$this->session->set_flashdata('message','Unable to delete admin account.');
+			redirect('/users');
+		}
+
 		$this->User->delete($id);
 
+			$this->session->set_flashdata('message','Account '. $user->username .' successfully deleted.');
 		redirect('/users');
 	}
 }
