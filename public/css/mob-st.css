@@ -28,6 +28,12 @@ body{
     font-family: Arial, Helvetica, sans-seri; 
 
 }
+
+
+.prc-bu input{
+	padding: 10px 20px;
+	margin:10px ;
+}
 .mobst button{
 	width: 100%;
 	background: none;

@@ -23,6 +23,9 @@
 					<button type="submit" class="btn btn-info" name="submit">Search</button>
 				</form>
 
+				<div class="prc-bu">
+				<input type="button" value="Print Code" name="">
+           		</div>
            		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-sm">
 				    <div class="modal-content" id="generateFormWrapper" style="padding:50px;background:transparent;border:none;background:#f3f3f3;">

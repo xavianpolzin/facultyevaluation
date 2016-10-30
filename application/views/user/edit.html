@@ -14,17 +14,17 @@
 <form role="form" method="post" action="">
   <div class="form-group col-md-4">
     <label for="accessLevelinput">Admin</label>
-    <input type="checkbox" <?php if($users->accessLevel=='admin'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="admin">
+    <input type="radio" <?php if($users->accessLevel=='admin'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="admin">
   </div>
 
   <div class="form-group col-md-4">
     <label for="accessLevelinput">Staff</label>
-    <input type="checkbox" <?php if($users->accessLevel=='staff'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
+    <input type="radio" <?php if($users->accessLevel=='staff'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
 
 <div class="form-group col-md-4">
     <label for="accessLevelinput">faculty</label>
-    <input type="checkbox" <?php if($users->accessLevel=='faculty'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
+    <input type="radio" <?php if($users->accessLevel=='faculty'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
   </div>
 
 

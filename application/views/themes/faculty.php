@@ -21,7 +21,7 @@
   		 
     <nav>
       <ul>
-        <h1><a href="<?php echo base_url(); ?>">Faculty Dashboard</a></h1>
+        <h1><a href="<?php echo base_url(); ?>"> Home</a></h1>
         <li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
       </ul>
     </nav>

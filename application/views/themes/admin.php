@@ -19,7 +19,7 @@
 
     <nav>
       <ul>
-        <h1><a href="<?php echo base_url(); ?>">Admin Dashboard</a></h1>
+        <h1><a href="<?php echo base_url(); ?>">Admin Home</a></h1>
         <li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
         <li><a href="<?php echo base_url(); ?>users">Users</a></li>  
         <li><a href="<?php echo base_url(); ?>code">Code</a></li>
