@@ -1,0 +1,15 @@
+1. Input fields sa add Subject, Section, course, Users mka add jpon xa  mon maski wala sulod, butangi lng isa mon ako ra daun butang sa lain hehe,
+
+2. Sa add faculty, if wala e input submit diritso dghan au error hehe,
+
+3. Sa edit faculty mon kai d ko ka dungag kai nalibog ko saon nko pag butang sa value sa mga checkbox, hehe
+
+4. Sa Faculty Profile mon,
+	
+	Profile - 
+	
+
+	Schedule - Submit diritso naa error
+			 - Check ra isa sa Days then submit naa error 'Column 'subject_id' cannot be null'
+			 - Ang edit kai pag submit mo add dli mo edit hehehe.
+
