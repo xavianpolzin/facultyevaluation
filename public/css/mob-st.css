@@ -1,4 +1,6 @@
+
 body{
+	
 	background: 
 	linear-gradient(
       rgba(00, 0, 0, 0.50),
@@ -8,8 +10,100 @@ body{
 	 background-size: cover;
 	 height: 100vh;
 
-	 z-index: -999999;	
+font-family: 'Roboto', sans-serif;	 
+z-index: -999999;	
 }
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+/* demo styles */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+section{
+  margin: 10px 50px 20px 50px;
+}
+
+
+/* follow me template */
+.made-with-love {
+  margin-top: 40px;
+  padding: 10px;
+  clear: left;
+  text-align: center;
+  font-size: 10px;
+  font-family: arial;
+  color: #fff;
+}
+.made-with-love i {
+  font-style: normal;
+  color: #F50057;
+  font-size: 14px;
+  position: relative;
+  top: 2px;
+}
+.made-with-love a {
+  color: #fff;
+  text-decoration: none;
+}
+.made-with-love a:hover {
+  text-decoration: underline;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
 .mobst img{
 	width: 100%;
 	max-width: 200px;
@@ -28,7 +122,6 @@ body{
     font-family: Arial, Helvetica, sans-seri; 
 
 }
-
 
 .prc-bu input{
 	padding: 10px 20px;
@@ -313,6 +406,7 @@ body{
     /*position: absolute;*/
     overflow: hidden;
     width: 100%;
+    border-radius:2px;
 }
 .helper-ver {
     
@@ -608,9 +702,51 @@ nav ul h1{
 
 nav ul h1 a{
 	text-decoration: none;
-	color: #fff;
-	font-weight: 300;
-	line-height: 3em;
+    color: #fff;
+    font-weight: 100;
+    line-height: 1em;
+    font-size: 20px;
+}
+
+.add-frm-hl{
+	padding: 40px;
+	background:rgba(255,255,255,0.3);
+	max-width: 500px;
+	width: 100%;
+	margin:0 auto;
+	border-radius: 10px;
+}
+
+.sb-btn-l{
+	text-align: center;
+	float: left;
+	width: 49%;
+}
+
+.sb-btn-l input{
+	width: 100%;
+	padding: 10px 20px;
+	background:#fff;
+}
+
+.cn-btn-1{
+	text-align: center;
+width: 49%;
+	float: right;
+}
+
+.add-frm-hl label{
+	margin:0;	
+	text-transform: uppercase;
+	font-size: 12px;
+}
+
+.add-frm-hl input{
+	margin:0px 0px 15px 0;
+}
+
+.add-frm-hl input:hover{
+	border-color:#00b8ff;
 }
 nav ul li a{
 	font-size: 12px;
@@ -622,7 +758,7 @@ nav ul li a{
     text-decoration: none;
 }
 nav ul li a:hover{
-	border:1px solid #f3f3f3;
+	border-bottom: 1px solid #fff;
 }
 .clearFixed	{
 	clear: both;
@@ -639,22 +775,36 @@ nav ul li a:hover{
 	width: 80%;
 }
 
+.info-ad-list{
+	height: auto;
+	width: 100%;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #333;
+}
 .ad-frm-con {
 	background: #e9ebee;
 	width: 100%;
 	padding: 50px 20px;
 	color: #333;	
+	border-radius: 5px;
 }
 
-.ad-frm-con h5 a{
-	color: #333;
+.info-ad-list h5 a{color: #3667ea;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
 }
 
-.ad-frm-con h4{
-	font-family:Raleway-Bold;
+.info-ad-list h5{
+	float: right;
+}
+.info-ad-list h4{
+	font-family: helvetica;
+    /* font-weight: 600; */
+    text-transform: uppercase;
+    font-size: 14px;
 
-	font-size: 20px;
-	
+    float: left;
 }
 
 
@@ -671,6 +821,62 @@ nav ul li a:hover{
 	
 }
 
+tbody td a{
+	color: #fff;
+}
+
+.search-inp-h-ri-gen {
+	padding: 20px;
+}
+.dl-btn-co{
+	width: 100%;
+	max-width:300px;
+	margin:0 auto;
+	text-align: center;
+}
+
+.dl-btn-co button{
+	padding:10px 30px;
+	border-radius: 25px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+	color: rgba(255, 255, 255, 0.68);	
+    background: none;	
+}
+
+.dl-btn-co button:hover{
+	color: #fff;
+	border: 1px solid #fff;	
+}
+
+.search-inp-h-ri-gen img{
+	width: 100%;
+	max-width: 20px;
+	float: left;
+}
+.search-inp-h {
+	padding: 20px;
+}
+.search-inp-h input{
+	border-radius: 30px;
+	padding: 10px 20px;
+	width: 100%;
+	max-width: 300px;
+	color: #333;
+}
+
+.search-inp-h img{
+	width: 100%;
+	max-width: 20px;
+	float: right;
+}
+
+
+
+.col-3-mx {
+	width: 33%;
+	display: inline-block;
+}
+/*
 table {
 	
 	font-family: Raleway-bold;
@@ -686,8 +892,14 @@ table a{
 }
 th{
 	box-shadow: 1px 3px 5px #aaaaaa;
+
+    font-family: helvetica;
+    font-weight: 100;
+    text-transform: uppercase;
 }
 th, td {
+
+    font-family: helvetica;
     text-align: left;
     padding: 8px;
 }
@@ -702,7 +914,7 @@ th {
 .table-overflow {
 	overflow-x: auto;
 }
-
+*/
 .ch-handle-holder{
 	padding: 50px;
 }

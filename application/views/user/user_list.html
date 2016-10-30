@@ -1,14 +1,25 @@
-<div class="admin-welcome-page">
-    <div class="helper-ver">
-        <div class="st-wel-admin">
-           <div class="ad-frm-con">
-           		<h4>List Of Users</h4>
-           		<h5><a href="<?php echo base_url() ?>users/add">+ Add User</a></h5>
-				<div style="overflow-x: auto;">
-          <h1>
-<?php echo $message; ?>
-</h1>
-					<table>
+
+<section> <!--for demo wrap-->
+<div class="col-3-mx">
+<div class="search-inp-h-ri-gen">
+	
+
+	<!--<input type="button" name="" placeholder="Search Code">--><a href="<?php echo base_url() ?>users/add"><img src="public/images/add-icon.png"></a></div>
+</div>
+
+<div class="col-3-mx">	
+<h1>List Of Users</h1>  
+</div>
+
+<div class="col-3-mx">
+<div class="search-inp-h">
+	<!--<input type="text" name="" placeholder="Search Code">--><img src="public/images/search-icon.png">
+</div>
+</div>
+ 
+<div  class="tbl-header">
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
 					  <tr>
 						<th>#</th>
 						<th>Username</th>
@@ -18,7 +29,13 @@
 						<th>Option</th>
 
 					  </tr>
-					  <?php $counter = 1 ?>
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+<?php $counter = 1 ?>
 				<?php foreach($users as $user): ?>
 				<tr>
 					<td><?php echo $counter ?></td>
@@ -43,7 +60,8 @@
 					<?php $counter++; ?>
 				</tr>
 				<?php endforeach; ?>
-					</table>
-			   </div>
-           </div>
-        </div>
+
+  </tbody>
+</table>
+</div>
+</section>
