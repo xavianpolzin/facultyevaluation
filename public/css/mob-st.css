@@ -14,6 +14,51 @@ font-family: 'Roboto', sans-serif;
 z-index: -999999;	
 }
 
+.pro-p-c{
+	background: #fcf8e3;
+    width: 100%;
+    max-width: 234px;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+
+}
+.pro-p-c:hover{
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.pro-p-c img{
+	margin-top:30px;
+	max-width: 200px;
+}
+.info-pr{
+	text-align: center;
+	padding: 20px;
+
+}
+.pro-pc-hl img{
+	border-radius: 50%;
+}
+
+.info-pr h1{
+	font-weight: bold;
+	margin-bottom: 0;
+	color: #333;
+	font-size: 14px;
+}
+
+.info-pr p{
+	color: #333;
+	font-size: 14px;
+}
+
+
+.object-fit_fill{
+	object-fit: cover;
+}
 h1{
   font-size: 30px;
   color: #fff;
