@@ -176,7 +176,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 			$userLoggedIn = $this->session->userdata('loggedIn');
 
-		if($this->FacultyModel->AlreadyEval($userLoggedIn['id'])){
+		if($this->FacultyModel->AlreadyEval($userLoggedIn['facultyId'])){
 
 					$this->session->set_flashdata('message','You have already taken.');
 			redirect('/');
@@ -188,8 +188,8 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 					'uid' =>$uid,
 					'studentCode' =>'',
-					'facultyId' =>$userLoggedIn['id'],
-					'date' => date("Y-m-d");
+					'facultyId' =>$userLoggedIn['facultyId'],
+					'date' => date("Y-m-d"),
 					'type' => 'Faculty',
 					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
 					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
@@ -214,7 +214,8 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 	public function add(){
 
 
-		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
+		$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
+		$postparams = '';
 
 
 		if($this->input->post()){
@@ -230,9 +231,26 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 			);
 
 
+			$fname = $params['firstName'];
+			$mname = $params['middleName'];
+			$lname = $params['lastName'];
+			$semestersSize = isset($postparams['semesters']) ? sizeof($postparams['semesters']) : 0;
+			$sectionSize = isset($postparams['sections']) ? sizeof($postparams['sections']) : 0;
+			$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
+			$subjectSize = isset($postparams['subjects']) ? sizeof($postparams['subjects']) : 0;
+
+
+
+			if($fname =="" || $mname =="" || $lname=="" || 
+				$semestersSize == 0 || $sectionSize == 0 || $courseSize == 0 || 
+				$subjectSize == 0){
+				$anyMessage = "All field are required";
+			}
+
+
 //			var_dump($postparams);
 
-			if($id_assign = $this->FacultyModel->Save($params)){
+			if($anyMessage =="" && $id_assign = $this->FacultyModel->Save($params)){
 
 					$this->load->Model('FacultySemesterModel');
 					$this->load->Model('FacultySectionModel');
@@ -255,7 +273,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 				}
 
 
-					$this->session->set_flashdata('successMessage','Successfully added..');
+					$this->session->set_flashdata('anyMessage','Successfully added..');
 
 					redirect('/faculty/add');
 
@@ -274,7 +292,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 		$courses = $this->CourseModel->GetAll();
 		$sections = $this->SectionModel->GetAll();
 
-		$this->load->view('faculty/add.html',array('successMessage'=>$successMessage,'subjects'=>$subjects,'sections'=>$sections,'courses'=>$courses));
+		$this->load->view('faculty/add.html',array('anyMessage'=>$anyMessage,'subjects'=>$subjects,'sections'=>$sections,'courses'=>$courses,'postparams'=>$postparams));
 
 	}
 
@@ -295,7 +313,8 @@ public function search_faculty()
 	public function edit(){
 
 
-		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
+		$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
+		$postparams = '';
 
 		$this->load->Model('FacultyModel');
 		$id = $this->input->get('id');
@@ -303,12 +322,60 @@ public function search_faculty()
 		if($this->input->post()){
 
 			$params = $this->input->post();
+			$postparams = $params;
+
+			$fname = $params['firstName'];
+			$mname = $params['middleName'];
+			$lname = $params['lastName'];
+			$semestersSize = isset($postparams['semesters']) ? sizeof($postparams['semesters']) : 0;
+			$sectionSize = isset($postparams['sections']) ? sizeof($postparams['sections']) : 0;
+			$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
+			$subjectSize = isset($postparams['subjects']) ? sizeof($postparams['subjects']) : 0;
 
 
-			if($this->FacultyModel->update($params,$id)){
+
+			if($fname =="" || $mname =="" || $lname=="" || 
+				$semestersSize == 0 || $sectionSize == 0 || $courseSize == 0 || 
+				$subjectSize == 0){
+				$anyMessage = "All field are required";
+			}
 
 
-					$this->session->set_flashdata('successMessage','Successfully edited..');
+			if($anyMessage == "" && $this->FacultyModel->update($params,$id)){
+
+					$this->load->Model('FacultyCourseModel');
+					$this->load->Model('FacultySemesterModel');
+					$this->load->Model('FacultySubjectModel');
+					$this->load->Model('FacultySectionModel');
+
+					//delete previos reocrd
+					$this->FacultyCourseModel->DeleteByFaculty($id);
+					$this->FacultySectionModel->DeleteByFaculty($id);
+					$this->FacultySubjectModel->DeleteByFaculty($id);
+					$this->FacultySemesterModel->DeleteByFaculty($id);
+
+
+					//save new copy
+				foreach ($postparams['semesters'] as  $value) {
+						$this->FacultySemesterModel->Save(array('faculty_id'=>$id,'semester'=>$value));
+				}
+
+				foreach ($postparams['sections'] as $value) {
+					$this->FacultySectionModel->Save(array('faculty_id'=>$id,'section_id'=>$value));
+				}
+
+				foreach ($postparams['courses'] as  $value) {
+					$this->FacultyCourseModel->Save(array('faculty_id'=>$id,'course_id'=>$value));
+				}
+
+				foreach ($postparams['subjects'] as $value) {
+					$this->FacultySubjectModel->Save(array('faculty_id'=>$id,'subject_id'=>$value));
+				}
+
+
+
+
+					$this->session->set_flashdata('anyMessage','Successfully edited..');
 
 					redirect('/faculty/edit?id='. $id);
 
@@ -320,9 +387,35 @@ public function search_faculty()
 
 
 
+		$this->load->Model('CourseModel');
+		$this->load->Model('SectionModel');
+		$this->load->Model('SubjectModel');
+
+		$this->load->Model('FacultyCourseModel');
+		$this->load->Model('FacultySemesterModel');
+		$this->load->Model('FacultySubjectModel');
+		$this->load->Model('FacultySectionModel');
+
+		$facultyCourse = $this->FacultyCourseModel->FindByFaculty($id);
+		$facultySections = $this->FacultySectionModel->FindByFaculty($id);
+		$facultySubjects= $this->FacultySubjectModel->FindByFaculty($id);
+		$facultySemester= $this->FacultySemesterModel->FindByFaculty($id);
+
+
+		$subjects = $this->SubjectModel->GetAll();
+		$courses = $this->CourseModel->GetAll();
+		$sections = $this->SectionModel->GetAll();
+
+
 		$faculty = $this->FacultyModel->find_by_id($id);
 
-		$this->load->view('faculty/edit.html', array('faculty'=>$faculty,'id'=>$id,'successMessage'=>$successMessage));
+
+		$faculty->courses = $facultyCourse;
+		$faculty->sections = $facultySections;
+		$faculty->subjects = $facultySubjects;
+		$faculty->semester = $facultySemester;
+
+		$this->load->view('faculty/edit.html', array('faculty'=>$faculty,'id'=>$id,'anyMessage'=>$anyMessage,'postparams'=>$postparams,'sections'=>$sections,'courses'=>$courses,'subjects'=>$subjects));
 	}
 
 	public function delete(){

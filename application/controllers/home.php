@@ -17,11 +17,13 @@ class Home extends CI_Controller{
 
 		if($this->session->userdata('loggedIn')){
 
-
 			$message = $this->session->flashdata('message') ? $this->session->flashdata('message') : '';
 
 
 			$userLoggedIn = $this->session->userdata('loggedIn');
+
+			echo $userLoggedIn['facultyId'];
+			echo $userLoggedIn['username'];
 
 			if($userLoggedIn['accessLevel'] == "admin"){
 				$this->output->set_template('admin');

@@ -20,17 +20,47 @@ class Users extends Security{
 			$data = $this->User->find_by_id($id);
 
 
-			if($params=$this->input->post()){
+			if($this->input->post()){
 
 				$this->load->library('encrypt');
-				$passwordx= $this->encrypt->decode($data->password);
-					if($params['current_pass'] != $passwordx){
 
-						$this->session->set_flashdata('successMessage','Current Password did not match	');
+				$params = $this->input->post();
+				$new_pass = $params['new_pass'];
+				$confirm_pass = $params['confirm_pass'];
+				$old_pass = $this->encrypt->decode($data->password);
 
-						redirect('/users/changepass?id='.$id);
-					}
+				if($new_pass == "" && $confirm_pass==""){
 
+					$this->session->set_flashdata('message','New Password and Confirm Password is required field.');
+					redirect('/users/changepass?id='.$id);
+				}
+
+				if($new_pass ==""){
+					$this->session->set_flashdata('message','New Password is required field.');
+					redirect('/users/changepass?id='.$id);
+				}
+				if($confirm_pass == ""){
+					$this->session->set_flashdata('message','Confirm password is required field.');
+					redirect('/users/changepass?id='.$id);
+				}
+
+				if($new_pass != $confirm_pass){
+					$this->session->set_flashdata('message','New password & Confirm password is not equal.');
+					redirect('/users/changepass?id='.$id);
+				}
+
+				if($new_pass == $old_pass){
+					$this->session->set_flashdata('message','New password & Current password should not be the same.');
+					redirect('/users/changepass?id='.$id);
+				}
+
+				if($this->User->UpdatePassword($id,$new_pass)){
+					$this->session->set_flashdata('message','Password successfully update.');
+					redirect('/users/changepass?id='.$id);
+				}else{
+					$this->session->set_flashdata('message','Problem encountered while trying updating password.');
+					redirect('/users/changepass?id='.$id);
+				}
 
 			}
 
@@ -64,8 +94,8 @@ class Users extends Security{
 	public function add(){
 
 
-		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
-
+		$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
+		$postparams = "";
 
 
 		if($this->input->post()){
@@ -73,27 +103,75 @@ class Users extends Security{
 
 			$this->load->Model('User');
 			$params = $this->input->post();
+			$postparams =$params;
 
 			$existsUsername = $this->User->UsernameExists($params['username']);
 
 			if($params['username'] =='admin'){
 
-					$this->session->set_flashdata('successMessage','Username admin cannot be used.	');
+					$this->session->set_flashdata('anyMessage','Username admin cannot be used.	');
 					redirect('/users/add');
 
 			}
 
 			if($existsUsername){
 
-					$this->session->set_flashdata('successMessage','Username '. $$params['username'] .' already exists.');
-					redirect('/users/add');
+					//$this->session->set_flashdata('anyMessage','Username '. $$params['username'] .' already exists.');
+					//redirect('/users/add');
+					$anyMessage = "Username already exists";
 
 			}
 
-			if($this->User->Save($params)){
+
+			$accessLevel = $params['accessLevel'];
+			$username = $params['username'];
+			$fname = $params['fname'];
+			$lname = $params['lname'];
+			$password =$params['password'];
+			$faculty= $params['faculty'];
 
 
-					$this->session->set_flashdata('successMessage','Successfully added..');
+			if($username == "" && $fname =="" && $lname =="" && $password == "" && $anyMessage==""){
+					//$this->session->set_flashdata('anyMessage','All fields are required.');
+					$anyMessage = "All fields are required";
+					//redirect('/users/add');
+			}
+
+			if($username =="" && $anyMessage == ""){
+					//$this->session->set_flashdata('anyMessage','Username is required field.');
+					//redirect('/users/add');
+					$anyMessage = "Username is required field.";
+			}
+
+			if($fname=="" && $anyMessage == ""){
+					//$this->session->set_flashdata('anyMessage','First Name is required field.');
+					//redirect('/users/add');
+					$anyMessage = "First Name is reuired field.";
+			}
+
+			if($lname=="" && $anyMessage==""){
+					$anyMessage = "Last Name is a required field.";
+			}
+
+			if($password =="" && $anyMessage ==""){
+					$anyMessage = "Password is a required field";
+			}
+
+			if($accessLevel == 'faculty' && $faculty == 0 && $anyMessage ==""){
+				$anyMessage ="Link to faculty option is required for faculty account level.";
+			}
+
+
+			//make it sure na 0 ang faculty id if dili faculty accesslevel
+			if($accessLevel != 'faculty'){
+				$params['faculty'] = 0;
+			}
+
+
+			if($anyMessage == "" && $this->User->Save($params)){
+
+
+					$this->session->set_flashdata('anyMessage','Successfully added..');
 
 					redirect('/users/add');
 
@@ -106,27 +184,49 @@ class Users extends Security{
 
 		$this->load->Model('FacultyModel');
 
-		$this->load->view('user/add.html',array('successMessage'=>$successMessage,'faculties' =>$this->FacultyModel->GetAll()));
+		$this->load->view('user/add.html',array('anyMessage'=>$anyMessage,'faculties' =>$this->FacultyModel->GetAllWhichNotYetLinkToUser(),'postparams'=>$postparams));
 	}
-
 
 	public function edit(){
 
 
-		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
+		$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
 
 		$this->load->Model('User');
 		$id = $this->input->get('id');
+		$postparams = '';
 
 		if($this->input->post()){
 
 			$params = $this->input->post();
+			$postparams = $params;
+			$fname = $params['fname'];
+			$lname = $params['lname'];
+			$accessLevel =$params['accessLevel'];
+			$faculty = $params['faculty'];
+
+			if($fname=="" && $anyMessage == ""){
+					//$this->session->set_flashdata('anyMessage','First Name is required field.');
+					//redirect('/users/add');
+					$anyMessage = "First Name is reuired field.";
+			}
+
+			if($lname=="" && $anyMessage==""){
+					$anyMessage = "Last Name is a required field.";
+			}
+
+			if($accessLevel == 'faculty' && $faculty == 0 && $anyMessage ==""){
+				$anyMessage ="Link to faculty option is required for faculty account level.";
+			}
+
+			if($accessLevel != 'faculty'){
+				$params['faculty'] = 0;
+			}
+
+			if($anyMessage =="" && $this->User->update($params,$id)){
 
 
-			if($this->User->update($params,$id)){
-
-
-					$this->session->set_flashdata('successMessage','Successfully edited..');
+					$this->session->set_flashdata('anyMessage','Successfully edited..');
 
 					redirect('/users/edit?id='. $id);
 
@@ -135,13 +235,10 @@ class Users extends Security{
 
 
 		}
-
-
-
 		$users = $this->User->find_by_id($id);
 		$this->load->Model('FacultyModel');
 
-		$this->load->view('user/edit.html', array('users'=>$users,'id'=>$id,'successMessage'=>$successMessage,'faculties'=>$this->FacultyModel->GetAll()));
+		$this->load->view('user/edit.html', array('users'=>$users,'id'=>$id,'anyMessage'=>$anyMessage,'faculties'=>$this->FacultyModel->GetAllWhichNotYetLinkToUserExcept($users->faculty_id),'postparams'=>$postparams));
 	}
 
 	public function delete(){

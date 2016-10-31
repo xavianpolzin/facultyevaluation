@@ -198,6 +198,47 @@ public function AlreadyEval($faculty){
    	 	return $rows;
 	}
 
+
+	public function GetAllWhichNotYetLinkToUserExcept($id){
+
+		$this->db->from('faculties f')->where("f.id not in (select faculty_id from users where faculty_id > 0 and faculty_id !='$id')");
+		$query = $this->db->get();
+
+
+		$rows = array();
+
+		foreach ($query->result() as $row) {
+
+			$faculty = new FacultyModel();
+			$faculty->id = $row->id;
+			$faculty->firstName = $row->firstName;
+			$faculty->middleName = $row->middleName;
+			$faculty->lastName = $row->lastName;
+			$rows[] = $faculty;
+		}
+
+		return $rows;
+	}
+	public function GetAllWhichNotYetLinkToUser(){
+		$this->db->from('faculties f')->where("f.id not in (select faculty_id from users where faculty_id > 0)");
+		$query = $this->db->get();
+
+
+		$rows = array();
+
+		foreach ($query->result() as $row) {
+
+			$faculty = new FacultyModel();
+			$faculty->id = $row->id;
+			$faculty->firstName = $row->firstName;
+			$faculty->middleName = $row->middleName;
+			$faculty->lastName = $row->lastName;
+			$rows[] = $faculty;
+		}
+
+		return $rows;
+	}
+
 	public function GetAll(){
 
 
@@ -261,8 +302,15 @@ public function AlreadyEval($faculty){
 
 
 	public function update($params,$id){
-		$this->db->update('faculties', $params, "id = $id");
-		return $this->db->affected_rows();
+
+		$data = array(
+			'firstName' => $params['firstName'],
+			'middleName' => $params['middleName'],
+			'lastName' => $params['lastName']
+			);
+
+		$this->db->update('faculties', $data, "id = $id");
+		return true;
 
 	}
 

@@ -26,7 +26,8 @@ class Login extends CI_Controller{
 			//'middleName' => $user->middleName,
 			'id'	=> $user->id,
 			'accessLevel' => $user->accessLevel,
-			'username' => $user->username
+			'username' => $user->username,
+			'facultyId' =>$user->facultyId
 
 		);
 

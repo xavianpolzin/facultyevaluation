@@ -17,6 +17,10 @@ class FacultySemesterModel extends CI_Model{
 		$this->db->insert('faculty_semester',$params);
   }
 
+ function DeleteByFaculty($facultyId){
+    $this->db->delete('faculty_semester',array('faculty_id'=>$facultyId));
+    return $this->db->affected_rows();
+  }
 
 function FindByFaculty($facultyId){
       $sql = $this->db->get_where('faculty_semester',array('faculty_id'=>$facultyId));
@@ -26,7 +30,7 @@ function FindByFaculty($facultyId){
       foreach ($sql->result_array() as $row) {
           $rowx = array();
           $rowx['name']=$row['semester'];
-          $rows[] = $rowx;
+          $rows[] = (object)$rowx;
       }
 
       return $rows;

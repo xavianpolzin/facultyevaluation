@@ -1,9 +1,9 @@
-<?php if($successMessage): ?>
+<?php if($anyMessage): ?>
 
   <div class="alert alert-success">
 
 
-      <p><?php echo $successMessage ?></p>
+      <p><?php echo $anyMessage ?></p>
 
 
 </div>
@@ -14,29 +14,28 @@
 <form role="form" method="post" action="">
   <div class="form-group">
     <label for="firstnameinput">First Name</label>
-    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['firstName'];} ?>" id="firstName" name="firstName" placeholder="First Name">
   </div>
   <div class="form-group">
     <label for="middlenameinput">Middle Name</label>
-    <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Middle Name">
+    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['middleName'];} ?>" id="middleName" name="middleName" placeholder="Middle Name">
   </div>
   <div class="form-group">
     <label for="lastname">Last Name</label>
-    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['lastName'];} ?>" id="lastName" name="lastName" placeholder="Last Name">
   </div>
-
 
 <div class="ch-handle-holder">
 
     <h1>Semester</h1>
     <div class="ch-handle-ck-hl">
         <label for="">1st Semester</label>
-        <input type="radio" name="semesters[]" value="1">
+        <input type="radio" <?php if($postparams && isset($postparams['semesters']) && $postparams['semesters'][0] == 1){ echo "checked";} ?> name="semesters[]" value="1">
     </div>
 
     <div class="ch-handle-ck-hl">
         <label for="">2nd Semester</label>
-        <input type="radio" name="semesters[]" value="2">
+        <input type="radio" <?php if($postparams && isset($postparams['semesters']) && $postparams['semesters'][0] == 2) {echo "checked";} ?> name="semesters[]" value="2">
     </div>
 
 </div><!--ends ch-handle-holder-->
@@ -47,7 +46,7 @@
     <?php foreach($subjects as $subject): ?>
     <div class="ch-handle-ck-hl">
         <label for=""><?= $subject->name?></label>
-        <input type="checkbox" name="subjects[]" value="<?= $subject->id ?>">
+        <input type="checkbox" <?php if($postparams && isset($postparams['subjects']) && in_array($subject->id,$postparams['subjects'])) {echo "checked";} ?> name="subjects[]" value="<?= $subject->id ?>">
     </div>
   <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
@@ -59,7 +58,7 @@
     <?php foreach($courses as $course): ?>
     <div class="ch-handle-ck-hl">
         <label for=""><?= $course->name ?></label>
-        <input type="checkbox" name="courses[]" value="<?= $course->id ?>">
+        <input type="checkbox" <?php if($postparams && isset($postparams['courses']) && in_array($course->id,$postparams['courses'])) {echo "checked";} ?> name="courses[]" value="<?= $course->id ?>">
     </div>
   <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
@@ -71,7 +70,7 @@
     <?php foreach($sections as $section): ?>
     <div class="ch-handle-ck-hl">
         <label for=""><?=$section->name ?></label>
-        <input type="checkbox" name="sections[]" value="<?= $section->id ?>">
+        <input type="checkbox" <?php if($postparams && isset($postparams['sections']) && in_array($section->id,$postparams['sections'])){echo "checked";} ?> name="sections[]" value="<?= $section->id ?>">
     </div>
   <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->

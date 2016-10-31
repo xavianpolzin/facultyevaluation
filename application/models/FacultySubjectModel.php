@@ -17,6 +17,11 @@ class FacultySubjectModel extends CI_Model{
   }
 
 
+ function DeleteByFaculty($facultyId){
+    $this->db->delete('faculty_subjects',array('faculty_id'=>$facultyId));
+    return $this->db->affected_rows();
+  }
+
 function FindByFaculty($facultyId){
       //$sql = $this->db->get_where('FacultyCourse',array('faculty_id'=>$facultyId));
       $sql = $this->db->select("*")->from('faculty_subjects')->join('subjects','subjects.id=faculty_subjects.subject_id')->where(array('faculty_id'=>$facultyId))->get();
@@ -25,8 +30,9 @@ function FindByFaculty($facultyId){
 
       foreach ($sql->result_array() as $row) {
           $rowx = array();
+          $rowx['id'] = $row['id']; 
           $rowx['name']=$row['name'];
-          $rows[] = $rowx;
+          $rows[] = (object)$rowx;
       }
 
       return $rows;

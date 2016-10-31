@@ -36,7 +36,7 @@
 
 			<?php foreach($faculty->semester as $semester): ?>
 
-				<?=$semester['name']; ?>st Semester,
+				<?=$semester->name; ?>st Semester,
 
 <?php endforeach; ?>
 		</label>
@@ -46,14 +46,14 @@
 
 		<?php foreach($faculty->subjects as $subject): ?>
 
-		<?= $subject['name']; ?>,
+		<?= $subject->name; ?>,
 
 	<?php endforeach; ?>
        <br>
     <label for="subject">Course Handled :
 			<?php foreach($faculty->courses as $course): ?>
 
-				<?=$course['name']; ?>,
+				<?=$course->name; ?>,
 
 			<?php endforeach; ?>
 		 </label>
@@ -62,7 +62,7 @@
 
 			<?php foreach($faculty->sections as $section): ?>
 
-				<?= $section['name']; ?>,
+				<?= $section->name; ?>,
 
 			<?php endforeach; ?>
 		</label>

@@ -19,6 +19,15 @@ class User extends CI_Model{
 		$this->load->database();
 	}
 
+	public function UpdatePassword($userId, $newPassword){
+
+		$this->load->library('encrypt');
+		$password = $this->encrypt->encode($newPassword);
+
+		$this->db->update('users',array('password'=>$password),"id = $userId");
+		return $this->db->affected_rows();
+	}
+
 	public function LoginUsingUsernameAndPassword($username,$password)
 	{
 		//$row = $this->db->get_where('users',array('username'=>$username,'password'=>$password))->row();
