@@ -54,8 +54,9 @@ class Student extends CI_Controller{
 					'studentCode' =>$code,
 					'facultyId' =>'',
 					'date' => '',
+					'type' => 'Student',
 					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
-					'instruc_responsibilities' =>array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
 
 
 				);

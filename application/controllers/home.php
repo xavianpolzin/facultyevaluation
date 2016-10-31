@@ -17,6 +17,10 @@ class Home extends CI_Controller{
 
 		if($this->session->userdata('loggedIn')){
 
+
+			$message = $this->session->flashdata('message') ? $this->session->flashdata('message') : '';
+
+
 			$userLoggedIn = $this->session->userdata('loggedIn');
 
 			if($userLoggedIn['accessLevel'] == "admin"){
@@ -24,7 +28,7 @@ class Home extends CI_Controller{
 				$this->load->view('admin_home.html');
 			}else if($userLoggedIn['accessLevel'] == "faculty"){
 				$this->output->set_template('faculty');
-				$this->load->view('faculty_home.html');
+				$this->load->view('faculty_home.html',array('message'=>$message));
 			}else if($userLoggedIn['accessLevel'] == "staff"){
 				$this->output->set_template('admin');
 				$this->load->view('admin_home.html');

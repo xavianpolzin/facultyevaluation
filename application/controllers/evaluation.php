@@ -214,6 +214,8 @@ class Evaluation extends CI_Controller{
 
 		$this->load->library('session');
 
+
+
 		$evaluation = $this->session->userdata('evaluation');
 
 		$uid = $this->input->get('uid');
@@ -225,11 +227,13 @@ class Evaluation extends CI_Controller{
 			$step = $this->input->get('step');
 			$type = $this->input->get('type');
 
-			if($type=='faculty'){
-				$evaluation['date'] = date("Y-m-d");
-
-				$this->session->set_userdata('evaluation',$evaluation);
+			if($type=='faculty' && $step==1){
+			//	$evaluation['date'] = date("Y-m-d");
+				$step=2;
+			//	$this->session->set_userdata('evaluation',$evaluation);
 			}
+
+
 			//var_dump($evaluation);
 
 			switch ($step) {
@@ -283,8 +287,13 @@ class Evaluation extends CI_Controller{
 	function ShowStepTwo($data){
 
 		//var_dump($data);
+			$type = $data['type'];
 		$this->output->set_template('default');
+		if($type=='Student'){
 		$this->load->view("student_form.html",$data);
+	}else{
+		$this->load->view("faculty_form.html",$data);
+	}
 
 	}
 
@@ -292,7 +301,13 @@ class Evaluation extends CI_Controller{
 
 
 		$this->output->set_template('default');
+		$type = $data['type']	;
+		if($type=='Student'){
 		$this->load->view("student_form_2.html",$data);
+	}else{
+
+		$this->load->view("faculty_form_2.html",$data);
+	}
 
 	}
 

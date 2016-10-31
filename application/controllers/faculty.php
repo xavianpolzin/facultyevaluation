@@ -172,13 +172,13 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 		$this->load->library('session');
 
-				$uid = md5(uniqid(rand(), true));
+			$uid = md5(uniqid(rand(), true));
 
 			$userLoggedIn = $this->session->userdata('loggedIn');
 
 		if($this->FacultyModel->AlreadyEval($userLoggedIn['id'])){
 
-					$this->session->set_flashdata('successMessage','Successfully added..');
+					$this->session->set_flashdata('message','You have already taken.');
 			redirect('/');
 		}
 
@@ -189,13 +189,18 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 					'uid' =>$uid,
 					'studentCode' =>'',
 					'facultyId' =>$userLoggedIn['id'],
-					'date' => '',
+					'date' => date("Y-m-d");
+					'type' => 'Faculty',
 					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
-					'instruc_responsibilities' =>array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
 
 
 				);
 
+				//make sure walay laing session at the starting point
+				if($this->session->userdata('evaluation')){
+							$this->session->unset_userdata('evaluation');
+				}
 
 				$this->session->set_userdata('evaluation',$data);
 
