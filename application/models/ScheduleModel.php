@@ -5,8 +5,6 @@ class ScheduleModel extends CI_Model{
 
 	var $id = 0;
 	var $days = 0;
-	var $subject = 0;
-	var $section = 0;
 	var $from_time = '';
 	var $to_time = '';
 
@@ -30,16 +28,12 @@ class ScheduleModel extends CI_Model{
 		$rows = array();
 
 
-		$this->load->Model('SectionModel');
-		$this->load->Model('SubjectModel');
 
 		foreach($query->result() as $row){
 
 				$schedules = new ScheduleModel();
 				$schedules->id = $row->id;
 				$schedules->days = $row->days;
-				$schedules->subject = $this->SectionModel->find_by_id($row->subject_id);
-				$schedules->section = $this->SubjectModel->find_by_id($row->section_id);
 				$schedules->from_time = $row->from_time;
 				$schedules->to_time = $row->to_time;
 
@@ -58,16 +52,12 @@ class ScheduleModel extends CI_Model{
 		$rows = array();
 
 
-		$this->load->Model('SectionModel');
-		$this->load->Model('SubjectModel');
 
 		foreach($query->result() as $row){
 
 				$schedules = new ScheduleModel();
 				$schedules->id = $row->id;
 				$schedules->days = $row->days;
-				$schedules->subject = $this->SectionModel->find_by_id($row->subject_id);
-				$schedules->section = $this->SubjectModel->find_by_id($row->section_id);
 				$schedules->from_time = $row->from_time;
 				$schedules->to_time = $row->to_time;
 
@@ -82,8 +72,6 @@ class ScheduleModel extends CI_Model{
 		$schedules = array(
 					
 			'days' => $params['days'],
-			'subject_id' => $params['subject'],
-			'section_id' => $params['section'],
 			'from_time' => $params['from_time'],
 			'to_time' => $params['to_time'],
 			'faculty_id' => $params['faculty']
@@ -123,8 +111,6 @@ class ScheduleModel extends CI_Model{
 			$schedules = new ScheduleModel();
 			$schedules->id = $row->id;
 			$schedules->days = $row->days;
-			$schedules->subject = $row->subject;
-			$schedules->section = $row->section;
 			$schedules->time = $row->time;
 		
 

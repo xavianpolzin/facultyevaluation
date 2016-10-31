@@ -1,32 +1,67 @@
 
-
-
-			  
-			</div>
-         
-        </div><!--ends login_form-->
+<section> <!--for demo wrap-->
 
 
 
-<div class="admin-welcome-page">
-    <div class="helper-ver">
-        <div class="st-wel-admin">
-           <div class="ad-frm-con">
-           		<h4>Code Generator </h4>
-           		<h5><a href="" data-toggle="modal" data-target=".bs-example-modal-sm" >+ Generate Code</a></h5>
-           		<form role="form" action="<?php echo base_url().'code/search_code'; ?>" method="post">
-					<div class="form-group">
-						<input type="text" class="form-contorl" name="search" id="search" placeholder="Search by Code ">
-					</div>
+<div class="col-3-mx">
+<div class="search-inp-h-ri-gen">
+	
+	<!--<input type="button" name="" placeholder="Search Code">--><img data-toggle="modal" data-target=".bs-example-modal-sm" src="public/images/gen-c.png">
+</div>
+</div>
+
+<div class="col-3-mx">	
+<h1>Code Generator</h1>  
+</div>
+
+<div class="col-3-mx">
+<div class="search-inp-h">
+	<!--<input type="text" name="" placeholder="Search Code">--><img src="public/images/search-icon.png">
+</div>
+</div>
+
+<div class="clearFixed"></div>
 
 
-					<button type="submit" class="btn btn-info" name="submit">Search</button>
-				</form>
+<div  class="tbl-header">
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
+					  <tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Option</th>
+					  </tr>
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
 
-				<div class="prc-bu">
-				<input type="button" value="Download All for prining Code" name="">
-           		</div>
-           		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<?php $counter = 1; ?>
+				<?php foreach($codes as $code): ?>
+				<tr>
+					<td><?php echo $counter; ?></td>
+					<td><?php echo $code->code; ?></td>
+					<td><?php echo $code->createdOn; ?></td>
+					<td><?php echo $code->status; ?></td>
+				</tr>	
+				<?php $counter++; ?>
+			<?php endforeach; ?>
+
+  </tbody>
+</table>
+</div>
+
+</section>
+
+<div class="dl-btn-co">
+	<button>Download All For Printing Code</button>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				  <div class="modal-dialog modal-sm">
 				    <div class="modal-content" id="generateFormWrapper" style="padding:50px;background:transparent;border:none;background:#f3f3f3;">
 					    <div id = "generateFormWrapper">
@@ -44,45 +79,6 @@
 				    </div><!--ends modal-content-->
 				  </div><!--ends modal-dialog-->
 				</div>
-				<div style="overflow-x: auto;">
-					<table>
-					  <tr>
-						<th>#</th>
-						<th>Code</th>
-						<th>Date</th>
-						<th>Status</th>
-			
-					  </tr>
-					  <?php $counter = 1; ?>
-				<?php foreach($codes as $code): ?>
-				<tr>
-					<td><?php echo $counter; ?></td>
-					<td><?php echo $code->code; ?></td>
-					<td><?php echo $code->createdOn; ?></td>
-					<td><?php echo $code->status; ?></td>
-				</tr>	
-				<?php $counter++; ?>
-			<?php endforeach; ?>
-
-					</table>
-					<center>
-				  	<ul class="pagination">
-
-					 	 <p><?php echo $links; ?></p>
-
-					</ul>
-				</center>
-			   </div>
-           </div>
-        </div>
-        
-        <div class="con-fo">
-    	<h2>&copy;Faculty Evaluation 2016</h2>	
-   	  </div>
-    </div>
-</div><!--ends admin-welcome-page-->
-
-
 
 
 

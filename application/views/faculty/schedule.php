@@ -95,37 +95,6 @@
 
 									  <div class="form-group" style="margin-top:40px;">
 
-									    <label for="section">Section:</label>
-
-					                     <select name="section" style="padding:5px;border-radius:5px;border:1px solid grey;margin-right:110px;">
-					                        <option value="0">--- Select One ---</option>
-					                        <?php foreach($sections as $se): ?>
-
-
-					                          				                                <option value="<?php echo $se->id; ?>"><?php echo $se->name ?></option>
-
-
-					                        <?php endforeach; ?>
-					                    </select>
-
-					                    <label for="subjectinput">Subject:</label>
-						                     <select name="subject" style="padding:5px;border-radius:5px;border:1px solid grey;">
-						                        <option value="0">--- Select One ---</option>
-						                        <?php foreach($subjects as $s): ?>
-
-
-
-
-						                                <option value="<?php echo $s->id; ?>"><?php echo $s->name ?></option>
-
-
-						                        <?php endforeach; ?>
-						                    </select>
-									  	<br>
-
-
-
-
 
 
 
@@ -160,11 +129,8 @@
 				<tr style="background:#428bca;">
 					<th>#</th>
 					<th>Days</th>
-					<th>Subject</th>
-					<th>Section</th>
 					<th>Time</th>
 					<th>Option</th>
-					<th>Delete</th>
 				</tr>
 
 				<?php $i = 1;?>
@@ -202,8 +168,6 @@
 
 
 					</td>
-					<td><?php echo $sched->subject->name; ?></td>
-					<td><?php echo $sched->section->name; ?></td>
 					<td><?php echo $sched->from_time .' - ' . $sched->to_time ?></td>
 
 					<td>
@@ -212,10 +176,11 @@
 
 					<!--MODAL FOR EDIT SCHEDULE-->
 
-						<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#schedModal<?php echo $sched->id; ?>" style="background:transparent;border:none; color:#428bca; font-size:15px;position:relative;top:-10px;left:-18px;">
+						<a href="" class="" data-toggle="modal" data-target="#schedModal<?php echo $sched->id; ?>" >
 							Edit
-						</button>
+							</a>-
 
+					<a href="<?php echo base_url() ?>schedule/delete/	<?= $fnameId ?>?id=<?=$sched->id ?>">Delete</a>
 						<!-- Modal -->
 						<div class="modal fade" id="schedModal<?php echo $sched->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						  <div class="modal-dialog">
@@ -260,37 +225,6 @@
 
 
 
-									  <div class="form-group" style="margin-top:40px;">
-
-									    <label for="section">Section:</label>
-
-					                     <select name="section" style="padding:5px;border-radius:5px;border:1px solid grey;margin-right:110px;">
-					                        <option value="0">--- Select One ---</option>
-					                        <?php foreach($sections as $se): ?>
-
-
-
-
-												 <option <?php if($se->id == $sched->section->id){echo "selected";} ?> value="<?php echo $se->id; ?>"><?php echo $se->name ?></option>
-
-
-					                        <?php endforeach; ?>
-					                    </select>
-
-					                    <label for="subjectinput">Subject:</label>
-						                     <select name="subject" style="padding:5px;border-radius:5px;border:1px solid grey;">
-						                        <option value="0">--- Select One ---</option>
-						                        <?php foreach($subjects as $s): ?>
-
-
-
-
-						                                <option <?php if($s->id == $sched->subject->id){echo "selected";} ?> value="<?php echo $s->id; ?>"><?php echo $s->name ?></option>
-
-
-						                        <?php endforeach; ?>
-						                    </select>
-									  	<br>
 
 
 
@@ -332,9 +266,7 @@
 
 					</td>
 
-					<td><a href="<?php echo base_url() ?>schedule/delete/	<?= $fnameId ?>?id=<?=$sched->id ?>">Delete</a></td>
-					</td>
-				</tr>
+					</tr>
 				<?php endforeach; ?>
 			  </table>
 			</div>

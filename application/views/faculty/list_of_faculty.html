@@ -1,22 +1,26 @@
 
-<div class="admin-welcome-page">
-    <div class="helper-ver">
-        <div class="st-wel-admin">
-           <div class="ad-frm-con">
-           		<h4>List Of Faculty </h4>
-           		<h5><a href="<?php echo base_url() ?>faculty/add">+ Add a Faculty Member</a></h5>
-				
-				<form role="form" action="<?php echo base_url().'faculty/search_faculty'; ?>" method="post">
-					<div class="form-group">
-						<input type="text" class="form-contorl" name="search" id="search" placeholder="Search by firstName ">
-					</div>
 
+<section> <!--for demo wrap-->
 
-					<button type="submit" class="btn btn-info" name="submit">Search</button>
-				</form>
+<div class="col-3-mx">
+<div class="search-inp-h-ri-gen">
+	
 
-				<div style="overflow-x: auto;">
-					<table>
+	<!--<input type="button" name="" placeholder="Search Code">--><a href="<?php echo base_url() ?>faculty/add"><img src="public/images/add-icon.png"></a></div>
+</div>
+
+<div class="col-3-mx">	
+<h1> List of faculties</h1>  
+</div>
+
+<div class="col-3-mx">
+<div class="search-inp-h">
+	<!--<input type="text" name="" placeholder="Search Code">--><img src="public/images/search-icon.png">
+</div>
+</div>
+<div  class="tbl-header">
+<table cellpadding="0" cellspacing="0" border="0">
+  <thead>
 					  <tr>
 						<th>#</th>
 						<th>Name</th>
@@ -24,8 +28,13 @@
 						<th>Results</th>
 						<th>Comments</th>
 					  </tr>
-
-					<?php $counterx = 1 ?>
+  </thead>
+</table>
+</div>
+<div  class="tbl-content">
+<table cellpadding="0" cellspacing="0" border="0">
+  <tbody>
+<?php $counterx = 1 ?>
 					<?php foreach($faculties as $faculty): ?>
 					<tr>
 					<td><?php echo $counterx ?></td>
@@ -207,13 +216,9 @@
 
 				<?php endforeach; ?>
 				
-					</table>
-			   </div>
-           </div>
-        </div>
-        
-        <div class="con-fo">
-    	<h2>&copy;Faculty Evaluation 2016</h2>	
-   	  </div>
-    </div>
-</div><!--ends student-welcome-page-->
+					
+  </tbody>
+</table>
+</div>
+</section>
+
