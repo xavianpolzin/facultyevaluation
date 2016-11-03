@@ -68,7 +68,7 @@
 					    <form role="form" id="generateForm"  action="<?php echo base_url() ?>code/generate" method="get">
 						  <div class="form-group">
 						    <label for="exampleInputValueofCode">Value of Codes</label>
-						    <input type="text" class="form-control" id="count" name="count" placeholder="Enter value here">
+						    <input type="text" class="form-control" id="count" name="count" placeholder="Enter value here" max="50">
 						    <center>
 						    <input type="submit" value="Generate" style="border:none;background:#428bca; margin:10px; padding:10px 25px; color:#fff; font-size:12px;">
 						    </center>
