@@ -4,7 +4,7 @@
 	
 	</div><!--ends col-md-6-->
 
-	<div class="col-md-8">
+	<div class="col-md-8 prf-st-n">
 
 		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
 		  <li class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
@@ -31,13 +31,14 @@
 		</label>
 
     <br>
-    <label for="subject">Subject Handled : </label>
-
+    <label for="subject">Subject Handled : 
 		<?php foreach($faculty->subjects as $subject): ?>
 
 		<?= $subject->name; ?>,
 
 	<?php endforeach; ?>
+      </label>
+
        <br>
     <label for="subject">Course Handled :
 			<?php foreach($faculty->courses as $course): ?>
@@ -193,8 +194,9 @@
     <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES = <?php echo $profTotal/15 ?> | INSTRUCTIONAL RESPONSIBILITIES = <?php echo $instructTotal/15 ?> </label>
 
     <br>
+    <div class="pr-inp">
     <input type="button" name="" value="Print All Details">
-
+</div>
  </div> <!--ends tab-pane-->
 
 

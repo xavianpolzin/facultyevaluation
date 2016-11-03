@@ -85,16 +85,16 @@
 										<?php $profTotal = 0; ?>
 										<?php foreach($faculty->profAnswers as $profAnswer): ?>
 										<tr>
-											<td><?php echo $counter; ?></td>
+											<td style="color: #333;"><?php echo $counter; ?></td>
 											
-											<td><?php echo $profAnswer[0]; ?></td>
-											<td><?php echo $profAnswer[1]; ?></td>
-											<td><?php echo $profAnswer[2]; ?></td>
-											<td><?php echo $profAnswer[3]; ?></td>
-											<td><?php echo $profAnswer[4]; ?></td>
-											<td><?php echo $profAnswer[5]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswer[0]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswer[1]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswer[2]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswer[3]; ?></td>
+											<td style="color: #333;"> <?php echo $profAnswer[4]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswer[5]; ?></td>
 											<?php $profTotal+= array_sum($profAnswer); ?>
-											<td><?php echo array_sum($profAnswer); ?></td>
+											<td style="color: #333;"><?php echo array_sum($profAnswer); ?></td>
 											<?php $counter++; ?>
 											
 										</tr>
@@ -145,15 +145,15 @@
 										<?php $instructTotal = 0; ?>
 										<?php foreach($faculty->instructAnswers as $instructAnswer): ?>
 										<tr>
-											<td><?php echo $counter; ?></td>
-											<td><?php echo $instructAnswer[0]; ?></td>
-											<td><?php echo $instructAnswer[1]; ?></td>
-											<td><?php echo $instructAnswer[2]; ?></td>
-											<td><?php echo $instructAnswer[3]; ?></td>
-											<td><?php echo $instructAnswer[4]; ?></td>
-											<td><?php echo $instructAnswer[5]; ?></td>
+											<td style="color: #333;"><?php echo $counter; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[0]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[1]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[2]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[3]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[4]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswer[5]; ?></td>
 											<?php $instructTotal+= array_sum($instructAnswer); ?>
-											<td><?php echo array_sum($instructAnswer); ?></td>
+											<td style="color: #333;"><?php echo array_sum($instructAnswer); ?></td>
 											<?php $counter++; ?>
 											
 										</tr>

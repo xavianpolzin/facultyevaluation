@@ -151,21 +151,21 @@ public function search_users()
 			if($username =="" && $anyMessage == ""){
 					//$this->session->set_flashdata('anyMessage','Username is required field.');
 					//redirect('/users/add');
-					$anyMessage = "Username is required field.";
+					$anyMessage = "Username is required.";
 			}
 
 			if($fname=="" && $anyMessage == ""){
 					//$this->session->set_flashdata('anyMessage','First Name is required field.');
 					//redirect('/users/add');
-					$anyMessage = "First Name is reuired field.";
+					$anyMessage = "First Name is reuired.";
 			}
 
 			if($lname=="" && $anyMessage==""){
-					$anyMessage = "Last Name is a required field.";
+					$anyMessage = "Last Name is a required.";
 			}
 
 			if($password =="" && $anyMessage ==""){
-					$anyMessage = "Password is a required field";
+					$anyMessage = "Password is a required";
 			}
 
 			if($accessLevel == 'faculty' && $faculty == 0 && $anyMessage ==""){

@@ -57,7 +57,7 @@
     <?php foreach($courses as $course): ?>
     <div class="ch-handle-ck-hl">
         <label for=""><?= $course->name ?></label>
-        <input type="checkbox" <?php if($postparams && isset($postparams['courses']) && in_array($course->id,$postparams['courses'])) {echo "checked";} ?> name="courses[]" value="<?= $course->id ?>">
+        <input type="checkbox"  <?php if($postparams && isset($postparams['courses']) && in_array($course->id,$postparams['courses'])) {echo "checked";} ?> name="courses[]" value="<?= $course->id ?>">
     </div>
   <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
