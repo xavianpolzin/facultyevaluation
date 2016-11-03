@@ -5,12 +5,12 @@
         <div class="st-wel-content">
            
             <h2>FACULTY EVALUATION SYSTEM</h2>
-            <p>A Thesis in 2016</p>
+            
             <P>Please fill up the form below</P>
         <form method="post" action="<?php echo base_url() ?>evaluation/process">
         <input type="hidden" name="uid" value="<?php echo $uid ?>" >
             <input type="hidden" name="currentStep" value="1" >
-            <div class="selector">
+            <div class="selector wlc-cl">
             <select name="faculty" class="ch-fc-st require_one">
               <option value="0" selected>Choose Faculty</option>
               <?php foreach($faculties as $faculty): ?>
@@ -23,7 +23,7 @@
                         <?php endforeach; ?>
             </select>
             <br><br>
-            <input type="date" onkeydown="return false" name="date" value="<?php if($date){echo $date; }else{ echo date('Y-m-d'); }?>" class="date-stud-fr"/>
+            <input type="date" hidden onkeydown="return false" name="date" value="<?php if($date){echo $date; }else{ echo date('Y-m-d'); }?>" class="date-stud-fr"/>
             <br><br>
             <div class="selector">
             <input type="submit" value="Proceed" id="submit" class="sub-stud-code btn">
@@ -32,9 +32,6 @@
         </form>
         </div>
         
-      <div class="con-fo">
-        <h2>&copy;Faculty Evaluation 2016</h2>  
-      </div>
     
     </div><!--ends helper-ver-->
  
@@ -43,7 +40,7 @@
 </div>
 
 </div>
-<!--
+
 <script type="text/javascript">
 
 

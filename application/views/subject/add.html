@@ -1,13 +1,3 @@
-<?php if($successMessage): ?>
-
-  <div class="alert alert-success">
-  
-     
-      <p><?php echo $successMessage ?></p>
-
-  </div>
-
-<?php endif; ?>
 
 
 <form role="form" method="post" action="">
@@ -15,9 +5,9 @@
 
     <h1>Add Subject</h1>
 <div class="add-frm-hl">
-    <input type="text" class="form-control" id="name" name="name" placeholder="Subject" required>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Subject" >
 
-    <input type="text" class="form-control" id="description" name="description" placeholder="Description" required>
+    <input type="text" class="form-control" id="description" name="description" placeholder="Description" >
 
     <div class="sb-btn-l">
 
@@ -32,8 +22,12 @@
 
     <div class="clearFixed"></div>  
 
-</div>
+<?php if($anyMessage): ?>
 
+      <p><?php echo $anyMessage ?></p>
+
+<?php endif; ?>
+</div>
 
 </form>
 
