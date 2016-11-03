@@ -45,7 +45,7 @@ class Users extends Security{
 				}
 
 				if($new_pass != $confirm_pass){
-					$this->session->set_flashdata('message','New password & Confirm password is not equal.');
+					$this->session->set_flashdata('message','New password & Confirm password is the same.');
 					redirect('/users/changepass?id='.$id);
 				}
 

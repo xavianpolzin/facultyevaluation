@@ -47,33 +47,41 @@ public function search_course()
 	public function add(){
 
 		
-		$successMessage = $this->session->flashdata('successMessage') ? $this->session->flashdata('successMessage') : '';
+		$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
+		$postparams = "";
 
-
-		//check kung naay sulod ag post
 		if($this->input->post()){
 
-
 			$this->load->Model('CourseModel');
-					  //_POST
 			$params = $this->input->post();
+			$postparams = $params;
 
-			
-			if($this->CourseModel->Save($params)){
-
-
-					$this->session->set_flashdata('successMessage','Successfully added..');
-
-					redirect('/course/add');
+			$name = $params['name'];
+			$description = $params['description'];
 
 
+			if($name == "" && $description == "" && $anyMessage == ""){
+				$anyMessage = "All fields are required";
+			}
+
+			if($name == "" && $anyMessage == ""){
+				$anyMessage = "Name is required";
+			}
+
+			if($description == "" && $anyMessage == ""){
+				$anyMessage = "description is required";
+			}
+
+			if($anyMessage == "" && $this->CourseModel->Save($params)){
+				$this->session->set_flashdata('anyMessage', 'Successfully added..');
+				redirect('/course/add');
 			}
 
 
 		}
 
-
-		$this->load->view('course/add.html',array('successMessage'=>$successMessage));
+		$this->load->Model('CourseModel');
+		$this->load->view('course/add.html',array('anyMessage'=>$anyMessage));
 
 	}
 
