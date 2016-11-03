@@ -15,9 +15,14 @@
 </div>
 
 <div class="col-3-mx">
+<!--
 <div class="search-inp-h">
-	<!--<input type="text" name="" placeholder="Search Code">--><img src="public/images/search-icon.png">
-</div>
+<form class="searchbox" role="form" action="<?php echo base_url().'code/search_code'; ?>" method="post">
+        <input type="search" placeholder="Search by name......" name="search" id="search" class="searchbox-input" onkeyup="buttonUp();" required>
+        <input type="submit" class="searchbox-submit" >
+        <span class="searchbox-icon"><img src="public/images/search-icon.png"></span>
+    </form>
+</div>-->
 </div>
 
 <div class="clearFixed"></div>
@@ -124,4 +129,45 @@ function ajax_download(url, data, input_name) {
     iframe_doc.write(iframe_html);
     $(iframe_doc).find('form').submit();
 }
+
+
+  $(document).ready(function(){
+            var submitIcon = $('.searchbox-icon');
+            var inputBox = $('.searchbox-input');
+            var searchBox = $('.searchbox');
+            var isOpen = false;
+            submitIcon.click(function(){
+                if(isOpen == false){
+                    searchBox.addClass('searchbox-open');
+                    inputBox.focus();
+                    isOpen = true;
+                } else {
+                    searchBox.removeClass('searchbox-open');
+                    inputBox.focusout();
+                    isOpen = false;
+                }
+            });  
+             submitIcon.mouseup(function(){
+                    return false;
+                });
+            searchBox.mouseup(function(){
+                    return false;
+                });
+            $(document).mouseup(function(){
+                    if(isOpen == true){
+                        $('.searchbox-icon').css('display','block');
+                        submitIcon.click();
+                    }
+                });
+        });
+            function buttonUp(){
+                var inputVal = $('.searchbox-input').val();
+                inputVal = $.trim(inputVal).length;
+                if( inputVal !== 0){
+                    $('.searchbox-icon').css('display','none');
+                } else {
+                    $('.searchbox-input').val('');
+                    $('.searchbox-icon').css('display','block');
+                }
+            }
 </script>

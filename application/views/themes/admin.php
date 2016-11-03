@@ -17,26 +17,23 @@
   <body>
 <div class="admin-nav">
 
-    <nav>
+    <nav class="creativenav_3D">
       <ul>
         <h1><a href="<?php echo base_url(); ?>">Admin Home</a></h1>
-        <li><a href="<?php echo base_url(); ?>logout">Logout</a></li>
-        <li><a href="<?php echo base_url(); ?>users">Users</a></li>  
-        <li><a href="<?php echo base_url(); ?>code">Code</a></li>
-        <li><a href="<?php echo base_url(); ?>faculty">Faculty</a></li>
-        <li><a href="<?php echo base_url(); ?>course">Course</a></li>
-        <li><a href="<?php echo base_url(); ?>section">Section</a></li>
-        <li><a href="<?php echo base_url(); ?>subject">Subject</a></li>
+        <li><a href="<?php echo base_url(); ?>logout"><span data-title="Logout">Logout</span></a></li>
+        <li><a href="<?php echo base_url(); ?>users"><span data-title="Users">Users</span></a><</li>  
+        <li><a href="<?php echo base_url(); ?>code"><span data-title="Code">Code</span></a></li>
+        <li><a href="<?php echo base_url(); ?>faculty"><span data-title="Faculty">Faculty</span></a></li>
+        <li><a href="<?php echo base_url(); ?>course"><span data-title="Course">Course</span></a></li>
+        <li><a href="<?php echo base_url(); ?>section"><span data-title="Section">Section</span></a></li>
+        <li><a href="<?php echo base_url(); ?>subject"><span data-title="Subject">Subject</span></a></li>
       </ul>
     </nav>
 
  <?php echo $output;?>
 </div><!--ends admin nav-->
 
-
-
-
-
+            
 </body>
 
 </html>

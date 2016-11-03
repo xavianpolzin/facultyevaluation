@@ -4,12 +4,9 @@
 <div class="student-welcome-page">
     <div class="helper-ver">
         <div class="st-wel-content">
-            <div class="lp-h-we">
-              <img src="public/images/home-laptop.png" alt="">
-          </div>
+            
           
-          <h2>FACULTY EVALUATION SYSTEM</h2>
-          
+          <h1>Faculty Evaluation  </h1>
           
           <form role="form" action="<?php echo base_url() ?>student/check" method="post">
           <input type="text" name="code" id="code" placeholder="Student Code" class="in-student-code">
@@ -17,15 +14,11 @@
           <input type="submit" value="Login" class="sub-stud-code">
           </form>
                 <?php if(!empty($error)): ?>
-<div class="">
       <p><?php echo $error ?></p>
-</div>
+
 <?php endif; ?>
         </div>
 
-        <div class="con-fo">
-      <h2>&copy;Faculty Evaluation 2016</h2>  
-      </div>
     </div>
 </div><!--ends student-welcome-page-->
 </div>

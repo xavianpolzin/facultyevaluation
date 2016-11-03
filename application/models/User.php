@@ -54,6 +54,19 @@ class User extends CI_Model{
 		return $user;
 	}
 
+	public function search_users($fname)
+{
+	$this->db->select('*');
+	$this->db->from('users');
+	$this->db->like('fname', $fname);
+	$query = $this->db->get();
+	if($query->num_rows() > 0){
+		return $query->result();
+	}else{
+		return $query->result();
+	}
+}
+
 
 	public function GetAll(){
 

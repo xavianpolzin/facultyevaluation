@@ -1,17 +1,7 @@
 <div class="row">
 	<div class="col-md-4">
 <center>
-<div class="fileupload fileupload-new" data-provides="fileupload">
-<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
 
-	<div>
-		<span class="btn btn-default btn-file">
-			<span class="fileupload-new">Select image</span>
-			<span class="fileupload-exists">Change</span>
-		<input type="file"></span>
-		<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-	</div>
-</div>
 </center>
 	</div><!--ends col-md-6-->
 

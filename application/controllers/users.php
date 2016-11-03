@@ -89,7 +89,18 @@ class Users extends Security{
 	}
 
 
+public function search_users()
+{
+	$this->load->model('User');
+	$fname = $this->input->post('search');
 
+	if(isset($fname) and !empty($fname)){
+		$data['users'] = $this->User->search_users($fname);
+		$this->load->view('user/user_list.html', $data);
+	}else{
+		redirect('/user');
+	}
+}
 
 	public function add(){
 

@@ -12,13 +12,25 @@
 
 
 <form role="form" method="post" action="">
-  <div class="form-group">
-    <label for="coursenameinput" >Course</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Course" value="<?php echo $course->name?>">
-  </div>
-  <div class="form-group">
-    <label for="descriptionnameinput">Description</label>
-    <input type="text" class="form-control" id="description" name="description" placeholder="Description" value="<?php echo $course->description?>" >
-  </div>
-  <input type="submit" class="btn btn-default" value="Submit"></input>
+
+      <h1>Edit Course</h1>
+<div class="add-frm-hl">
+    <input type="text" class="form-control" id="name" name="name"  value="<?php echo $course->name?>" placeholder="Course" required />
+
+    <input type="text" class="form-control" id="description"   value="<?php echo $course->description?>" name="description" placeholder="Description" required />
+
+    <div class="sb-btn-l">
+
+      <input type="submit"  value="Submit" />
+      
+    </div>
+
+    <div class="cn-btn-1">
+            <a href="<?php echo base_url() ?>course"> Cancel</a>
+    </div>
+
+
+    <div class="clearFixed"></div>  
+
+</div>
 </form>

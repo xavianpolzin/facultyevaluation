@@ -13,29 +13,9 @@
 
           <h2>FACULTY EVALUATION SYSTEM</h2>
           
-          <?php if($hasErrors && $isInvalidUsernamePassword): ?>
-<div class="">
-    <p>Invalid Username/password.</p>
-</div>
-    <?php endif; ?>
-          <div class="form-group <?php if($isUsernameEmpty): ?>has-error <?php endif;?>">
-          <input type="text" name="username" id="username" placeholder="Username" class="in-admin-code">
-          <?php if($isUsernameEmpty): ?>
-                  <div class="">
-                    <p>Username should not be empty.</p>
-                  </div>
-                  <?php endif; ?>
-                </div>
-
-          <div class="form-group <?php if($isPasswordEmpty): ?>has-error <?php endif;?>">
+          <input type="text" name="username" id="username" placeholder="Username" class="in-admin-code">      
           <input type="password" name="password" id="password" placeholder="Password" class="in-admin-code">
-            <?php if($isPasswordEmpty): ?>
-            <div class="">
-                <p>Password should not be empty.</p>
-            </div>
-                  <?php endif; ?>
-            </div>
-
+         
           <br>
 
           <input type="hidden" name="token" value="" />
@@ -43,13 +23,27 @@
 
         </form>
 
+          <?php if($hasErrors && $isInvalidUsernamePassword): ?>
+
+    <p>Invalid Username/password.</p>
+
+
+    <?php endif; ?>
+
+    <?php if($isUsernameEmpty): ?>
+                    <p>Username should not be empty.</p>
+                  <?php endif; ?>
+         
+            <?php if($isPasswordEmpty): ?>
+                <p>Password should not be empty.</p>
+                  <?php endif; ?>
+         
         </div>
 
         <div class="ad-st-rm">
           <p>If you're not an admin, please go to the <a href="<?php echo base_url();?>">student page.</a> Thank you!</p>
+        
         </div>
-        <div class="con-fo">
-      <h2>&copy;Faculty Evaluation 2016</h2>
-      </div>
+        
     </div>
 </div><!--ends student-welcome-page-->
