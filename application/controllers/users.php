@@ -161,11 +161,11 @@ public function search_users()
 			}
 
 			if($lname=="" && $anyMessage==""){
-					$anyMessage = "Last Name is a required.";
+					$anyMessage = "Last Name is required.";
 			}
 
 			if($password =="" && $anyMessage ==""){
-					$anyMessage = "Password is a required";
+					$anyMessage = "Password is required";
 			}
 
 			if($accessLevel == 'faculty' && $faculty == 0 && $anyMessage ==""){
