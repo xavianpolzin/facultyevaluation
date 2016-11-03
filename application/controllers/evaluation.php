@@ -84,11 +84,9 @@ class Evaluation extends CI_Controller{
 
 				case 3:
 
-
-
 					$instrucAnswer = $this->input->post('answers');
 					$comment = $this->input->post('comment');
-
+					
 					$profAnswer = $evaluation['prof_responsibilities'];
 
 					$isStudent = $evaluation['studentCode'] !='' ? true: false;
@@ -268,6 +266,26 @@ class Evaluation extends CI_Controller{
 
 
 	}
+
+						function cleanItUp($cmt,$wordlist=null,$character="*",$returnCount=false)
+					{           
+					    if($wordlist==null)
+					    {
+					        $wordlist="nigga|nigger|niggers|sandnigger|sandniggers|sandniggas|sandnigga|honky|honkies|chink|chinks|gook|gooks|wetback|wetbacks|spick|spik|spicks|spiks|bitch|bitches|bitchy|bitching|cunt|cunts|twat|twats|fag|fags|faggot|faggots|faggit|faggits|ass|asses|asshole|assholes|shit|shits|shitty|shity|dick|dicks|pussy|pussies|pussys|fuck|fucks|fucker|fucka|fuckers|fuckas|fucking|fuckin|fucked|motherfucker|motherfuckers|motherfucking|motherfuckin|mothafucker|mothafucka|motherfucka";
+					    }
+					    $replace = 'preg_replace("/./","' .$character .'","\\1")';
+					    $comment = preg_replace("/\b($wordlist)\b/ie", $replace,$cmt,-1,$count);
+
+					    if($returnCount!=false)
+					    {
+					        return $count;
+					    }
+					    elseif($returnCount!=true)
+					    {
+					        return $comment;
+					    }
+					}
+
 
 	function ShowStepOne($data){
 
