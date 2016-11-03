@@ -60,9 +60,21 @@
 </div>
 
 </section>
+<style type="text/css">
+	
+	.pagination_x a {
+		color: white;
+	}
 
+</style>
+<div style="text-align: center;font-size:20px;" class="pagination_x">
+  	<?php echo $links;?>
+  	</div>
+  	</br>
 <div class="dl-btn-co">
-	<button>Download All For Printing Code</button>
+	<form id="downloadcodes" action="<?php echo base_url() .'code/download';	 ?>" method="post">
+	<button id="download_button" type="submit" form="downloadcodes" value="Submit"><span>Download All For Printing Code</span></button>
+	</form>
 </div>
 
 
@@ -90,17 +102,18 @@
 <script src="<?php echo base_url() ?>public/js/jquery.form.js"></script> 
 <script>
 
-
- $(document).ready(function() { 
+/**
+$(document).ready(function() { 
             // bind 'myForm' and provide a simple callback function 
-            $('#generateForm').ajaxForm(function() { 
-            	 $('#generateFormWrapper').hide();
+            $('#downloadcodes').ajaxForm(function() { 
+            	 //$('#generateFormWrapper').hide();
             	 //$('#finalizeFormWrapper').show();
-                    ajax_download('<?php echo base_url() ?>code/printpreview', {'para1': 1, 'para2': 2}, 'dataname');
-
+            	 $('#download_button span').text("Downloading......");
+                 ajax_download('<?php echo base_url() ?>code/download', {'para1': 1, 'para2': 2}, 'dataname');
+                 location.reload();
             }); 
         }); 
-
+        **/
 
 
 function ajax_download(url, data, input_name) {

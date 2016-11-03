@@ -29,6 +29,10 @@ class CodeModel extends CI_Model{
 
 	}
 
+	public function SetActiveAllForPrinting(){
+		$this->db->update('code', array('status'=> 'active'), "status = 'for-printing'");
+	}
+
 	public function SetActive($code){
 
 		$this->db->update('code', array('status'=> 'active'), "code = '$code'");
@@ -107,6 +111,26 @@ class CodeModel extends CI_Model{
 
 
 	}
+
+
+	public function GetAllForPrintingNameOnly(){
+
+
+		$this->db->where('status','for-printing');
+		//$this->db->limit(50);
+
+		$query = $this->db->get('code');
+
+		$rows = array();
+
+		foreach($query->result() as $row){
+
+				$rows[] = $row->code;
+		}
+
+		return $rows;
+	}
+
 
 
 	public function GetAllForPrinting(){

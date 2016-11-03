@@ -11,11 +11,10 @@
 		<?php endif; ?>
 
 		
-		<?php if($cols <= 3): ?>
 		<td><?php echo $c;?></td>
 			<?php $cols++; ?>
 			
-		<?php else:?>
+		<?php if($cols > 3): ?>
 			</tr>
 			<tr>
 			<?php $cols = 1; ?>	
@@ -24,5 +23,6 @@
 		
 
 		<?php endforeach; ?>
+		</tr>
 	</tbody>
 </table>

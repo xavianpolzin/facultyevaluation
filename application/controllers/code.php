@@ -61,6 +61,25 @@ public function search_code()
 	}
 }
 
+public function download(){
+
+	$this->load->Model('CodeModel');
+
+	$data['codes'] = $this->CodeModel->GetAllForPrintingNameOnly();
+
+
+	$this->output->unset_template();
+
+	$this->load->library('pdf');
+	$this->pdf->load_view('codes.php',$data);
+	$this->pdf->render();
+	$this->pdf->stream("codes.pdf");
+
+	$this->CodeModel->SetActiveAllForPrinting();
+	
+
+}
+
 
 	public function printpreview(){
 
@@ -117,19 +136,20 @@ public function search_code()
 		}while($i < $count);
 
 
+		/**
 		foreach($tempCodes as $c){
 
 		$this->CodeModel->SaveTempCode($c);
 
-		}
+		}**/
 
+		redirect('/code');
 
-		$this->output->unset_template();
+		/**$this->output->unset_template();
 		$this->output
     ->set_content_type('application/json')
     ->set_output(json_encode(array('success' => true)));
-
-
+	**/
 	}
 
 	private function randString($length, $charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
