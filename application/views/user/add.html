@@ -4,7 +4,7 @@
   <h4>Access Level</h4>
 
 <form role="form" method="post" action="">
-<div class="form-group col-md-4">
+<div class="form-group col-md-4 ad-usr-l">
     <label for="accessLevelinput">Admin</label>
     <?php if($postparams): ?>
     <input type="radio" class="form-control"  <?php if($postparams['accessLevel']=='admin'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="admin">
@@ -13,13 +13,13 @@
   <?php endif; ?>
   </div>
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4 ad-usr-l">
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="form-control" <?php if($postparams && $postparams['accessLevel']=='staff') {echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
 
-<div class="for m-group col-md-4">
-    <label for="accessLevelinput">faculty</label>
+<div class="form-group col-md-4 ad-usr-l">
+    <label for="accessLevelinput">Faculty</label>
     <input type="radio" class="form-control" <?php if($postparams && $postparams['accessLevel']=='faculty'){echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
   </div>
 
@@ -28,14 +28,14 @@
 
 <div class="add-frm-h2">
     <p>Personal Details</p>
-    <input type="text" class="ad-fc-nw" id="firstName" name="firstName" placeholder="First Name" required>
 
-    <input type="text" class="ad-fc-nw" id="middleName" name="middleName" placeholder="Middle Name" required>
+    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['username'];} ?>" id="username" name="username" placeholder="Username">
 
-    <input type="text" class="ad-fc-nw" id="lastName" name="lastName" placeholder="Last Name" required>
+    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['fname'];} ?>" id="fname" name="fname" placeholder="First Name">
 
+    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['lname'];} ?>" id="lname" name="lname" placeholder="Last Name">
 
-    <input type="password" class="ad-fc-nw" id="password" name="password" placeholder="Password" required>
+    <input type="password" class="ad-fc-nw" id="password" name="password" placeholder="Input Password">
 
     <div id="faculty_link">
     <label for="passwordinput">Link account to Faculty for Evaluation Porpuses</label>
@@ -49,6 +49,7 @@
   </select>
   </div>
 
+  <input type="submit" class="btn btn-default" value="Submit"></input>
 
 </div>
 
@@ -69,47 +70,9 @@
 <?php endif; ?>
 
 
-<form role="form" method="post" action="">
-  
-
-  <div class="form-group">
-    <label for="usernameinput">Username</label>
-    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['username'];} ?>" id="username" name="username" placeholder="Input User">
-  </div>
-
-  <div class="form-group">
-    <label for="usernameinput">Name</label>
-    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['fname'];} ?>" id="fname" name="fname" placeholder="Input First Name">
-  </div>
-
-  <div class="form-group">
-    <label for="usernameinput">Last Name</label>
-    <input type="text" class="form-control" value="<?php if($postparams){echo $postparams['lname'];} ?>" id="lname" name="lname" placeholder="Input Last Name">
-  </div>
-
-  <div class="form-group">
-    <label for="passwordinput">Password</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Input Password">
-  </div>
-
-
-  <div class="form-group" id="faculty_link">
-    <label for="passwordinput">Link account to Faculty for Evaluation Porpuses</label>
-    <select class="form-control" name = "faculty">
-      <option value="0"> --- select one -- </option>
-    <?php foreach($faculties as $faculty): ?>
-      <option value="<?=$faculty->id ?>"><?=$faculty->firstName  ?>  </option>
-
-
-    <?php endforeach; ?>
-  </select>
-  </div>
 
 
 
-
-  <input type="submit" class="btn btn-default" value="Submit"></input>
-</form>
 </div>
 <script type="text/javascript">
 

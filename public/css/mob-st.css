@@ -946,6 +946,11 @@ width: 49%;
 }
 
 
+
+.ad-usr-l label{
+	color: #333;	
+}
+
 .add-frm-h2 label{
 	margin:0;	
 	text-transform: uppercase;
