@@ -22,6 +22,42 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
             </select>
+
+
+                     <select name="subject" class="ch-fc-st require_one">
+                        <option value="0">Choose Subject</option>
+                        <?php foreach($subjects as $s): ?>
+
+                            <?php if($s->id == $subjectId): ?>
+                                <option selected value="<?echo $s->id; ?>"><?php echo $s->description ?></option>
+                            <?php else: ?>
+
+                                <option value="<?echo $s->id; ?>"><?php echo $s->description ?></option>
+
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                
+
+                     
+                    
+                     <select name="section" class="ch-fc-st require_one">
+                        <option value="0">Choose Section</option>
+                        <?php foreach($sections as $se): ?>
+
+                            <?php if($se->id == $sectionId): ?>
+                                <option selected value="<?echo $se->id; ?>"><?php echo $se->name ?></option>
+                            <?php else: ?>
+
+                                <option value="<?echo $se->id; ?>"><?php echo $se->name ?></option>
+
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                    
+
+
+
             <br><br>
             <input type="date" hidden onkeydown="return false" name="date" value="<?php if($date){echo $date; }else{ echo date('Y-m-d'); }?>" class="date-stud-fr"/>
             <br><br>
@@ -29,6 +65,11 @@
             <input type="submit" value="Proceed" id="submit" class="sub-stud-code btn">
             </div>
             </div>
+
+
+
+
+
         </form>
         </div>
         

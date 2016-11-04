@@ -24,7 +24,7 @@
         <li><a href="<?php echo base_url(); ?>users"><span data-title="Users">Users</span></a></li>  
         <li><a href="<?php echo base_url(); ?>code"><span data-title="Code">Code</span></a></li>
         <li><a href="<?php echo base_url(); ?>faculty"><span data-title="Faculty">Faculty</span></a></li>
-        <li><a href="<?php echo base_url(); ?>course"><span data-title="Course">Course</span></a></li>
+        <!--<li><a href="<?php echo base_url(); ?>course"><span data-title="Course">Course</span></a></li>-->
         <li><a href="<?php echo base_url(); ?>section"><span data-title="Section">Section</span></a></li>
         <li><a href="<?php echo base_url(); ?>subject"><span data-title="Subject">Subject</span></a></li>
       </ul>
