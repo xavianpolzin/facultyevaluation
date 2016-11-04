@@ -2,10 +2,23 @@
 	<div class="evaluationsuccess">
 		<?php if($isStudent): ?>
 	<h1>Thank you for joining us Students!</h1>
+	<script type="text/javascript">
+		
+			setTimeout(function(){window.location.href="<?php echo base_url()  ?>";},3000);
+
+	</script>
 <?php else: ?>
 	<h1>Thank you for joining us Faculty!</h1>
+
+	<script type="text/javascript">
+		
+			setTimeout(function(){window.location.href="<?php echo base_url() . 'login' ?>";},3000);
+
+	</script>
+
 <?php endif; ?>
       	<h1>Evaluation Success!</h1>
+	<h1> You will be redirect to home page after 3 secs</h1>
 
     </div><!--evaluationsuccess-->
 

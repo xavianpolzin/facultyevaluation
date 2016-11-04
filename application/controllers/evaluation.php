@@ -167,7 +167,7 @@ class Evaluation extends CI_Controller{
 
 					$this->session->unset_userdata('evaluation');
 
-					//$this->session->sess_destroy();
+					$this->session->sess_destroy();
 
 					if($isStudent){
 					redirect("/evaluation/success?type=student&uid=$uid");
