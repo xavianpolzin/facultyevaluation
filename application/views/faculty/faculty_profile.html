@@ -90,9 +90,14 @@
 										<?php $counter = 1; ?>
 										<?php $profTotal = 0; ?>
 										<?php $profTotalStudent =0; ?>
+										<?php $profTotalAcad =0; ?>
 
 										<?php foreach($faculty->profAnswersStudent as $profAnswerStudent): ?>
 											<?php $profTotalStudent += array_sum($profAnswerStudent); ?>
+										<?php endforeach; ?>
+
+										<?php foreach($faculty->profAnswersAcad as $profAnswerAcad): ?>
+											<?php $profTotalAcad += array_sum($profAnswerAcad); ?>
 										<?php endforeach; ?>
 
 										<?php foreach($faculty->profAnswers as $profAnswer): ?>
@@ -156,9 +161,14 @@
 										<?php $counter = 1; ?>
 										<?php $instructTotal = 0; ?>
 										<?php $instructTotalStudent = 0; ?>
+										<?php $instructTotalAcad = 0; ?>
+
 										<?php foreach($faculty->instructAnswersStudent as $instructAnswerStudent): ?>
 												<?php $instructTotalStudent += array_sum($instructAnswerStudent); ?>
+										<?php endforeach; ?>
 
+										<?php foreach($faculty->instructAnswersAcad as $instructAnswerAcad): ?>
+												<?php $instructTotalAcad += array_sum($instructAnswerAcad); ?>
 										<?php endforeach; ?>
 
 										<?php foreach($faculty->instructAnswers as $instructAnswer): ?>
@@ -211,9 +221,11 @@
         		$overAllEvaluator +=1;	
         	}
 
+        	$overAllEvaluator += $faculty->totalEvaluatorAcad;
+
         ?>
-        <?php if(($profTotal+$profTotalStudent) > 0 && ($instructTotal + $instructTotalStudent)> 0): ?>
-    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent)/15/$overAllEvaluator,2) ?> </label>
+     <?php if(($profTotal+$profTotalStudent+$profTotalAcad) > 0 && ($instructTotal + $instructTotalStudent+$instructTotalAcad)> 0): ?>
+    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent + $instructTotalAcad)/15/$overAllEvaluator,2) ?> </label>
     	<?php else: ?>
 
     <label for="subject">Overall Result : </label>

@@ -15,12 +15,14 @@
     <h1>Add Faculty</h1>
 <div class="add-frm-hl">
     <p>Personal Details</p>
+
+<div class="pad-dd">
     <input type="text" class="ad-fc-nw" id="firstName" name="firstName" placeholder="First Name" required>
 
     <input type="text" class="ad-fc-nw" id="middleName" name="middleName" placeholder="Middle Name" required>
 
     <input type="text" class="ad-fc-nw" id="lastName" name="lastName" placeholder="Last Name" required>
-
+</div>
 <div class="ch-handle-holder">
 
     <p>Semester</p>
@@ -73,19 +75,20 @@
     </div>
   <?php endforeach; ?>
 </div><!--ends ch-handle-holder-->
-<div class="sb-btn-l">
-
-    
-      <input type="submit" class="btn add-bt" value="Submit"></input>
-   
+<hr>
+<div class="pad-fc-add">
+ <div class="nw-btn-sb">
+      <input type="submit" class="add-bt"  value="Submit"/>
     </div>
+
     <div class="cn-btn-1">
-            <a href="<?php echo base_url() ?>Faculty"> Cancel</a>
+            <a href="<?php echo base_url() ?>section"> Cancel</a>
     </div>
 
 
     <div class="clearFixed"></div>  
 
+</div>
 </div>
 
 </form>

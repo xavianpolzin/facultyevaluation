@@ -331,6 +331,22 @@ public function FindAllWhichIsNotYetEvaluate($id){
 	}
 
 
+public function GetTotalEvaluatorAcad($facultyId){
+
+		$this->db->select("count(*) as totalEvaluator");
+		$this->db->from('evaluation e');
+		$this->db->where('type','Academic');
+		$this->db->where('facultyId',$facultyId);
+
+		$query = $this->db->get();
+
+
+		$row = $query->row();
+
+		return $row->totalEvaluator;
+
+	}
+
 	public function GetTotalEvaluator($facultyId){
 
 		$this->db->select("count(*) as totalEvaluator");
@@ -446,9 +462,12 @@ public function FindAllWhichIsNotYetEvaluate($id){
 			$faculty->lastName = $row->lastName;
 			$faculty->profAnswers = $this->ProfAnswersSelf($row->id);
 			$faculty->instructAnswers = $this->InstructAnswersSelf($row->id);
+			$faculty->profAnswersAcad = $this->ProfAnswersAcad($row->id);
 			$faculty->profAnswersStudent = $this->ProfAnswers($row->id);
 			$faculty->instructAnswersStudent = $this->InstructAnswers($row->id);
+			$faculty->instructAnswersAcad = $this->InstructAnswersAcad($row->id);
 			$faculty->totalEvaluator = $this->GetTotalEvaluator($row->id);
+			$faculty->totalEvaluatorAcad = $this->GetTotalEvaluatorAcad($row->id);
 
 
 			return $faculty;
