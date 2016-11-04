@@ -2,9 +2,9 @@
 
 <div class="usr-add-fr">
   <h4>Access Level</h4>
-<hr>
+
 <form role="form" method="post" action="">
-<div class="form-group col-md-4 ad-usr-l">
+<div class="ad-usr-l">
     <label for="accessLevelinput">Admin</label>
     <?php if($postparams): ?>
     <input type="radio" class="rd-usr"  <?php if($postparams['accessLevel']=='admin'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="admin">
@@ -13,21 +13,20 @@
   <?php endif; ?>
   </div>
 
-  <div class="form-group col-md-4 ad-usr-l">
+  <div class="ad-usr-l">
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="rd-usr" <?php if($postparams && $postparams['accessLevel']=='staff') {echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
 
-<div class="form-group col-md-4 ad-usr-l">
+<div class="ad-usr-l">
     <label for="accessLevelinput">Faculty</label>
     <input type="radio" class="rd-usr" <?php if($postparams && $postparams['accessLevel']=='faculty'){echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
   </div>
 
 <div class="clearFixed"></div>
 
-<div class="add-frm-h2">
 
-<hr>
+
     <p>Personal Details</p>
 
 
@@ -46,17 +45,21 @@
 
 
 </div>
+<div class="add-frm-hl">
+    <p>Personal Details</p>
 
+<div class="pad-dd">
     <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['username'];} ?>" id="username" name="username" placeholder="Username">
-
+<br>
     <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['fname'];} ?>" id="fname" name="fname" placeholder="First Name">
 
-    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['lname'];} ?>" id="lname" name="lname" placeholder="Last Name">
+    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['middleName'];} ?>" id="middleName" name="middleName" placeholder="Middle Name">
 
-    <input type="password" class="ad-fc-nw" id="password" name="password" placeholder="Input Password">
+    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['lname'];} ?>" id="lname" name="lname" placeholder="Last Name">
+</div>
 
     <div id="faculty_link">
-    <label for="passwordinput">Link account to Faculty for Evaluation Porpuses</label>
+    <p>Link account to Faculty for Evaluation Porpuses</p>
     <select class="form-control" name = "faculty">
       <option value="0"> --- select one -- </option>
     <?php foreach($faculties as $faculty): ?>
@@ -66,13 +69,22 @@
     <?php endforeach; ?>
   </select>
   </div>
-  <input type="submit" class="btn btn-default" value="Submit"></input>
+<div class="pad-fc-add">
+ <div class="nw-btn-sb">
+      <input type="submit" class="add-bt"  value="Submit"/>
+    </div>
 
-            <a href="<?php echo base_url() ?>users"> Cancel</a>
+    <div class="cn-btn-1">
+            <a href="<?php echo base_url() ?>section"> Cancel</a>
+    </div>
+
+
+    <div class="clearFixed"></div>  
 
 </div>
+</div>
 
-
+</div>
 </form>
 </div>
 <script type="text/javascript">

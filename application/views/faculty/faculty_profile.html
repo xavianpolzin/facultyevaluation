@@ -212,7 +212,7 @@
         	}
 
         ?>
-        <?php if(($profTotal+$profTotalStudent) > 0 && ($instructTotal + $instructTotalStudent)> 0): ?>
+     <?php if(($profTotal+$profTotalStudent) > 0 && ($instructTotal + $instructTotalStudent)> 0): ?>
     <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent)/15/$overAllEvaluator,2) ?> </label>
     	<?php else: ?>
 

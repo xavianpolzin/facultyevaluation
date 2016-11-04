@@ -1,30 +1,36 @@
 
 
-
 <form role="form" method="post" action="">
+ 
 
-    <h1>Add Section</h1>
+    
 <div class="add-frm-hl">
-    <input type="text" class="form-control" id="name" name="name" placeholder="Section">
+    <p>Add Section</p>
 
-    <input type="text" class="form-control" id="description" name="description" placeholder="Description">
+    <div class="inp-ne-pd">
+    <input type="text" class="add-fr-nw" id="name" name="name" placeholder="Section" >
 
-    <div class="sb-btn-l">
+    <input type="text" class="add-fr-nw" id="description" name="description" placeholder="Description" >
 
-      <input type="submit"  value="Submit"></input>
-      
+    <div class="nw-btn-sb">
+      <input type="submit" class="add-bt"  value="Submit"/>
     </div>
 
     <div class="cn-btn-1">
             <a href="<?php echo base_url() ?>section"> Cancel</a>
     </div>
 
+    <?php if($anyMessage): ?>
 
-    <div class="clearFixed"></div>  
-<?php if($anyMessage): ?>
-
-      <p><?php echo $anyMessage ?></p>
+      <h5><?php echo $anyMessage ?></h5>
 
 <?php endif; ?>
 </div>
+
+    <div class="clearFixed"></div>  
+
+
+</div>
+
 </form>
+
