@@ -912,7 +912,9 @@ width: 150px;
     padding: 6px 0px !important;	
     box-shadow: 0px 0px 17px -10px #333;
 }
-
+.pad-fc-add h5{
+	color: #333;
+}
 .nw-btn-sb input:hover{
 width: 150px;
     background: #0084ff;
@@ -924,7 +926,7 @@ width: 150px;
     border-radius: 2px;}
 
 .pad-fc-add{
-	text-align:center;
+	margin-left: 30px;
 }
 .cn-btn-1{
 padding-bottom: 20px

@@ -42,13 +42,7 @@
 
 <div>
 
-<?php if($anyMessage): ?>
 
-      <p><?php echo $anyMessage ?></p>
-
-
-
-<?php endif; ?>
 
 
 
@@ -84,12 +78,19 @@
 <div class="pad-fc-add">
  <div class="nw-btn-sb">
       <input type="submit" class="add-bt"  value="Submit"/>
+ 
     </div>
 
     <div class="cn-btn-1">
             <a href="<?php echo base_url() ?>section"> Cancel</a>
     </div>
+         <?php if($anyMessage): ?>
 
+      <h5><?php echo $anyMessage ?></h5>
+
+
+
+<?php endif; ?>
 
     <div class="clearFixed"></div>  
 
