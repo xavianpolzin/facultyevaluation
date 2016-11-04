@@ -1,63 +1,51 @@
-<div class="row">
-	<div class="col-md-4">
-		
-	
-	</div><!--ends col-md-6-->
-
-	<div class="col-md-8 prf-st-n">
-
-		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-		  <li class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
-		  <li class=""><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
-		</ul>
-
-<div id="myTabContent" class="tab-content">
-
-
-<!--Profile content-->
-
-  <div class="tab-pane fade active in prof-cs" id="Profile">
-
-    <label for="name">Fullname : <?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></label>
-
-    <br>
-    <label for="Sy">School Year / Semester :
+<table>
+	<tbody>
+		<tr>
+				<td>Name: <?php  echo $faculty->firstName .' ' . substr($faculty->middleName,0,1). '. ' . $faculty->lastName ?></td>
+				</tr>
+				 <tr>
+				 <td>School Year / Semester :
 
 			<?php foreach($faculty->semester as $semester): ?>
 
 				<?=$semester->name; ?>st Semester,
 
 <?php endforeach; ?>
-		</label>
+</td>
+</tr>
 
-    <br>
-    <label for="subject">Subject Handled : 
+    <tr><td>Subject Handled : 
 		<?php foreach($faculty->subjects as $subject): ?>
 
 		<?= $subject->name; ?>,
 
 	<?php endforeach; ?>
-      </label>
+	</td>
+      </tr>
 
-       <br>
-    <label for="subject">Course Handled :
+       <tr>
+    <td>Course Handled :
 			<?php foreach($faculty->courses as $course): ?>
 
 				<?=$course->name; ?>,
 
 			<?php endforeach; ?>
-		 </label>
-    <br>
-    <label for="subject">Section Handled :
+			</td>
+		 </tr>
+    <tr>
+    <td>Section Handled :
 
 			<?php foreach($faculty->sections as $section): ?>
 
 				<?= $section->name; ?>,
 
 			<?php endforeach; ?>
-		</label>
-        <br>
-    <label for="subject">Faculty Itself Evaluation Result : </label>
+		</td>	
+		</tr>
+	</tbody>
+
+</table>
+ <label for="subject">Faculty Itself Evaluation Result : </label>
 
 		<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
 						  View Results
@@ -221,12 +209,3 @@
 
     <br>
     <div class="pr-inp">
-    <a target="_blank" href="<?php echo base_url() . "faculty/printd/$faculty->id" ?>" >Print All Details</a>
-</div>
- </div> <!--ends tab-pane-->
-
-
-
-</div>
-	</div><!--ends col-md-6-->
-</div>

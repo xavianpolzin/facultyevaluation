@@ -107,6 +107,66 @@ class Faculty extends Security{
 	}
 
 
+	public function printd($id){
+
+
+	$this->output->unset_template();
+
+
+	$this->load->Model('FacultyModel');
+		$this->load->Model('FacultyCourseModel');
+		$this->load->Model('FacultySemesterModel');
+		$this->load->Model('FacultySubjectModel');
+		$this->load->Model('FacultySectionModel');
+		$faculty = $this->FacultyModel->find_by_id($id);
+
+		$facultyCourse = array();
+		$facultySections = array();
+		$facultySubjects = array();
+		$facultySemester = array();
+
+		foreach ($this->FacultyCourseModel->FindByFaculty($id) as $value) {
+			$facultyCourse[] = $value;
+		}
+
+foreach ($this->FacultySectionModel->FindByFaculty($id) as $value) {
+			$facultySections[] = $value;
+		}
+
+
+foreach ($this->FacultySubjectModel->FindByFaculty($id) as $value) {
+			$facultySubjects[] = $value;
+		}
+
+
+
+foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
+			$facultySemester[] = $value;
+		}
+
+
+		$faculty->courses = $facultyCourse;
+		$faculty->sections = $facultySections;
+		$faculty->subjects = $facultySubjects;
+		$faculty->semester = $facultySemester;
+		$data = array(
+				'faculty' =>$faculty
+			);
+
+
+
+
+
+	$this->load->library('pdf');
+
+//j	header("Content-type:application/pdf");
+	$this->pdf->load_view('faculty/print.php',array('faculty'=>$faculty));
+//	$this->load->view('faculty/print.php',array('faculty'=>$faculty));
+	$this->pdf->render();
+$this->pdf->stream($faculty->lastName. '-'. $faculty->firstName .".pdf");	
+
+	}
+
 
 
 	public function faculty_profile($id){
