@@ -22,8 +22,8 @@ class Home extends CI_Controller{
 
 			$userLoggedIn = $this->session->userdata('loggedIn');
 
-			echo $userLoggedIn['facultyId'];
-			echo $userLoggedIn['username'];
+			//echo $userLoggedIn['facultyId'];
+			//echo $userLoggedIn['username'];
 
 			if($userLoggedIn['accessLevel'] == "admin"){
 				$this->output->set_template('admin');

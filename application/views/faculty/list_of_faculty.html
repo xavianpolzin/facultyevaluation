@@ -110,8 +110,10 @@
 											<th><?php echo $profTotal; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> = <?php echo $faculty->profScore; ?></div>
+									  <?php if($profTotal >0): ?>
+								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> = <?php echo $profTotal/15/$faculty->totalEvaluator; ?></div>
 
+<?php endif; ?>
 								</div> <!--ends table-responsive-->
 
 						       
@@ -175,8 +177,10 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> =<?php echo $faculty->instrucScore; ?></div>
+									  <?php if($instructTotal > 0): ?>
+							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotal ?>/15/<?php echo $faculty->totalEvaluator; ?> =<?php echo $instructTotal/15/$faculty->totalEvaluator; ?></div>
 								</div> <!--ends table-responsive-->
+							<?php endif; ?>
 						       
 						     
 						    </div><!--ends col-md-6-->

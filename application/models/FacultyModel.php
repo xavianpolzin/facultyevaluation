@@ -239,13 +239,30 @@ public function AlreadyEval($faculty){
 		return $rows;
 	}
 
+
+	public function GetTotalEvaluator($facultyId){
+
+		$this->db->select("count(*) as totalEvaluator");
+		$this->db->from('evaluation e');
+		$this->db->where('type','Student');
+		$this->db->where('facultyId',$facultyId);
+
+		$query = $this->db->get();
+
+
+		$row = $query->row();
+
+		return $row->totalEvaluator;
+
+	}
 	public function GetAll(){
 
 
 		$query = $this->db->get('faculties');
 
 		//compute
-		$this->db->select('ifnull(sum(profScore)/15/count(*),0) as profScore,ifnull(sum(instrucScore)/15/count(*),0) as instrucScore, count(*) as totalEvaluator',false);
+		//$this->db->select('ifnull(sum(profScore)/15/count(*),0) as profScore,ifnull(sum(instrucScore)/15/count(*),0) as instrucScore, (select count(*) from evaluation where type="Student" and facultyId=f.id) as totalEvaluator',false);
+		$this->db->select('0 as profScore,0 as instrucScore, (select count(*) from evaluation where type="Student" and facultyId=f.id) as totalEvaluator',false);
 		$this->db->select('f.id as id,f.firstName as firstName, f.middleName as middleName, f.lastName as lastName');
 		$this->db->from('faculties f')->join('evaluation e','f.id=e.facultyId','left');
 		$this->db->group_by("f.id");
@@ -335,6 +352,9 @@ public function AlreadyEval($faculty){
 			$faculty->lastName = $row->lastName;
 			$faculty->profAnswers = $this->ProfAnswersSelf($row->id);
 			$faculty->instructAnswers = $this->InstructAnswersSelf($row->id);
+			$faculty->profAnswersStudent = $this->ProfAnswers($row->id);
+			$faculty->instructAnswersStudent = $this->InstructAnswers($row->id);
+			$faculty->totalEvaluator = $this->GetTotalEvaluator($row->id);
 
 
 			return $faculty;

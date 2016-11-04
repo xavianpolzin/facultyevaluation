@@ -89,6 +89,12 @@
 										</tr>
 										<?php $counter = 1; ?>
 										<?php $profTotal = 0; ?>
+										<?php $profTotalStudent =0; ?>
+
+										<?php foreach($faculty->profAnswersStudent as $profAnswerStudent): ?>
+											<?php $profTotalStudent += array_sum($profAnswerStudent); ?>
+										<?php endforeach; ?>
+
 										<?php foreach($faculty->profAnswers as $profAnswer): ?>
 										<tr>
 											<td><?php echo $counter; ?></td>
@@ -149,6 +155,12 @@
 										</tr>
 										<?php $counter = 1; ?>
 										<?php $instructTotal = 0; ?>
+										<?php $instructTotalStudent = 0; ?>
+										<?php foreach($faculty->instructAnswersStudent as $instructAnswerStudent): ?>
+												<?php $instructTotalStudent += array_sum($instructAnswerStudent); ?>
+
+										<?php endforeach; ?>
+
 										<?php foreach($faculty->instructAnswers as $instructAnswer): ?>
 										<tr>
 											<td style="color:#333"><?php echo $counter; ?></td>
@@ -191,7 +203,21 @@
 						</div>
 
         <br>
-    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES = <?php echo $profTotal/15 ?> | INSTRUCTIONAL RESPONSIBILITIES = <?php echo $instructTotal/15 ?> </label>
+        <?php 
+
+        	$overAllEvaluator = $faculty->totalEvaluator ;
+
+        	if($profTotal > 0 && $instructTotal > 0){
+        		$overAllEvaluator +=1;	
+        	}
+
+        ?>
+        <?php if(($profTotal+$profTotalStudent) > 0 && ($instructTotal + $instructTotalStudent)> 0): ?>
+    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo ($profTotal + $profTotalStudent)/15/$overAllEvaluator; ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent ?>/15/<?php $overAllEvaluator ?>) = <?php echo ($instructTotal + $instructTotalStudent)/15/$overAllEvaluator ?> </label>
+    	<?php else: ?>
+
+    <label for="subject">Overall Result : </label>
+    <?php endif; ?>
 
     <br>
     <div class="pr-inp">
