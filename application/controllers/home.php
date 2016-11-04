@@ -30,7 +30,9 @@ class Home extends CI_Controller{
 				$this->load->view('admin_home.html');
 			}else if($userLoggedIn['accessLevel'] == "faculty"){
 				$this->output->set_template('faculty');
-				$this->load->view('faculty_home.html',array('message'=>$message));
+				$this->load->Model('FacultyModel');
+				$faculty = $this->FacultyModel->find_by_id($userLoggedIn['facultyId']);
+				$this->load->view('faculty_home.html',array('message'=>$message,'faculty'=>$faculty));
 			}else if($userLoggedIn['accessLevel'] == "staff"){
 				$this->output->set_template('admin');
 				$this->load->view('admin_home.html');
