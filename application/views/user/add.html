@@ -13,6 +13,16 @@
   <?php endif; ?>
   </div>
 
+<div class="form-group col-md-4 ad-usr-l">
+    <label for="accessLevelinput">Academic Head</label>
+    <?php if($postparams): ?>
+    <input type="radio" class="rd-usr"  <?php if($postparams['accessLevel']=='academic'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="academic">
+    <?php else: ?>
+    <input type="radio" class="rd-usr"   name="accessLevel" placeholder="accessLevel" value="academic">
+  <?php endif; ?>
+  </div>
+
+
   <div class="form-group col-md-4 ad-usr-l">
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="rd-usr" <?php if($postparams && $postparams['accessLevel']=='staff') {echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">

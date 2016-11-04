@@ -34,6 +34,12 @@ class Home extends CI_Controller{
 			}else if($userLoggedIn['accessLevel'] == "staff"){
 				$this->output->set_template('admin');
 				$this->load->view('admin_home.html');
+			}else if($userLoggedIn['accessLevel'] == "academic"){
+				$this->output->set_template('faculty');
+				$this->load->Model('FacultyModel');
+				$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
+				$faculties = $this->FacultyModel->FindAllWhichIsNotYetEvaluate($userLoggedIn['id']);
+				$this->load->view('academic_home.php',array('faculties'=>$faculties,'anyMessage'=>$anyMessage));
 			}
 
 		}else{

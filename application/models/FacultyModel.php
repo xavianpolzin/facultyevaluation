@@ -22,6 +22,39 @@ class FacultyModel extends CI_Model{
 	}
 
 
+public function ProfAnswersAcad($facultyId){
+
+
+		$this->db->select('sum(choice_1) as "total_choice_1",sum(choice_2) as "total_choice_2",sum(choice_3) as "total_choice_3",sum(choice_4) as "total_choice_4",sum(choice_5) as "total_choice_5",sum(choice_6) as "total_choice_6"');
+
+		$this->db->from('evaluation e')->join('professional_answer pa','e.id = pa.evaluation_id','left');
+
+		$this->db->where('facultyId',$facultyId);
+		$this->db->where('type','Academic');
+
+		$this->db->group_by('pa.num');
+
+		$query = $this->db->get();
+
+		$rows = array();
+
+		foreach($query->result() as $row){
+
+			$answers = array();
+			$answers[0] = $row->total_choice_1;
+			$answers[1] = $row->total_choice_2;
+			$answers[2] = $row->total_choice_3;
+			$answers[3] = $row->total_choice_4;
+			$answers[4] = $row->total_choice_5;
+			$answers[5] = $row->total_choice_6;
+			$rows[] = $answers;
+		}
+
+		return $rows;
+	}
+
+
+
 
 	public function ProfAnswersSelf($facultyId){
 
@@ -134,6 +167,40 @@ class FacultyModel extends CI_Model{
 
 	}
 
+	public function InstructAnswersAcad($facultyId){
+
+		$this->db->select('sum(choice_1) as "total_choice_1",sum(choice_2) as "total_choice_2",sum(choice_3) as "total_choice_3",sum(choice_4) as "total_choice_4",sum(choice_5) as "total_choice_5",sum(choice_6) as "total_choice_6"');
+
+		$this->db->from('evaluation e')->join('instructional_answer pa','e.id = pa.evaluation_id','left');
+
+		$this->db->where('facultyId',$facultyId);
+		$this->db->where('type','Academic');
+
+		$this->db->group_by('pa.num');
+
+		$query = $this->db->get();
+
+		$rows = array();
+
+		foreach($query->result() as $row){
+
+			$answers = array();
+			$answers[0] = $row->total_choice_1;
+			$answers[1] = $row->total_choice_2;
+			$answers[2] = $row->total_choice_3;
+			$answers[3] = $row->total_choice_4;
+			$answers[4] = $row->total_choice_5;
+			$answers[5] = $row->total_choice_6;
+
+
+			$rows[] = $answers;
+		}
+
+		return $rows;
+
+	}
+
+
 	public function InstructAnswers($facultyId){
 
 		$this->db->select('sum(choice_1) as "total_choice_1",sum(choice_2) as "total_choice_2",sum(choice_3) as "total_choice_3",sum(choice_4) as "total_choice_4",sum(choice_5) as "total_choice_5",sum(choice_6) as "total_choice_6"');
@@ -219,6 +286,30 @@ public function AlreadyEval($faculty){
 
 		return $rows;
 	}
+
+
+public function FindAllWhichIsNotYetEvaluate($id){
+		$this->db->from('faculties f')->where("f.id not in (select facultyId from evaluation where evaluatedBy = 'academic-$id')");
+		$query = $this->db->get();
+
+
+		$rows = array();
+
+		foreach ($query->result() as $row) {
+
+			$faculty = new FacultyModel();
+			$faculty->id = $row->id;
+			$faculty->firstName = $row->firstName;
+			$faculty->middleName = $row->middleName;
+			$faculty->lastName = $row->lastName;
+			$rows[] = $faculty;
+		}
+
+		return $rows;
+	}
+
+
+
 	public function GetAllWhichNotYetLinkToUser(){
 		$this->db->from('faculties f')->where("f.id not in (select faculty_id from users where faculty_id > 0)");
 		$query = $this->db->get();
@@ -262,7 +353,7 @@ public function AlreadyEval($faculty){
 
 		//compute
 		//$this->db->select('ifnull(sum(profScore)/15/count(*),0) as profScore,ifnull(sum(instrucScore)/15/count(*),0) as instrucScore, (select count(*) from evaluation where type="Student" and facultyId=f.id) as totalEvaluator',false);
-		$this->db->select('0 as profScore,0 as instrucScore, (select count(*) from evaluation where type="Student" and facultyId=f.id) as totalEvaluator',false);
+		$this->db->select('0 as profScore,0 as instrucScore, (select count(*) from evaluation where type="Student" and facultyId=f.id) as totalEvaluator,(select count(*) from evaluation where type="Academic" and facultyId=f.id) as totalEvaluatorAcad',false);
 		$this->db->select('f.id as id,f.firstName as firstName, f.middleName as middleName, f.lastName as lastName');
 		$this->db->from('faculties f')->join('evaluation e','f.id=e.facultyId','left');
 		$this->db->group_by("f.id");
@@ -281,8 +372,11 @@ public function AlreadyEval($faculty){
 			$faculty->profScore = $row->profScore ? $row->profScore : 0;
 			$faculty->instrucScore = $row->instrucScore ;
 			$faculty->profAnswers = $this->ProfAnswers($row->id);
+			$faculty->profAnswersAcad = $this->ProfAnswersAcad($row->id);
 			$faculty->totalEvaluator = $row->totalEvaluator;
+			$faculty->totalEvaluatorAcad = $row->totalEvaluatorAcad;
 			$faculty->instructAnswers = $this->InstructAnswers($row->id);
+			$faculty->instructAnswersAcad = $this->InstructAnswersAcad($row->id);
 			$faculty->comments = $this->GetComments($row->id);
 			$rows[] = $faculty;
 		}

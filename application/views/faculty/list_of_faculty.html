@@ -54,7 +54,7 @@
 					<td>
 						<!-- Button trigger modal -->
 						<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
-						  View Results
+						  Student Results
 						</a>
 
 						<!-- Modal -->
@@ -188,8 +188,143 @@
 						  </div>
 						</div>
 									
-					</td>
 					<?php $counterx++; ?>
+
+						|
+<a href="" data-toggle="modal" data-target="#myModalAcad<?php echo $faculty->id?>">
+						  Academic Results
+						</a>
+						<div class="modal fade bs-example-modalb-lg" id="myModalAcad<?php echo $faculty->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						 
+						  <div class="modal-dialog modal-lg" style="width:1300px;">
+						    <div class="modal-content" style="color:#000;">
+						      
+						    <div class="col-md-6">
+
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>PROFESSIONAL RESPONSIBILITIES Acad</h3>
+									  
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counterAcad = 1; ?>
+										<?php $profTotalAcad = 0; ?>
+										<?php foreach($faculty->profAnswersAcad as $profAnswerAcad): ?>
+										<tr>
+											<td style="color: #333;"><?php echo $counterAcad; ?></td>
+											
+											<td style="color: #333;"><?php echo $profAnswerAcad[0]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswerAcad[1]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswerAcad[2]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswerAcad[3]; ?></td>
+											<td style="color: #333;"> <?php echo $profAnswerAcad[4]; ?></td>
+											<td style="color: #333;"><?php echo $profAnswerAcad[5]; ?></td>
+											<?php $profTotalAcad+= array_sum($profAnswerAcad); ?>
+											<td style="color: #333;"><?php echo array_sum($profAnswerAcad); ?></td>
+											<?php $counterAcad++; ?>
+											
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $profTotalAcad; ?></th>
+										</tr>
+									  </table>
+									  <?php if($profTotalAcad >0): ?>
+								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $profTotalAcad ?>/15/<?php echo $faculty->totalEvaluatorAcad; ?> = <?php echo $profTotalAcad/15/$faculty->totalEvaluatorAcad; ?></div>
+
+<?php endif; ?>
+								</div> <!--ends table-responsive-->
+
+						       
+						      </div>	
+						      
+						    </div><!--ends col-md-6-->
+
+						    <div class="col-md-6">
+
+						      
+						      <div class="modal-body" style="color:#000;">
+
+						      	
+								  </div>
+						      	<div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px;color:#000; background: #fff; ">
+									  <table class="table">
+									  <h3>INSTRUCTIONAL RESPONSIBILITIES Acad</h3>
+
+									  <tr style="background:#428bca;">
+
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counterAcad = 1; ?>
+										<?php $instructTotalAcad = 0; ?>
+										<?php foreach($faculty->instructAnswersAcad as $instructAnswerAcad): ?>
+										<tr>
+											<td style="color: #333;"><?php echo $counterAcad; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[0]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[1]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[2]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[3]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[4]; ?></td>
+											<td style="color: #333;"><?php echo $instructAnswerAcad[5]; ?></td>
+											<?php $instructTotalAcad+= array_sum($instructAnswerAcad); ?>
+											<td style="color: #333;"><?php echo array_sum($instructAnswerAcad); ?></td>
+											<?php $counterAcad++; ?>
+											
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+
+											<td>Total</td>
+											<th><?php echo $instructTotalAcad; ?></th>
+										</tr>
+										
+								
+
+						      </div>
+
+									  </table>
+									  <?php if($instructTotalAcad > 0): ?>
+							<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $instructTotalAcad ?>/15/<?php echo $faculty->totalEvaluatorAcad; ?> =<?php echo $instructTotalAcad/15/$faculty->totalEvaluatorAcad; ?></div>
+								</div> <!--ends table-responsive-->
+							<?php endif; ?>
+						       
+						     
+						    </div><!--ends col-md-6-->
+						    </div>
+						  </div>
+						</div>
+							
+
+					</td>	
 					<td>
 						<a href="" data-toggle="modal" data-target="#commentModal<?php echo $faculty->id ?>" >
 						  	View Comments

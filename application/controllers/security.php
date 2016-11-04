@@ -22,7 +22,9 @@ class Security extends CI_Controller{
 				$this->output->set_template('faculty');
 			}else if($this->userLoggedIn['accessLevel'] == "staff"){
 				$this->output->set_template('admin');
-      }
+			}else if($this->userLoggedIn['accessLevel'] == "academic"){
+				$this->output->set_template('faculty');
+     		 }
 			$this->isUserLoggedIn = true;
 		}else{
 			$this->output->set_template('default');
