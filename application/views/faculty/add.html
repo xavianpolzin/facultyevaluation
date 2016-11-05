@@ -1,18 +1,16 @@
-<?php if($anyMessage): ?>
-
-  <div class="alert alert-success">
-
-
-      <p><?php echo $anyMessage ?></p>
-
-
-</div>
-
-<?php endif; ?>
 
 
 <form role="form" method="post" action="">
+    
     <h1>Add Faculty</h1>
+    <?php if($anyMessage): ?>
+<div class="er-ad-s">
+
+      <h5><?php echo $anyMessage ?></h5>
+</div>
+<?php endif; ?>
+
+
 <div class="add-frm-hl">
     <p>Personal Details</p>
 

@@ -13,6 +13,15 @@
   </div>
 
   <div class="ad-usr-l">
+    <label for="accessLevelinput">Academic Head</label>
+    <?php if($postparams): ?>
+    <input type="radio" class="rd-usr"  <?php if($users->accessLevel=='academic'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="academic">
+    <?php else: ?>
+    <input type="radio" class="rd-usr"   name="accessLevel" placeholder="accessLevel" value="academic">
+  <?php endif; ?>
+  </div>
+
+  <div class="ad-usr-l">
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="rd-usr" <?php if($users->accessLevel=='staff'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>

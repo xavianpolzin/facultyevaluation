@@ -81,10 +81,14 @@ class Evaluation extends CI_Controller{
 
 
 					$faculty = $this->input->post('faculty');
+					$subjectId = $this->input->post('subject');
+					$sectionId = $this->input->post('section');
 					$date = $this->input->post('date');
 
 					$evaluation['facultyId'] = $faculty;
 					$evaluation['date'] = $date;
+					$evaluation['subjectId'] = $subjectId;
+					$evaluation['sectionId'] = $sectionId;
 
 					$this->session->set_userdata('evaluation',$evaluation);
 
@@ -352,11 +356,14 @@ class Evaluation extends CI_Controller{
 
 
 
+		$this->load->Model('SubjectModel');
 		$this->load->Model('FacultyModel');
-
+		$this->load->Model('SectionModel');
 
 
 		$data['faculties'] =  $this->FacultyModel->GetAll();
+		$data['subjects'] = $this->SubjectModel->GetAll();
+		$data['sections'] = $this->SectionModel->GetAll();
 		$this->output->set_template('default');
 
 		$this->load->view("welcome.html",$data);

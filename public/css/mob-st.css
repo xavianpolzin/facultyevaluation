@@ -901,6 +901,14 @@ input.add-fr-nw{
 	border-radius: 10px;
 }
 
+
+.er-ad-s{
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	width: 300px;
+	margin:0 auto;
+}
 input.ad-fc-nw{
 	width: 33% !important;
 }
@@ -913,7 +921,7 @@ width: 150px;
     box-shadow: 0px 0px 17px -10px #333;
 }
 .pad-fc-add h5{
-	color: #333;
+	color: #fff;
 }
 .nw-btn-sb input:hover{
 width: 150px;
@@ -974,11 +982,31 @@ padding-bottom: 20px
 
 
 .prf-st-n{
+	width: 100%;
+	max-width: 800px;
+	margin:0 auto;
 	padding: 20px;
 	background: #fff;
 	border-radius: 5px;
 	border:1px solid #f3f3f3;
 	color: #848484;
+}
+
+.sch-a{
+	color: #333;
+
+}
+
+.sch-a a{
+	color: #333;
+}
+
+.sch-a td{
+	color: #333;
+}
+
+.prf-st-n label{
+	padding: 10px 0;
 }
 .pr-inp input{
 	padding: 10px 20px;

@@ -157,7 +157,7 @@ public function search_users()
 			if($fname=="" && $anyMessage == ""){
 					//$this->session->set_flashdata('anyMessage','First Name is required field.');
 					//redirect('/users/add');
-					$anyMessage = "First Name is reuired.";
+					$anyMessage = "First Name is required.";
 			}
 
 			if($lname=="" && $anyMessage==""){
@@ -219,7 +219,7 @@ public function search_users()
 			if($fname=="" && $anyMessage == ""){
 					//$this->session->set_flashdata('anyMessage','First Name is required field.');
 					//redirect('/users/add');
-					$anyMessage = "First Name is reuired field.";
+					$anyMessage = "First Name is required field.";
 			}
 
 			if($lname=="" && $anyMessage==""){

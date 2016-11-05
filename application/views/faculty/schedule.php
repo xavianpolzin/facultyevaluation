@@ -5,10 +5,10 @@
 </center>
 	</div><!--ends col-md-6-->
 
-	<div class="col-md-8">
+	<div class="prf-st-n">
 
 		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-		  <li class=""><a href="<?php echo base_url()?>faculty/profile/<?php echo $faculty->firstName . '.'  . $faculty->id ?>" >Profile</a></li>
+		  <li style="width: 49%;" class=""><a href="<?php echo base_url()?>faculty/profile/<?php echo $faculty->firstName . '.'  . $faculty->id ?>" >Profile</a></li>
 		  <li class="active"><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
 		</ul>
 
@@ -26,7 +26,7 @@
 
 
 
-            <div class="form-group">
+            <div class="form-group sch-a">
              	 <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; ">
 			  <table class="table">
 			  <h3>Schedule</h3>
@@ -127,7 +127,7 @@
 
 				<?php foreach($schedules as $sched): ?>
 				<tr>
-					<td><?php echo $i; ?></td>
+					<td style="color: #333;"><?php echo $i; ?></td>
 
 					<?php $i++; ?>
 

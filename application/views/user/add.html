@@ -1,4 +1,10 @@
 
+    <?php if($anyMessage): ?>
+<div class="er-ad-s">
+
+      <h5><?php echo $anyMessage ?></h5>
+</div>
+<?php endif; ?>
 
 <div class="usr-add-fr">
   <h4>Access Level</h4>
@@ -54,13 +60,12 @@
 
 <div class="pad-dd">
     <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['username'];} ?>" id="username" name="username" placeholder="Username">
+    <input type="password" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['password'];} ?>" id="password" name="password" placeholder="Password">
+
 <br>
     <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['fname'];} ?>" id="fname" name="fname" placeholder="First Name">
 
-    <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['middleName'];} ?>" id="middleName" name="middleName" placeholder="Middle Name">
-
     <input type="text" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['lname'];} ?>" id="lname" name="lname" placeholder="Last Name">
-    <input type="password" class="ad-fc-nw" value="<?php if($postparams){echo $postparams['password'];} ?>" id="password" name="password" placeholder="Password">
 </div>
 
 
@@ -84,13 +89,7 @@
     <div class="cn-btn-1">
             <a href="<?php echo base_url() ?>section"> Cancel</a>
     </div>
-         <?php if($anyMessage): ?>
 
-      <h5><?php echo $anyMessage ?></h5>
-
-
-
-<?php endif; ?>
 
     <div class="clearFixed"></div>  
 
