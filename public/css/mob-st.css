@@ -28,7 +28,21 @@ z-index: -999999;
 
 	-webkit-backface-visibility: hidden;
 }
+.pagination_x {
+	text-align: center;
+}
 
+.pagination_x a {
+	padding: 10px;
+	font-size: 15px;
+	color: #fff;
+	
+}
+
+.pagination_x strong{
+	font-size: 17px;
+	color: #636363;
+}
 .padd-dd{
 }
 .pad-dd label{

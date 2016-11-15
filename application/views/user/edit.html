@@ -3,7 +3,7 @@
 <div class="usr-add-fr">
   <h4>Access Level</h4>
 <form role="form" method="post" action="">
-<div class="ad-usr-l">
+<!--<div class="ad-usr-l">
     <label for="accessLevelinput">Admin</label>
     <?php if($postparams): ?>
     <input type="radio" class="rd-usr"  <?php if($users->accessLevel=='admin'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="admin">
@@ -11,7 +11,7 @@
     <input type="radio" class="rd-usr"  checked name="accessLevel" placeholder="accessLevel" value="admin">
   <?php endif; ?>
   </div>
-
+-->
   <div class="ad-usr-l">
     <label for="accessLevelinput">Academic Head</label>
     <?php if($postparams): ?>
@@ -20,12 +20,12 @@
     <input type="radio" class="rd-usr"   name="accessLevel" placeholder="accessLevel" value="academic">
   <?php endif; ?>
   </div>
-
+<!--
   <div class="ad-usr-l">
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="rd-usr" <?php if($users->accessLevel=='staff'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
-
+-->
 <div class="ad-usr-l">
     <label for="accessLevelinput">Faculty</label>
     <input type="radio" class="rd-usr" <?php if($users->accessLevel=='faculty'){echo "checked";} ?> class="form-control" id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >

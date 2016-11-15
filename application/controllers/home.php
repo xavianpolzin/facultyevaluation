@@ -33,11 +33,11 @@ class Home extends CI_Controller{
 				$this->load->Model('FacultyModel');
 				$faculty = $this->FacultyModel->find_by_id($userLoggedIn['facultyId']);
 				$this->load->view('faculty_home.html',array('message'=>$message,'faculty'=>$faculty));
-			}else if($userLoggedIn['accessLevel'] == "staff"){
+			}/*else if($userLoggedIn['accessLevel'] == "staff"){
 				$this->output->set_template('admin');
 				$this->load->view('admin_home.html');
-			}else if($userLoggedIn['accessLevel'] == "academic"){
-				$this->output->set_template('faculty');
+			}*/else if($userLoggedIn['accessLevel'] == "academic"){
+				$this->output->set_template('admin');
 				$this->load->Model('FacultyModel');
 				$anyMessage = $this->session->flashdata('anyMessage') ? $this->session->flashdata('anyMessage') : '';
 				$faculties = $this->FacultyModel->FindAllWhichIsNotYetEvaluate($userLoggedIn['id']);

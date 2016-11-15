@@ -60,14 +60,8 @@
 </div>
 
 </section>
-<style type="text/css">
-	
-	.pagination_x a {
-		color: white;
-	}
 
-</style>
-<div style="text-align: center;font-size:20px;" class="pagination_x">
+<div class="pagination_x">
   	<?php echo $links;?>
   	</div>
   	</br>

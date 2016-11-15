@@ -39,6 +39,13 @@ class SubjectModel extends CI_Model{
 		return $rows;
 	}
 
+	public function SubjectExists($name){
+
+		$res =  $this->db->get_where('subjects', array('name' => $name));
+
+		return $res->num_rows() > 0 ? true: false;
+	}
+
 	public function Save($params){
 
 		$subjects = array(

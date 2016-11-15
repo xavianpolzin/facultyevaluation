@@ -45,9 +45,17 @@ class section extends Security{
 			$postparams = $params;
 			
 			$name = $params['name'];
-			$description = $params['description'];
+			$existsSection = $this->SectionModel->SectionExists($params['name']);
 
-			if($name == "" && $description == "" && $anyMessage == ""){
+			//$description = $params['description'];
+			if($existsSection){
+
+					//$this->session->set_flashdata('anyMessage','Username '. $$params['username'] .' already exists.');
+					//redirect('/users/add');
+					$anyMessage = "Section name already exists";
+
+			}
+			if($name == "" /*&& $description == ""*/ && $anyMessage == ""){
 				$anyMessage = "All fields are required";
 			}
 
@@ -55,9 +63,9 @@ class section extends Security{
 				$anyMessage = "Name is required";
 			}
 
-			if($description == "" && $anyMessage == ""){
+			/*if($description == "" && $anyMessage == ""){
 				$anyMessage = "description is required";
-			}
+			}*/
 
 			if($anyMessage == "" && $this->SectionModel->Save($params)){
 				$this->session->set_flashdata('anyMessage', 'Successfully added..');

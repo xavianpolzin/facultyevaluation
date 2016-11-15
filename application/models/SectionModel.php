@@ -31,7 +31,7 @@ class SectionModel extends CI_Model{
 				$sections = new SectionModel();
 				$sections->id = $row->id;
 				$sections->name = $row->name;
-				$sections->description = $row->description;
+				//$sections->description = $row->description;
 
 				$rows[] = $sections;
 		}
@@ -43,8 +43,8 @@ class SectionModel extends CI_Model{
 
 		$sections = array(
 					
-			'name' => $params['name'],
-			'description' => $params['description']
+			'name' => $params['name']
+			//'description' => $params['description']
 			);
 
 
@@ -55,6 +55,13 @@ class SectionModel extends CI_Model{
 
 
 		return $lastInsertedID;
+	}
+
+	public function SectionExists($name){
+
+		$res =  $this->db->get_where('sections', array('name' => $name));
+
+		return $res->num_rows() > 0 ? true: false;
 	}
 
 	public function delete($id){
@@ -81,7 +88,7 @@ class SectionModel extends CI_Model{
 			$sections = new SectionModel();
 			$sections->id = $row->id;
 			$sections->name = $row->name;
-			$sections->description = $row->description;
+			//$sections->description = $row->description;
 		
 
 			return $sections;

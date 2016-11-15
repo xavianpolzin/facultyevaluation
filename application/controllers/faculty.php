@@ -114,20 +114,20 @@ class Faculty extends Security{
 
 
 	$this->load->Model('FacultyModel');
-		$this->load->Model('FacultyCourseModel');
+		//$this->load->Model('FacultyCourseModel');
 		$this->load->Model('FacultySemesterModel');
 		$this->load->Model('FacultySubjectModel');
 		$this->load->Model('FacultySectionModel');
 		$faculty = $this->FacultyModel->find_by_id($id);
 
-		$facultyCourse = array();
+		//$facultyCourse = array();
 		$facultySections = array();
 		$facultySubjects = array();
 		$facultySemester = array();
 
-		foreach ($this->FacultyCourseModel->FindByFaculty($id) as $value) {
+		/*foreach ($this->FacultyCourseModel->FindByFaculty($id) as $value) {
 			$facultyCourse[] = $value;
-		}
+		}*/
 
 foreach ($this->FacultySectionModel->FindByFaculty($id) as $value) {
 			$facultySections[] = $value;
@@ -145,7 +145,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 		}
 
 
-		$faculty->courses = $facultyCourse;
+		//$faculty->courses = $facultyCourse;
 		$faculty->sections = $facultySections;
 		$faculty->subjects = $facultySubjects;
 		$faculty->semester = $facultySemester;
@@ -175,20 +175,20 @@ $this->pdf->stream($faculty->lastName. '-'. $faculty->firstName .".pdf");
 		$id = substr($id, strpos($id, '.')+1);
 
 		$this->load->Model('FacultyModel');
-		$this->load->Model('FacultyCourseModel');
+		//$this->load->Model('FacultyCourseModel');
 		$this->load->Model('FacultySemesterModel');
 		$this->load->Model('FacultySubjectModel');
 		$this->load->Model('FacultySectionModel');
 		$faculty = $this->FacultyModel->find_by_id($id);
 
-		$facultyCourse = array();
+		//$facultyCourse = array();
 		$facultySections = array();
 		$facultySubjects = array();
 		$facultySemester = array();
 
-		foreach ($this->FacultyCourseModel->FindByFaculty($id) as $value) {
+		/*foreach ($this->FacultyCourseModel->FindByFaculty($id) as $value) {
 			$facultyCourse[] = $value;
-		}
+		}*/
 
 foreach ($this->FacultySectionModel->FindByFaculty($id) as $value) {
 			$facultySections[] = $value;
@@ -206,7 +206,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 		}
 
 
-		$faculty->courses = $facultyCourse;
+		//$faculty->courses = $facultyCourse;
 		$faculty->sections = $facultySections;
 		$faculty->subjects = $facultySubjects;
 		$faculty->semester = $facultySemester;
@@ -296,13 +296,13 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 			$lname = $params['lastName'];
 			$semestersSize = isset($postparams['semesters']) ? sizeof($postparams['semesters']) : 0;
 			$sectionSize = isset($postparams['sections']) ? sizeof($postparams['sections']) : 0;
-			$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
+			//$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
 			$subjectSize = isset($postparams['subjects']) ? sizeof($postparams['subjects']) : 0;
 
 
 
 			if($fname =="" || $mname =="" || $lname=="" || 
-				$semestersSize == 0 || $sectionSize == 0 || $courseSize == 0 || 
+				$semestersSize == 0 || $sectionSize == 0 || 
 				$subjectSize == 0){
 				$anyMessage = "All field are required";
 			}
@@ -314,7 +314,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 					$this->load->Model('FacultySemesterModel');
 					$this->load->Model('FacultySectionModel');
-					$this->load->Model('FacultyCourseModel');
+					//$this->load->Model('FacultyCourseModel');
 					$this->load->Model('FacultySubjectModel');
 				foreach ($postparams['semesters'] as  $value) {
 						$this->FacultySemesterModel->Save(array('faculty_id'=>$id_assign,'semester'=>$value));
@@ -324,9 +324,9 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 					$this->FacultySectionModel->Save(array('faculty_id'=>$id_assign,'section_id'=>$value));
 				}
 
-				foreach ($postparams['courses'] as  $value) {
+				/*foreach ($postparams['courses'] as  $value) {
 					$this->FacultyCourseModel->Save(array('faculty_id'=>$id_assign,'course_id'=>$value));
-				}
+				}*/
 
 				foreach ($postparams['subjects'] as $value) {
 					$this->FacultySubjectModel->Save(array('faculty_id'=>$id_assign,'subject_id'=>$value));
@@ -343,16 +343,16 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 		}
 
-		$this->load->Model('CourseModel');
+		//$this->load->Model('CourseModel');
 		$this->load->Model('SectionModel');
 		$this->load->Model('SubjectModel');
 
 
 		$subjects = $this->SubjectModel->GetAll();
-		$courses = $this->CourseModel->GetAll();
+		//$courses = $this->CourseModel->GetAll();
 		$sections = $this->SectionModel->GetAll();
 
-		$this->load->view('faculty/add.html',array('anyMessage'=>$anyMessage,'subjects'=>$subjects,'sections'=>$sections,'courses'=>$courses,'postparams'=>$postparams));
+		$this->load->view('faculty/add.html',array('anyMessage'=>$anyMessage,'subjects'=>$subjects,'sections'=>$sections,/*'courses'=>$courses,*/'postparams'=>$postparams));
 
 	}
 
@@ -389,13 +389,13 @@ public function search_faculty()
 			$lname = $params['lastName'];
 			$semestersSize = isset($postparams['semesters']) ? sizeof($postparams['semesters']) : 0;
 			$sectionSize = isset($postparams['sections']) ? sizeof($postparams['sections']) : 0;
-			$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
+			//$courseSize = isset($postparams['courses']) ? sizeof($postparams['courses']) : 0;
 			$subjectSize = isset($postparams['subjects']) ? sizeof($postparams['subjects']) : 0;
 
 
 
 			if($fname =="" || $mname =="" || $lname=="" || 
-				$semestersSize == 0 || $sectionSize == 0 || $courseSize == 0 || 
+				$semestersSize == 0 || $sectionSize == 0 || 
 				$subjectSize == 0){
 				$anyMessage = "All field are required";
 			}
@@ -403,13 +403,13 @@ public function search_faculty()
 
 			if($anyMessage == "" && $this->FacultyModel->update($params,$id)){
 
-					$this->load->Model('FacultyCourseModel');
+					//$this->load->Model('FacultyCourseModel');
 					$this->load->Model('FacultySemesterModel');
 					$this->load->Model('FacultySubjectModel');
 					$this->load->Model('FacultySectionModel');
 
 					//delete previos reocrd
-					$this->FacultyCourseModel->DeleteByFaculty($id);
+					//$this->FacultyCourseModel->DeleteByFaculty($id);
 					$this->FacultySectionModel->DeleteByFaculty($id);
 					$this->FacultySubjectModel->DeleteByFaculty($id);
 					$this->FacultySemesterModel->DeleteByFaculty($id);
@@ -424,9 +424,9 @@ public function search_faculty()
 					$this->FacultySectionModel->Save(array('faculty_id'=>$id,'section_id'=>$value));
 				}
 
-				foreach ($postparams['courses'] as  $value) {
+				/*foreach ($postparams['courses'] as  $value) {
 					$this->FacultyCourseModel->Save(array('faculty_id'=>$id,'course_id'=>$value));
-				}
+				}*/
 
 				foreach ($postparams['subjects'] as $value) {
 					$this->FacultySubjectModel->Save(array('faculty_id'=>$id,'subject_id'=>$value));
@@ -447,35 +447,35 @@ public function search_faculty()
 
 
 
-		$this->load->Model('CourseModel');
+		//$this->load->Model('CourseModel');
 		$this->load->Model('SectionModel');
 		$this->load->Model('SubjectModel');
 
-		$this->load->Model('FacultyCourseModel');
+		//$this->load->Model('FacultyCourseModel');
 		$this->load->Model('FacultySemesterModel');
 		$this->load->Model('FacultySubjectModel');
 		$this->load->Model('FacultySectionModel');
 
-		$facultyCourse = $this->FacultyCourseModel->FindByFaculty($id);
+		//$facultyCourse = $this->FacultyCourseModel->FindByFaculty($id);
 		$facultySections = $this->FacultySectionModel->FindByFaculty($id);
 		$facultySubjects= $this->FacultySubjectModel->FindByFaculty($id);
 		$facultySemester= $this->FacultySemesterModel->FindByFaculty($id);
 
 
 		$subjects = $this->SubjectModel->GetAll();
-		$courses = $this->CourseModel->GetAll();
+		//$courses = $this->CourseModel->GetAll();
 		$sections = $this->SectionModel->GetAll();
 
 
 		$faculty = $this->FacultyModel->find_by_id($id);
 
 
-		$faculty->courses = $facultyCourse;
+		//$faculty->courses = $facultyCourse;
 		$faculty->sections = $facultySections;
 		$faculty->subjects = $facultySubjects;
 		$faculty->semester = $facultySemester;
 
-		$this->load->view('faculty/edit.html', array('faculty'=>$faculty,'id'=>$id,'anyMessage'=>$anyMessage,'postparams'=>$postparams,'sections'=>$sections,'courses'=>$courses,'subjects'=>$subjects));
+		$this->load->view('faculty/edit.html', array('faculty'=>$faculty,'id'=>$id,'anyMessage'=>$anyMessage,'postparams'=>$postparams,'sections'=>$sections,/*'courses'=>$courses,*/'subjects'=>$subjects));
 	}
 
 	public function delete(){

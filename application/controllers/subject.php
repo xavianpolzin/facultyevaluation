@@ -48,6 +48,16 @@ class subject extends Security{
 			$name = $params['name'];
 			$description = $params['description'];
 
+			$existsSubject = $this->SubjectModel->SubjectExists($params['name']);
+
+			//$description = $params['description'];
+			if($existsSubject){
+
+					//$this->session->set_flashdata('anyMessage','Username '. $$params['username'] .' already exists.');
+					//redirect('/users/add');
+					$anyMessage = "Subject name already exists";
+
+			}
 			if($name == "" && $description == "" && $anyMessage == ""){
 				$anyMessage = "All fields are required";
 			}

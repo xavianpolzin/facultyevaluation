@@ -1,5 +1,5 @@
 <?php
-
+/*
 class course extends Security{
 	
 
