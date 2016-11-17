@@ -12,7 +12,7 @@ class EvaluationModel extends CI_Model{
 	var $evaluatedBy;
 	var $profScore;
 	var $instrucScore;
-
+	var $adminiScore;
 
 	function __construct(){
 
@@ -40,6 +40,25 @@ class EvaluationModel extends CI_Model{
 			$data['num'] = $number;
 
 			$this->db->insert('professional_answer',$data);
+	}
+
+
+	public function SaveAdminiAnswer($id,$answer,$number){
+
+
+			$data = array('evaluation_id'=>$id);
+
+			if($answer == 0) $data['choice_1'] = 0;	
+			if($answer == 1) $data['choice_2'] = 1;	
+			if($answer == 2) $data['choice_3'] = 2;	
+			if($answer == 3) $data['choice_4'] = 3;
+			if($answer == 4) $data['choice_5'] = 4;
+			if($answer == 5) $data['choice_6'] = 5;		
+
+
+			$data['num'] = $number;
+
+			$this->db->insert('administrative_answer',$data);
 	}
 
 

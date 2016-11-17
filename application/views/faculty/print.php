@@ -23,15 +23,7 @@
 	</td>
       </tr>
 
-       <tr>
-    <td>Course Handled :
-			<?php foreach($faculty->courses as $course): ?>
 
-				<?=$course->name; ?>,
-
-			<?php endforeach; ?>
-			</td>
-		 </tr>
     <tr>
     <td>Section Handled :
 

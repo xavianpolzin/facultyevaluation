@@ -1,70 +1,49 @@
-<div class="row">
-	<div class="col-md-4">
-		
+
+<div class="fc-pr-con">
+
+	<div class="de-div">
+		<h5>Name of Faculty Member :</h5> <p><?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></p>		
+	</div>
 	
-	</div><!--ends col-md-6-->
-
-	<div class=" prf-st-n">
-
-		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-		  <li style="width: 49%;" class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
-		  <li class=""><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
-		</ul>
-
-<div id="myTabContent" class="tab-content">
-
-
-<!--Profile content-->
-
-  <div class="tab-pane fade active in prof-cs" id="Profile">
-
-    <label for="name">Fullname : <?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></label>
-
-    <br>
-    <label for="Sy">School Year / Semester :
-
+	<div class="de-div">
+		<h5>Semester :</h5> 
+		<p>
 			<?php foreach($faculty->semester as $semester): ?>
 
 				<?=$semester->name; ?>st Semester,
 
-<?php endforeach; ?>
-		</label>
+			<?php endforeach; ?>
+		</p>			
+	</div>
 
-    <br>
-    <label for="subject">Subject Handled : 
-		<?php foreach($faculty->subjects as $subject): ?>
+	<div class="de-div">
+		<h5>Subject Handled :</h5> 
+		<p>
+			<?php foreach($faculty->subjects as $subject): ?>
 
-		<?= $subject->name; ?>,
-
-	<?php endforeach; ?>
-      </label>
-
-       <br>
-  <!--  <label for="subject">Course Handled :
-			<?php foreach($faculty->courses as $course): ?>
-
-				<?=$course->name; ?>,
+				<?= $subject->name; ?>,
 
 			<?php endforeach; ?>
-		 </label>
-    <br>
-    -->
-    <label for="subject">Section Handled :
+		</p>		
+	</div>
 
+	<div class="de-div">
+		<h5>Section Handled :</h5> 
+		<p>
 			<?php foreach($faculty->sections as $section): ?>
 
 				<?= $section->name; ?>,
 
 			<?php endforeach; ?>
-		</label>
-        <br>
-    <label for="subject">Faculty Itself Evaluation Result : </label>
+		</p>		
+	</div>
 
+	<div class="de-div">
+		<h5>Faculty Itself Evaluation Result :</h5>
 		<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
-						  View Results
-						</a>
-
-						<!-- Modal -->
+		View Results
+		</a>
+		<!-- Modal -->
 						<div class="modal fade bs-example-modalb-lg" id="myModal<?php echo $faculty->id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
 						  <div class="modal-dialog modal-lg" style="width:1300px;">
@@ -210,11 +189,13 @@
 
 						    </div><!--ends col-md-6-->
 						    </div>
-						  </div>
-						</div>
+						 
+	</div>
 
-        <br>
-        <?php 
+	
+</div><div class="de-div">
+		 
+	<?php 
 
         	$overAllEvaluator = $faculty->totalEvaluator ;
 
@@ -226,16 +207,60 @@
 
         ?>
      <?php if(($profTotal+$profTotalStudent+$profTotalAcad) > 0 && ($instructTotal + $instructTotalStudent+$instructTotalAcad)> 0): ?>
-    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent + $instructTotalAcad)/15/$overAllEvaluator,2) ?> </label>
+    <p>Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent + $instructTotalAcad)/15/$overAllEvaluator,2) ?> </p>
     	<?php else: ?>
-
-    <label for="subject">Overall Result : </label>
+	
+	
+    <h5>Overall Result : </h5>
     <?php endif; ?>
 
-    <br>
-    <div class="pr-inp">
+
+	
+	</div>
+
+
+<div class="pr-inp">
     <a target="_blank" href="<?php echo base_url() . "faculty/printd/$faculty->id" ?>" >Print All Details</a>
 </div>
+
+<div class="row">
+	<div class="col-md-4">
+		
+	
+	</div><!--ends col-md-6-->
+
+	<div class=" prf-st-n">
+
+		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+		  <li style="width: 49%;" class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
+		  <li class=""><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
+		</ul>
+
+<div id="myTabContent" class="tab-content">
+
+
+<!--Profile content-->
+
+  <div class="tab-pane fade active in prof-cs" id="Profile">
+
+    
+
+<div class="rating-guide">
+		<div class="hd-rt">
+			<p>Rating Guide:</p>
+		</div>
+
+		<div class="rt-bdy">
+			<p>(6) Always/Almost Always = 91% to 100% of the time</p>
+			<p>(5) Most of the Time = 76% to 90% of the time</p>
+			<p>(4) Often = 51% to 75% of the time</p>
+			<p>(3) Sometimes = 26% to 50% of the time</p>
+			<p>(2) Seldome = 11% to 25% of the time</p>
+			<p>(1) Never/Almost Never = 0% to 10% of the time</p>
+		</div>
+</div> <!--ends rating-guide-->
+
+
  </div> <!--ends tab-pane-->
 
 

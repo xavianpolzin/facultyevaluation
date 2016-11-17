@@ -163,7 +163,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 	$this->pdf->load_view('faculty/print.php',array('faculty'=>$faculty));
 //	$this->load->view('faculty/print.php',array('faculty'=>$faculty));
 	$this->pdf->render();
-$this->pdf->stream($faculty->lastName. '-'. $faculty->firstName .".pdf");	
+	$this->pdf->stream($faculty->lastName. '-'. $faculty->firstName .".pdf");	
 
 	}
 

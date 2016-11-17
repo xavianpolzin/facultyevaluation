@@ -35,8 +35,9 @@ class Evaluation extends CI_Controller{
 					'facultyId' =>$facultyId,
 					'date' => date("Y-m-d"),
 					'type' => 'Academic',
-					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
-					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
+					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1),
+					'admin_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
+					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
 
 
 				);
@@ -105,8 +106,8 @@ class Evaluation extends CI_Controller{
 
 					$this->session->set_userdata('evaluation',$evaluation);
 
-					if(sizeof($answers) != 15){
-						for ($i=0; $i < 15; $i++) {
+					if(sizeof($answers) != 9){
+						for ($i=0; $i < 9; $i++) {
 							if(!isset($answers[$i])){
 								$answers[$i] = -1;
 							}
@@ -114,32 +115,47 @@ class Evaluation extends CI_Controller{
 
 						$evaluation['prof_responsibilities'] = $answers;
 						$this->session->set_userdata('evaluation',$evaluation);
-					 	 if($evaluation['studentCode']!=''){
-					  			if($evaluation['type']=='Student'){
-									redirect("/evaluation/start?type=student&uid=$uid&step=2");
-								}else{
-									redirect("/evaluation/start?type=academic&uid=$uid&step=2");
-								}
+					
+
+					if($evaluation['studentCode']!=''){
+					  	if($evaluation['type']=='Student'){
+							redirect("/evaluation/start?type=student&uid=$uid&step=2");
+						}else{
+							redirect("/evaluation/start?type=academic&uid=$uid&step=2");
+						}
 						}else{
 							redirect("/evaluation/start?type=faculty&uid=$uid&step=2");
 						}
 					}
+
+
 					if($evaluation['studentCode']!=''){
-						if($evaluation['type']=='Student'){
+					  	if($evaluation['type']=='Student'){
 							redirect("/evaluation/start?type=student&uid=$uid&step=3");
 						}else{
 							redirect("/evaluation/start?type=academic&uid=$uid&step=3");
 						}
-					}else{
+						}else{
+							redirect("/evaluation/start?type=faculty&uid=$uid&step=3");
+						}
+					
 
-						redirect("/evaluation/start?type=faculty&uid=$uid&step=3");
-					}
+					if($evaluation['studentCode']!=''){
+						if($evaluation['type']=='Student'){
+							redirect("/evaluation/start?type=student&uid=$uid&step=4");
+						}else{
+							redirect("/evaluation/start?type=academic&uid=$uid&step=4");
+						}
+						}else{
+							redirect("/evaluation/start?type=faculty&uid=$uid&step=4");
+						}
+					
 					break;
 
 
 				case 3:
 
-					$instrucAnswer = $this->input->post('answers');
+					$adminiAnswers = $this->input->post('answers');
 					$comment = $this->input->post('comment');
 					
 					$profAnswer = $evaluation['prof_responsibilities'];
@@ -147,7 +163,7 @@ class Evaluation extends CI_Controller{
 					$isStudent = $evaluation['studentCode'] !='' ? true: false;
 
 
-					if(sizeof($instrucAnswer)!=15){
+					if(sizeof($adminiAnswers)!=10){
 
 						if($evaluation['studentCode']!=''){
 							if($evaluation['type']=='Student'){
@@ -175,6 +191,124 @@ class Evaluation extends CI_Controller{
 						'date' => $evaluation['date'],
 						'evaluatedBy' => $evaluation['studentCode'],
 						'instrucScore' => array_sum($instrucAnswer),
+						'adminiScore' => array_sum($adminiAnswers),
+						'profScore' => array_sum($profAnswer),
+						'comment' => $comment
+						);
+
+						if($evaluation['studentCode']==''){
+							$data['type'] = 'Faculty';
+						}
+
+					$insertedId = $this->EvaluationModel->Save($data);
+
+					if($insertedId > 0){
+
+
+						$profNumber = 1;
+
+
+						foreach($profAnswer as $prof){
+
+							$this->EvaluationModel->SaveProfAnswer($insertedId,$prof, $profNumber);
+
+
+							$profNumber++;
+
+						}
+
+
+						$adminiNumber = 1;
+
+						foreach($adminiAnswers as $administ){
+
+
+							$this->EvaluationModel->SaveAdminiAnswer($insertedId,$administ, $adminiNumber);
+
+							$adminiNumber++;
+
+						}
+
+						$instructNumber = 1;
+
+						foreach($instrucAnswer as $instruct){
+
+
+							$this->EvaluationModel->SaveInstructAnswer($insertedId,$instruct, $instructNumber);
+
+							$instructNumber++;
+
+						}
+
+
+						$this->load->Model('CodeModel');
+
+
+						$this->CodeModel->SetInActive($evaluation['studentCode']);
+					}
+
+
+
+					$type = $evaluation['type'];
+
+
+					$this->session->unset_userdata('evaluation');
+
+
+					if($type!='Academic'){
+
+						$this->session->sess_destroy();
+					}
+
+					if($type=='Student'){
+					redirect("/evaluation/success?type=student&uid=$uid");
+				}elseif($type=='Academic'){
+					redirect("/evaluation/success?type=academic&uid=$uid");
+				}else{
+
+					redirect("/evaluation/success?type=faculty&uid=$uid");
+				}
+				break;
+
+					case 4:
+
+					$instrucAnswer = $this->input->post('answers');
+					$comment = $this->input->post('comment');
+					$adminiAnswers = $evaluation['admin_responsibilities'];
+					$profAnswer = $evaluation['prof_responsibilities'];
+
+					$isStudent = $evaluation['studentCode'] !='' ? true: false;
+
+
+					if(sizeof($instrucAnswer)!=28){
+
+						if($evaluation['studentCode']!=''){
+							if($evaluation['type']=='Student'){
+								redirect("/evaluation/start?type=student&uid=$uid&step=4");
+							}else{
+								redirect("/evaluation/start?type=academic&uid=$uid&step=4");
+							}
+						}else{
+							redirect("/evaluation/start?type=faculty&uid=$uid&step=4");
+						}
+
+					}
+
+
+					//$evaluation['instruc_responsibilities'] = $answers;
+
+					$this->load->Model('EvaluationModel');
+
+
+
+
+					$data = array(
+						'facultyId' => $evaluation['facultyId'],
+						'type'  => $evaluation['type'],
+						'date' => $evaluation['date'],
+						'evaluatedBy' => $evaluation['studentCode'],
+						'instrucScore' => array_sum($instrucAnswer),
+						'adminiScore' => array_sum($adminiAnswers),
 						'profScore' => array_sum($profAnswer),
 						'comment' => $comment
 						);
@@ -319,6 +453,12 @@ class Evaluation extends CI_Controller{
 					$this->ShowStepThree($evaluation);
 
 					break;
+
+				case 4:
+
+					$this->ShowStepFour($evaluation);
+
+					break;
 				default:
 
 					break;
@@ -373,7 +513,7 @@ class Evaluation extends CI_Controller{
 	function ShowStepTwo($data){
 
 		//var_dump($data);
-			$type = $data['type'];
+		$type = $data['type'];
 		$this->output->set_template('default');
 		if($type=='Student'){
 		$this->load->view("student_form.html",$data);
@@ -386,6 +526,21 @@ class Evaluation extends CI_Controller{
 	}
 
 	function ShowStepThree($data){
+
+		//var_dump($data);
+		$type = $data['type'];
+		$this->output->set_template('default');
+		if($type=='Student'){
+		$this->load->view("student_form_1.html",$data);
+	}elseif($type=='Academic'){
+		$this->load->view("academic_head_form1.html",$data);
+	}else{
+		$this->load->view("faculty_form_1.html",$data);
+	}
+
+	}
+
+	function ShowStepFour($data){
 
 
 		$this->output->set_template('default');

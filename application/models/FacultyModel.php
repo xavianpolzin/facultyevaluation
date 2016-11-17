@@ -9,7 +9,9 @@ class FacultyModel extends CI_Model{
 	var $lastName = '';
 	var $profScore = 0;
 	var $instrucScore = 0;
+	var $adminiScore = 0;
 	var $profAnswers = array();
+	var $adminiAnswers = array();
 	var $instructAnswers = array();
 	var $comments = array();
 	var $totalEvaluator = 0;

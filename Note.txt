@@ -1,0 +1,11 @@
+1. Admin account should be hidden from the academic and faculty accounts, shows only if admin would login.
+2. Login as Academic Head nav css not connected.
+3. After ma answeran tanan questions naa pai isa ka page review sa ila answer ayha mo submit example below.
+
+1. Supports and implements legitimate policies and directives emanating from school administrators.
+answer : Always
+
+2. Observes the proper channels and procedures in communicating concerns with administrators.
+answer : Seldom
+
+
