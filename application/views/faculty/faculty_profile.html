@@ -1,3 +1,145 @@
+<page size="A4">
+		<div class="date-iss">
+			<p>Date issued : November 20, 2016</p>
+		</div>
+
+		<div class="prnt-title">
+			<h1>STI-College Dipolog <br> <span>Faculty Evaluation</span></h1>
+		</div>
+		
+
+		<div class="prof-info">
+			<div class="title-hd-prof">
+				<h1>Faculty Details</h1>				
+			</div>
+			
+			<div class="details-hd-prof">
+				<p>Name: <?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?> </p>
+			</div>
+
+			<div class="details-hd-prof details-even-div">
+				<p>Semester: <?php foreach($faculty->semester as $semester): ?>
+
+				<?=$semester->name; ?>st Semester,
+
+			<?php endforeach; ?></p>
+			</div>
+
+			<div class="details-hd-prof">
+				<p>Subject Handled:
+				<?php foreach($faculty->subjects as $subject): ?>
+
+				<?= $subject->name; ?>,
+
+			<?php endforeach; ?> </p>
+			</div>
+
+
+			<div class="details-hd-prof details-even-div">
+				<p>Section: 
+				<?php foreach($faculty->sections as $section): ?>
+
+					<?= $section->name; ?>,
+
+				<?php endforeach; ?>
+				</p>
+			</div>
+			
+			<div class="rating-guide-hl">
+			<div class="hd-rt">
+				<h1>Rating Guide:</h1>
+			</div>
+
+			<div class="rt-bdy">
+				<div class="rt-bdy-left">
+					<p>(6) Always/Almost Always = 91% to 100% of the time</p>
+					<p>(5) Most of the Time = 76% to 90% of the time</p>
+					<p>(4) Often = 51% to 75% of the time</p>
+				</div>
+
+				<div class="rt-bdy-right">
+					<p>(3) Sometimes = 26% to 50% of the time</p>
+					<p>(2) Seldome = 11% to 25% of the time</p>
+					<p>(1) Never/Almost Never = 0% to 10% of the time</p>
+				</div>
+			</div>
+
+			<div class="clearFixed"></div>
+		</div>
+
+			<div class="title-hd-prof">
+				<h1>Faculty Itself Evaluation Result</h1>				
+			</div>
+			
+			<div class="ovr-rslt-hl">
+				<div class="ovr-rslt-div">
+					<p>Proffesional Responsibilities</p>
+					<span>4.22</span>
+					
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p>Most of the Time with the percentage of 90%</p>
+					</div>
+
+				</div>
+
+				<div class="ovr-rslt-div">
+					<p>Administrative Responsibilities</p>
+					<span>4.22</span>
+
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p>Most of the Time with the percentage of 90%</p>
+					</div>
+				</div>
+
+				<div class="ovr-rslt-div dsbl-br">
+					<p>Instructional Responsibilities</p>
+					<span>4.22</span>
+
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p>Most of the Time with the percentage of 90%</p>
+					</div>
+				</div>
+			
+			<div class="clearFixed"></div>
+			</div>
+
+			<div class="ovr-rslt-vw">
+				<a data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">View All Result</a>
+			</div>
+
+			<div class="ovll-rslt-div">
+				<div class="ovll-rslt-con">
+					<h1>Overall Result</h1>
+				</div>
+				<div class="ovr-rslt-divi">
+					<p>Professional Responsibilites : 4.22 with the percentage of 80% = Most of The Time</p>
+				</div>
+
+				<div class="ovr-rslt-divi">
+					<p>Administrative Responsibilites :  4.22 with the percentage of 80% = Most of The Time</p>
+				</div>
+
+				<div class="ovr-rslt-divi">
+					<p>Instructional Responsibilites :  4.22 with the percentage of 80% = Most of The Time</p>
+				</div>
+
+			</div>
+
+			<div class="print-btn-ovrl">
+				<a target="_blank" href="<?php echo base_url() . "faculty/printd/$faculty->id" ?>" >Print All Details</a>
+			</div>
+		</div>
+
+
+		
+</page>
+
+
+
+
 
 <div class="fc-pr-con">
 
