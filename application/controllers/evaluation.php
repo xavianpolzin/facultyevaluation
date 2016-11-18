@@ -155,7 +155,7 @@ class Evaluation extends CI_Controller{
 
 				case 3:
 
-					$adminiAnswers = $this->input->post('answers');
+					$adminiAnswer = $this->input->post('answers');
 					$comment = $this->input->post('comment');
 					
 					$profAnswer = $evaluation['prof_responsibilities'];
@@ -163,7 +163,7 @@ class Evaluation extends CI_Controller{
 					$isStudent = $evaluation['studentCode'] !='' ? true: false;
 
 
-					if(sizeof($adminiAnswers)!=10){
+					if(sizeof($adminiAnswer)!=10){
 
 						if($evaluation['studentCode']!=''){
 							if($evaluation['type']=='Student'){
@@ -191,7 +191,7 @@ class Evaluation extends CI_Controller{
 						'date' => $evaluation['date'],
 						'evaluatedBy' => $evaluation['studentCode'],
 						'instrucScore' => array_sum($instrucAnswer),
-						'adminiScore' => array_sum($adminiAnswers),
+						'adminiScore' => array_sum($adminiAnswer),
 						'profScore' => array_sum($profAnswer),
 						'comment' => $comment
 						);
@@ -220,7 +220,7 @@ class Evaluation extends CI_Controller{
 
 						$adminiNumber = 1;
 
-						foreach($adminiAnswers as $administ){
+						foreach($adminiAnswer as $administ){
 
 
 							$this->EvaluationModel->SaveAdminiAnswer($insertedId,$administ, $adminiNumber);
@@ -274,7 +274,7 @@ class Evaluation extends CI_Controller{
 
 					$instrucAnswer = $this->input->post('answers');
 					$comment = $this->input->post('comment');
-					$adminiAnswers = $evaluation['admin_responsibilities'];
+					$adminiAnswer = $evaluation['admin_responsibilities'];
 					$profAnswer = $evaluation['prof_responsibilities'];
 
 					$isStudent = $evaluation['studentCode'] !='' ? true: false;
@@ -308,7 +308,7 @@ class Evaluation extends CI_Controller{
 						'date' => $evaluation['date'],
 						'evaluatedBy' => $evaluation['studentCode'],
 						'instrucScore' => array_sum($instrucAnswer),
-						'adminiScore' => array_sum($adminiAnswers),
+						'adminiScore' => array_sum($adminiAnswer),
 						'profScore' => array_sum($profAnswer),
 						'comment' => $comment
 						);

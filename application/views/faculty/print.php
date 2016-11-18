@@ -93,7 +93,64 @@
 											<th><?php echo $profTotal; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/15 = <?php echo $profTotal/15; ?></div>
+								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/9 = <?php echo $profTotal/9; ?></div>
+
+								</div> <!--ends table-responsive-->
+
+
+						      </div>
+
+						    </div><!--ends col-md-6-->
+
+						    <div class="col-md-6">
+
+
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>ADMINISTRATIVE RESPONSIBILITIES - (Faculty)</h3>
+
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $adminTotal = 0; ?>
+
+										<?php foreach($faculty->adminiAnswers as $adminiAnswer): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+
+											<td style="color:#333"><?php echo $adminiAnswer[0]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswer[1]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswer[2]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswer[3]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswer[4]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswer[5]; ?></td>
+											<?php $adminTotal+= array_sum($adminiAnswer); ?>
+											<td style="color:#333"><?php echo array_sum($adminiAnswer); ?></td>
+											<?php $counter++; ?>
+
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $adminTotal; ?></th>
+										</tr>
+									  </table>
+								<div>Total/Items <br> Overall Rate: <?php echo $adminTotal ?>/10 = <?php echo $adminTotal/10; ?></div>
 
 								</div> <!--ends table-responsive-->
 
@@ -158,7 +215,7 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/15 =<?php echo $instructTotal/15; ?></div>
+							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/28 =<?php echo $instructTotal/28; ?></div>
 								</div> <!--ends table-responsive-->
 
 
@@ -222,7 +279,65 @@
 											<th><?php echo $profTotalStudent; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotalStudent ?>/15/<?php echo $faculty->totalEvaluator ?> = <?php echo $profTotalStudent/15/$faculty->totalEvaluator; ?></div>
+								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotalStudent ?>/9/<?php echo $faculty->totalEvaluator ?> = <?php echo $profTotalStudent/9/$faculty->totalEvaluator; ?></div>
+
+								</div> <!--ends table-responsive-->
+
+
+						      </div>
+
+						    </div><!--ends col-md-6-->
+
+
+						     <div class="col-md-6">
+
+
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>ADMINISTRATIVE RESPONSIBILITIES - (Student)</h3>
+
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $adminTotalStudent =0; ?>
+
+										<?php foreach($faculty->adminiAnswersStudent as $adminiAnswerStudent): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+
+											<td style="color:#333"><?php echo $adminiAnswerStudent[0]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerStudent[1]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerStudent[2]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerStudent[3]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerStudent[4]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerStudent[5]; ?></td>
+											<?php $adminTotalStudent += array_sum($adminiAnswerStudent); ?>
+											<td style="color:#333"><?php echo array_sum($adminiAnswerStudent); ?></td>
+											<?php $counter++; ?>
+
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $adminTotalStudent; ?></th>
+										</tr>
+									  </table>
+								<div>Total/Items/Students <br> Overall Rate: <?php echo $adminTotalStudent ?>/10/<?php echo $faculty->totalEvaluator ?> = <?php echo $adminTotalStudent/10/$faculty->totalEvaluator; ?></div>
 
 								</div> <!--ends table-responsive-->
 
@@ -288,7 +403,7 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotalStudent ?>/15/<?php echo $faculty->totalEvaluator ?> =<?php echo $instructTotalStudent/15/$faculty->totalEvaluator; ?></div>
+							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotalStudent ?>/28/<?php echo $faculty->totalEvaluator ?> =<?php echo $instructTotalStudent/28/$faculty->totalEvaluator; ?></div>
 								</div> <!--ends table-responsive-->
 
 
@@ -350,7 +465,64 @@
 											<th><?php echo $profTotalAcad; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $profTotalAcad ?>/15/<?php echo $faculty->totalEvaluatorAcad ?> = <?php echo $profTotalAcad/15/$faculty->totalEvaluatorAcad; ?></div>
+								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $profTotalAcad ?>/9/<?php echo $faculty->totalEvaluatorAcad ?> = <?php echo $profTotalAcad/9/$faculty->totalEvaluatorAcad; ?></div>
+
+								</div> <!--ends table-responsive-->
+
+
+						      </div>
+
+						    </div><!--ends col-md-6-->
+
+						    <div class="col-md-6">
+
+
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3>ADMINISTRATIVE RESPONSIBILITIES - (Academic Head)</h3>
+
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $adminTotalAcad =0; ?>
+
+										<?php foreach($faculty->adminiAnswersAcad as $adminiAnswerAcad): ?>
+										<tr>
+											<td><?php echo $counter; ?></td>
+
+											<td style="color:#333"><?php echo $adminiAnswerAcad[0]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerAcad[1]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerAcad[2]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerAcad[3]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerAcad[4]; ?></td>
+											<td style="color:#333"><?php echo $adminiAnswerAcad[5]; ?></td>
+											<?php $adminTotalAcad += array_sum($adminiAnswerAcad); ?>
+											<td style="color:#333"><?php echo array_sum($adminiAnswerAcad); ?></td>
+											<?php $counter++; ?>
+
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $adminTotalAcad; ?></th>
+										</tr>
+									  </table>
+								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $adminTotalAcad ?>/10/<?php echo $faculty->totalEvaluatorAcad ?> = <?php echo $adminTotalAcad/10/$faculty->totalEvaluatorAcad; ?></div>
 
 								</div> <!--ends table-responsive-->
 
@@ -416,7 +588,7 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $instructTotalAcad ?>/15/<?php echo $faculty->totalEvaluatorAcad ?> =<?php echo $instructTotalAcad/15/$faculty->totalEvaluatorAcad; ?></div>
+							<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $instructTotalAcad ?>/28/<?php echo $faculty->totalEvaluatorAcad ?> = <?php echo $instructTotalAcad/28/$faculty->totalEvaluatorAcad; ?></div>
 								</div> <!--ends table-responsive-->
 
 
@@ -434,15 +606,15 @@
 
         	$overAllEvaluator = $faculty->totalEvaluator ;
 
-        	if($profTotal > 0 && $instructTotal > 0){
+        	if($profTotal > 0 && $adminTotal > 0 && $instructTotal > 0){
         		$overAllEvaluator +=1;	
         	}
 
         	$overAllEvaluator += $faculty->totalEvaluatorAcad;
 
         ?>
-        <?php if(($profTotal+$profTotalStudent+$profTotalAcad) > 0 && ($instructTotal + $instructTotalStudent+$instructTotalAcad)> 0): ?>
-    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/15/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent+$instructTotalAcad)/15/$overAllEvaluator,2) ?> </label>
+        <?php if(($profTotal+$profTotalStudent+$profTotalAcad) > 0 && ($adminTotal+$adminTotalStudent+$adminTotalAcad) > 0 && ($instructTotal + $instructTotalStudent+$instructTotalAcad)> 0): ?>
+    <label for="subject">Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/9/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/15/$overAllEvaluator,2); ?> | ADMINISTRATIVE RESPONSIBILITIES (<?php echo $adminTotal+$adminTotalStudent+$adminTotalAcad; ?>/10/<?php echo $overAllEvaluator; ?>) = <?php echo round(($adminTotal + $adminTotalStudent+$adminTotalAcad)/15/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/15/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent+$instructTotalAcad)/28/$overAllEvaluator,2) ?> </label>
     	<?php else: ?>
 
     <label for="subject">Overall Result : </label>

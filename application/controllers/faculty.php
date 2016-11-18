@@ -251,9 +251,9 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 					'facultyId' =>$userLoggedIn['facultyId'],
 					'date' => date("Y-m-d"),
 					'type' => 'Faculty',
-					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
-					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
-
+					'prof_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1),
+					'admin_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1),
+					'instruc_responsibilities' =>array(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
 
 				);
 
