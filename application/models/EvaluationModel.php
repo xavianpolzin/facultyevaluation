@@ -29,12 +29,12 @@ class EvaluationModel extends CI_Model{
 
 			$data = array('evaluation_id'=>$id);
 
-			if($answer == 0) $data['choice_1'] = 0;	
-			if($answer == 1) $data['choice_2'] = 1;	
-			if($answer == 2) $data['choice_3'] = 2;	
-			if($answer == 3) $data['choice_4'] = 3;
-			if($answer == 4) $data['choice_5'] = 4;
-			if($answer == 5) $data['choice_6'] = 5;		
+			if($answer == 1) $data['choice_1'] = 1;	
+			if($answer == 2) $data['choice_2'] = 2;	
+			if($answer == 3) $data['choice_3'] = 3;	
+			if($answer == 4) $data['choice_4'] = 4;
+			if($answer == 5) $data['choice_5'] = 5;
+			if($answer == 6) $data['choice_6'] = 6;		
 
 
 			$data['num'] = $number;
@@ -48,12 +48,12 @@ class EvaluationModel extends CI_Model{
 
 			$data = array('evaluation_id'=>$id);
 
-			if($answer == 0) $data['choice_1'] = 0;	
-			if($answer == 1) $data['choice_2'] = 1;	
-			if($answer == 2) $data['choice_3'] = 2;	
-			if($answer == 3) $data['choice_4'] = 3;
-			if($answer == 4) $data['choice_5'] = 4;
-			if($answer == 5) $data['choice_6'] = 5;		
+			if($answer == 1) $data['choice_1'] = 1;	
+			if($answer == 2) $data['choice_2'] = 2;	
+			if($answer == 3) $data['choice_3'] = 3;	
+			if($answer == 4) $data['choice_4'] = 4;
+			if($answer == 5) $data['choice_5'] = 5;
+			if($answer == 6) $data['choice_6'] = 6;		
 
 
 			$data['num'] = $number;
@@ -68,12 +68,12 @@ class EvaluationModel extends CI_Model{
 			$data = array('evaluation_id'=>$id);
 
 
-			if($answer == 0) $data['choice_1'] = 0;	
-			if($answer == 1) $data['choice_2'] = 1;	
-			if($answer == 2) $data['choice_3'] = 2;	
-			if($answer == 3) $data['choice_4'] = 3;
-			if($answer == 4) $data['choice_5'] = 4;
-			if($answer == 5) $data['choice_6'] = 5;	
+			if($answer == 1) $data['choice_1'] = 1;	
+			if($answer == 2) $data['choice_2'] = 2;	
+			if($answer == 3) $data['choice_3'] = 3;	
+			if($answer == 4) $data['choice_4'] = 4;
+			if($answer == 5) $data['choice_5'] = 5;
+			if($answer == 6) $data['choice_6'] = 6;	
 
 			$data['num'] = $number;	
 

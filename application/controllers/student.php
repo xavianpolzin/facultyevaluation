@@ -65,7 +65,7 @@ class Student extends CI_Controller{
 
 				$this->session->set_userdata('evaluation',$data);
 
-				redirect("/evaluation/start?type=student&uid=$uid&step=1");
+				redirect("/evaluation/start?type=Student&uid=$uid&step=1");
 
 
 			}else{

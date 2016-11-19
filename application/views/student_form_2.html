@@ -1,8 +1,47 @@
 <center><h1 class="tit-pr">INSTRUCTIONAL RESPONSIBILITIES</h1></center>
+<?php 
+  function IntResultToStringResult($number){
 
+    $str = '';
+
+    switch($number){
+
+      case 6:
+        $str = 'Strongly Agree';
+        break;
+
+      case 5:
+        $str = 'Agree';
+        break;
+
+      case 4:
+        $str = 'Neutral';
+        break;
+
+      case 3:
+        $str = 'Disagree';
+        break;
+
+      case 2:
+        $str = 'Strongly Disagree';
+        break;
+
+      case 1: 
+        $str = 'Never';
+        break;
+
+      default:
+        break;
+    }
+
+    return $str;
+  }
+
+
+?>
 
 <form action="<?php echo base_url() ?>evaluation/process" method="post" id="quiz">
-  <input type="hidden" name="currentStep" value="3" />
+  <input type="hidden" name="currentStep" value="4" />
   <input type="hidden" name="uid" value="<?php echo $uid ?>" >
           <div class="form_holder_f">
                       <ol>
@@ -12,31 +51,31 @@
 
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-A" value="0" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 1) {echo "checked";} ?> name="answers[0]" id="question-1-answers-A" value="1" />
                                   <label class="qst-lbl" for="question-1-answers-A">Never</label>
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-B" value="1" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 2) {echo "checked";} ?> name="answers[0]" id="question-1-answers-B" value="2" />
                                   <label class="qst-lbl" for="question-1-answers-B">Strongly Disagree</label>
 
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-C" value="2" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 3) {echo "checked";} ?> name="answers[0]" id="question-1-answers-C" value="3" />
                                   <label class="qst-lbl" for="question-1-answers-C">Disagree</label>
 
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-D" value="3" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 4) {echo "checked";} ?> name="answers[0]" id="question-1-answers-D" value="4" />
                                   <label class="qst-lbl" for="question-1-answers-D">Neutral</label>
 
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-E" value="4" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 5) {echo "checked";} ?> name="answers[0]" id="question-1-answers-E" value="5" />
                                   <label class="qst-lbl" for="question-1-answers-E">Agree</label>
 
 
 
-                                  <input type="radio" required name="answers[0]" id="question-1-answers-F" value="5" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[0] == 6) {echo "checked";} ?> name="answers[0]" id="question-1-answers-F" value="6" />
                                   <label class="qst-lbl" for="question-1-answers-F">Strongly Agree</label>
 
 
@@ -47,32 +86,32 @@
                               <h3>Shows effective non-verbal communication like facial expressions and gestures.</h3>
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-A" value="0" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 1) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-A" value="1" />
                                   <label class="qst-lbl" for="question-2-answers-A">Never</label>
 
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-B" value="1" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 2) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-B" value="2" />
                                   <label class="qst-lbl" for="question-2-answers-B">Strongly Disagree</label>
 
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-C" value="2" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 3) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-C" value="3" />
                                   <label class="qst-lbl" for="question-2-answers-C">Disagree</label>
 
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-D" value="3" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 4) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-D" value="4" />
                                   <label class="qst-lbl" for="question-2-answers-D">Neutral</label>
 
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-E" value="4" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 5) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-E" value="5" />
                                   <label class="qst-lbl" for="question-2-answers-E">Agree</label>
 
 
 
-                                  <input type="radio" required name="answers[1]" id="question-2-answers-F" value="5" />
+                                  <input type="radio" required <?php if($instruc_responsibilities[1] == 6) {echo "checked";} ?>  name="answers[1]" id="question-2-answers-F" value="6" />
                                   <label class="qst-lbl" for="question-2-answers-F">Strongly Agree</label>
 
                           </li>
@@ -81,33 +120,13 @@
 
                               <h3>Uses appropreate words in class.</h3>
 
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-3-answers-A">Never</label>
 
 
+                                  <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[2] == $i) {echo "checked";} ?>   name="answers[2]" id="question-3-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-3-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-3-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-3-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-3-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-3-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[2]" id="question-3-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-3-answers-F">Strongly Agree</label>
 
 
                           </li>
@@ -117,33 +136,11 @@
                               <h3>Demonstrates a deep and complete knowledge of theory and content in subjects of specialization appropriate to the year level.
   </h3>
 
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-4-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-4-answers-B">Strongly Disagree!</label>
-
-
-
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-4-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-4-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-4-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[3]" id="question-4-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-4-answers-F">Strongly Agree</label>
+                                    <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[3] == $i) {echo "checked";} ?>   name="answers[3]" id="question-4-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-4-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
+                                 
 
 
                           </li>
@@ -152,35 +149,12 @@
 
                               <h3>Keeps abreast with new developments in his/her area of expertise. </h3>
 
+                                     <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[4] == $i) {echo "checked";} ?>   name="answers[4]" id="question-5-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-5-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-5-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-5-answers-B">Strongly Disagree!</label>
-
-
-
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-5-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-5-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-5-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[4]" id="question-5-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-5-answers-F">Strongly Agree</label>
-
+                                 
 
                           </li>
 
@@ -188,36 +162,13 @@
 
                               <h3>Recognizes the relationship between his/her subject matter to other areas of descipline.</h3>
 
+                                     <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[5] == $i) {echo "checked";} ?>   name="answers[5]" id="question-6-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-6-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-6-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-6-answers-B">Strongly Disagree!</label>
-
-
-
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-6-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-6-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-6-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[5]" id="question-6-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-6-answers-F">Strongly Agree</label>
-
+                                 
 
                           </li>
 
@@ -225,35 +176,11 @@
 
                               <h3>Respons reasonably to students' descipline problems.</h3>
 
+                                      <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[6] == $i) {echo "checked";} ?>   name="answers[6]" id="question-7-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-7-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-7-answers-A">Never</label>
-
-
-
-
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-7-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-7-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-7-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-7-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[6]" id="question-7-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-7-answers-F">Strongly Agree</label>
 
                           </li>
 
@@ -261,33 +188,11 @@
 
                               <h3>Sets appropriate instructions and expectations for students clearly, and implements such instructions firmly.</h3>
 
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-8-answers-A">Never</label>
+                                     <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[7] == $i) {echo "checked";} ?>   name="answers[7]" id="question-8-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-8-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-8-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-8-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-8-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-8-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[7]" id="question-8-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-8-answers-F">Strongly Agree</label>
 
                           </li>
 
@@ -295,66 +200,24 @@
 
                               <h3>Provides a classroom set-up conductive for learning.</h3>
 
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-9-answers-A">Never</label>
+
+                                    <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[8] == $i) {echo "checked";} ?>   name="answers[8]" id="question-9-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-9-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
-
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-9-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-9-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-9-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-9-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[8]" id="question-9-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-9-answers-F">Strongly Agree</label>
                           </li>
 
                            <li>
 
                               <h3>Ensures the organization and availability of materials that will be used in class.</h3>
 
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-10-answers-A">Never</label>
+                                    <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[9] == $i) {echo "checked";} ?>   name="answers[9]" id="question-10-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-10-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-10-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-10-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-10-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-10-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[9]" id="question-10-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-10-answers-F">Strongly Agree</label>
 
                           </li>
 
@@ -362,34 +225,13 @@
 
                               <h3>Monitors students' punctuality and attendance.</h3>
 
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-11-answers-A">Never</label>
 
+                                  <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[10] == $i) {echo "checked";} ?>   name="answers[10]" id="question-11-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-11-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-11-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-11-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-11-answers-D">Neutral</label>
-
-
-
-
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-11-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[10]" id="question-11-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-11-answers-F">Strongly Agree</label>
+                               
 
                           </li>
 
@@ -397,33 +239,12 @@
 
                               <h3>Maintains discipline inside the classroom. </h3>
 
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-12-answers-A">Never</label>
+                               <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[11] == $i) {echo "checked";} ?>   name="answers[11]" id="question-12-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-12-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-12-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-12-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-12-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-12-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[11]" id="question-12-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-12-answers-F">Strongly Agree</label>
+                                
 
                           </li>
 
@@ -433,31 +254,11 @@
 
                               <h3>Productively utilizes the time allotted for class.</h3>
 
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-13-answers-A">Never</label>
 
-
-
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-13-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-13-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-13-answers-D">Neutral</label>
-
-
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-13-answers-E">Agree</label>
-
-
-                                  <input type="radio" required name="answers[12]" id="question-13-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-13-answers-F">Strongly Agree</label>
+                               <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[12] == $i) {echo "checked";} ?>   name="answers[12]" id="question-13-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-13-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
                           </li>
@@ -466,35 +267,13 @@
 
                               <h3>Comes to class prepared and ready to teach.</h3>
 
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-14-answers-A">Never </label>
 
+                                <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[13] == $i) {echo "checked";} ?>   name="answers[13]" id="question-14-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-14-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-14-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-14-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-14-answers-D">Neutral</label>
-
-
-
-
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-14-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[13]" id="question-14-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-14-answers-F">Strongly Agree</label>
-
+                                
 
                           </li>
 
@@ -502,34 +281,12 @@
 
                               <h3>Implements instructional goals suitable for the students.</h3>
 
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-15-answers-A">Never</label>
+                               <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[14] == $i) {echo "checked";} ?>   name="answers[14]" id="question-15-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-15-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-15-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-15-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-15-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-15-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[14]" id="question-15-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-15-answers-F">Strongly Agree</label>
-
+                                 
 
                           </li>
 
@@ -537,139 +294,45 @@
 
                               <h3>Establishes a connection between the topics being discussed and the students' improvement, future profession, and life application.</h3>
 
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-16-answers-A">Never</label>
+                                   <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[15] == $i) {echo "checked";} ?>   name="answers[15]" id="question-16-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-16-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-16-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-16-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-16-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-16-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[15]" id="question-16-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-16-answers-F">Strongly Agree</label>
-
-
+                                 
                           </li>
 
                           <li>
 
                               <h3>Uses and promotes technology-based resources in classrooms.</h3>
 
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-17-answers-A">Never</label>
+                                <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[16] == $i) {echo "checked";} ?>   name="answers[16]" id="question-17-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-17-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-17-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-17-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-17-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-17-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[16]" id="question-17-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-17-answers-F">Strongly Agree</label>
-
-
+                                 
                           </li>
 
                           <li>
 
                               <h3>Makes himself/herself available for questions and clarifications about the course.</h3>
 
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-18-answers-A">Never</label>
+                              <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[17] == $i) {echo "checked";} ?>   name="answers[17]" id="question-18-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-18-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
-
-
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-18-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-18-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-18-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-18-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[17]" id="question-18-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-18-answers-F">Strongly Agree</label>
-
-
+                              
                           </li>
 
                           <li>
 
                               <h3>Uses other appropriate instructional materials aside from prescribed reference materials.</h3>
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-19-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-19-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-19-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-19-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-19-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[18]" id="question-19-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-19-answers-F">Strongly Agree</label>
-
+<?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[18] == $i) {echo "checked";} ?>   name="answers[18]" id="question-19-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-19-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -677,34 +340,10 @@
 
                               <h3>Handles students with varying need and abilities by using appropreate approaches.</h3>
 
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-20-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-20-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-20-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-20-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-20-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[19]" id="question-20-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-20-answers-F">Strongly Agree</label>
-
+                                 <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[19] == $i) {echo "checked";} ?>   name="answers[19]" id="question-20-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-20-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -712,34 +351,10 @@
 
                               <h3>Explains theories and concepts of the topic clearly and thoroughly.</h3>
 
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-21-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-21-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-21-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-21-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-21-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[20]" id="question-21-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-21-answers-F">Strongly Agree</label>
-
+                                   <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[20] == $i) {echo "checked";} ?>   name="answers[20]" id="question-21-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-21-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -747,34 +362,10 @@
 
                               <h3>Asks logical, purposeful, and thought-provoking questions.</h3>
 
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-22-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-22-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-22-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-22-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-22-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[21]" id="question-22-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-22-answers-F">Strongly Agree</label>
-
+                                   <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[21] == $i) {echo "checked";} ?>   name="answers[21]" id="question-22-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-22-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -782,34 +373,10 @@
 
                               <h3>Encourages students to participate in class by stimulating their ideas.</h3>
 
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-23-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-23-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-23-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-23-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-23-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[22]" id="question-23-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-23-answers-F">Strongly Agree</label>
-
+                                     <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[22] == $i) {echo "checked";} ?>   name="answers[22]" id="question-23-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-23-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -817,33 +384,10 @@
 
                               <h3>Monitors and records students' performance in class.</h3>
 
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-24-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-24-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-24-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-24-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-24-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[23]" id="question-24-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-24-answers-F">Strongly Agree</label>
+                                     <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[23] == $i) {echo "checked";} ?>   name="answers[23]" id="question-24-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-24-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
                           </li>
@@ -852,33 +396,10 @@
 
                               <h3>Shows effectiveness in facilitating quizzes and examinations.</h3>
 
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-25-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-25-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-25-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-25-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-25-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[24]" id="question-25-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-25-answers-F">Strongly Agree</label>
+                                   <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[24] == $i) {echo "checked";} ?>   name="answers[24]" id="question-25-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-25-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
                           </li>
@@ -887,33 +408,10 @@
 
                               <h3>Returns corrected examinations, quizzes, exercises, case studies, researches, etc. to students on time.</h3>
 
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-26-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-26-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-26-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-26-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-26-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[25]" id="question-26-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-26-answers-F">Strongly Agree</label>
+                                    <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[25] == $i) {echo "checked";} ?>   name="answers[25]" id="question-26-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-26-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
                           </li>
@@ -922,33 +420,10 @@
 
                               <h3>Gives appropriate feedback without embarrassing the students who commit mistakes.</h3>
 
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-27-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-27-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-27-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-27-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-27-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[26]" id="question-27-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-27-answers-F">Strongly Agree</label>
+                                  <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[26] == $i) {echo "checked";} ?>   name="answers[26]" id="question-27-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-27-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
 
                           </li>
@@ -957,34 +432,10 @@
 
                               <h3>Provides intervention/remediation/consultation to students having difficulty in learning.</h3>
 
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-A" value="0" />
-                                  <label class="qst-lbl" for="question-28-answers-A">Never</label>
-
-
-
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-B" value="1" />
-                                  <label class="qst-lbl" for="question-28-answers-B">Strongly Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-C" value="2" />
-                                  <label class="qst-lbl" for="question-28-answers-C">Disagree</label>
-
-
-
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-D" value="3" />
-                                  <label class="qst-lbl" for="question-28-answers-D">Neutral</label>
-
-
-
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-E" value="4" />
-                                  <label class="qst-lbl" for="question-28-answers-E">Agree</label>
-
-
-
-                                  <input type="radio" required name="answers[27]" id="question-28-answers-F" value="5" />
-                                  <label class="qst-lbl" for="question-28-answers-F">Strongly Agree</label>
-
+                                   <?php for($i=1;$i<=6;$i++): ?>
+                                  <input type="radio" required <?php if($instruc_responsibilities[27] == $i) {echo "checked";} ?>   name="answers[27]" id="question-28-answers-<?=$i ?>" value="<?= $i ?>" />
+                                  <label class="qst-lbl" for="question-28-answers-<?=$i ?>"><?= IntResultToStringResult($i) ?></label>
+                                <?php endfor; ?>
 
                           </li>
 
@@ -1007,13 +458,11 @@
 
                        <ul class="pager" style="height:50px;">
 
-                          <?php if($studentCode!=''): ?>
-                           <li><a href="<?php echo base_url(); ?>evaluation/start?type=student&uid=<?php echo $uid ?>&step=2">Previous</a></li>
-                         <?php else: ?>
-                           <li><a href="<?php echo base_url(); ?>evaluation/start?type=faculty&uid=<?php echo $uid ?>&step=2">Previous</a></li>
-                         <?php endif; ?>
+                          
+                           <li><a href="<?php echo base_url(); ?>evaluation/start?type=<?php echo $type; ?>&uid=<?php echo $uid ?>&step=3">Previous</a></li>
+                        
 
-                           <input type="submit" value="Submit" class="nxtOpStyle">
+                           <input type="submit" value="Next" class="nxtOpStyle">
 
 
                                             </ul>

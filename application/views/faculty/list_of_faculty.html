@@ -1,5 +1,15 @@
 
+<?php 
 
+	function ComputePercentage($decimal){
+
+
+		return round(100 - (((6-$decimal) / 6) * 100),2) ;
+
+
+	}
+
+?>
 <section> <!--for demo wrap-->
 
 <div class="col-3-mx">
@@ -111,7 +121,8 @@
 										</tr>
 									  </table>
 									  <?php if($profTotal >0): ?>
-								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotal ?>/9/<?php echo $faculty->totalEvaluator; ?> = <?php echo $profTotal/9/$faculty->totalEvaluator; ?></div>
+
+								<div>Total/Items/Students <br> Overall Rate: <?php echo $profTotal ?>/9/<?php echo $faculty->totalEvaluator; ?> = <?php echo round($profTotal/9/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($profTotal/9/$faculty->totalEvaluator,2))?>%)</div>
 
 <?php endif; ?>
 								</div> <!--ends table-responsive-->
@@ -171,12 +182,12 @@
 										</tr>
 									  </table>
 									  <?php if($adminTotal >0): ?>
-								<div>Total/Items/Students <br> Overall Rate: <?php echo $adminTotal ?>/10/<?php echo $faculty->totalEvaluator; ?> = <?php echo $adminTotal/10/$faculty->totalEvaluator; ?></div>
+								<div style="color:#000000;">Total/Items/Students <br> Overall Rate: <?php echo $adminTotal ?>/10/<?php echo $faculty->totalEvaluator; ?> = <?php echo round($adminTotal/10/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($adminTotal/10/$faculty->totalEvaluator,2)) ?>%)</div>
 
 <?php endif; ?>
 								</div> <!--ends table-responsive-->
 
-						       
+						       <
 						      </div>
 						    <div class="col-md-6">
 
@@ -235,7 +246,7 @@
 	
 									  </table>
 									  <?php if($instructTotal > 0): ?>
-							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotal ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo $instructTotal/28/$faculty->totalEvaluator; ?></div>
+							<div>Total/Items/Students <br> Overall Rate: <?php echo $instructTotal ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo round($instructTotal/28/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($instructTotal/28/$faculty->totalEvaluator,2)); ?>%)</div>
 								</div> <!--ends table-responsive-->
 							<?php endif; ?>
 						       
@@ -316,7 +327,7 @@
 										</tr>
 									  </table>
 									  <?php if($profTotalAcad >0): ?>
-								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $profTotalAcad ?>/9/<?php echo $faculty->totalEvaluatorAcad; ?> = <?php echo $profTotalAcad/9/$faculty->totalEvaluatorAcad; ?></div>
+								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $profTotalAcad ?>/9/<?php echo $faculty->totalEvaluatorAcad; ?> = <?php echo round($profTotalAcad/9/$faculty->totalEvaluatorAcad,2); ?>(<?= ComputePercentage(round($profTotalAcad/9/$faculty->totalEvaluatorAcad,2)) ?>%)</div>
 
 <?php endif; ?>
 								</div> <!--ends table-responsive-->
@@ -373,7 +384,7 @@
 										</tr>
 									  </table>
 									  <?php if($adminTotalAcad >0): ?>
-								<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $adminTotalAcad ?>/10/<?php echo $faculty->totalEvaluatorAcad; ?> = <?php echo $adminTotalAcad/10/$faculty->totalEvaluatorAcad; ?></div>
+								<div style="color:#000000">Total/Items/Academic Heads <br> Overall Rate: <?php echo $adminTotalAcad ?>/10/<?php echo $faculty->totalEvaluatorAcad; ?> = <?php echo round($adminTotalAcad/10/$faculty->totalEvaluatorAcad,2); ?>(<?= ComputePercentage( round($adminTotalAcad/10/$faculty->totalEvaluatorAcad,2)) ?>%)</div>
 
 <?php endif; ?>
 								</div> <!--ends table-responsive-->
@@ -437,7 +448,7 @@
 
 									  </table>
 									  <?php if($instructTotalAcad > 0): ?>
-							<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $instructTotalAcad ?>/28/<?php echo $faculty->totalEvaluatorAcad; ?> =<?php echo $instructTotalAcad/28/$faculty->totalEvaluatorAcad; ?></div>
+							<div>Total/Items/Academic Heads <br> Overall Rate: <?php echo $instructTotalAcad ?>/28/<?php echo $faculty->totalEvaluatorAcad; ?> =<?php echo round($instructTotalAcad/28/$faculty->totalEvaluatorAcad,2); ?>(<?= ComputePercentage(round($instructTotalAcad/28/$faculty->totalEvaluatorAcad,2))?>%)</div>
 								</div> <!--ends table-responsive-->
 							<?php endif; ?>
 						       

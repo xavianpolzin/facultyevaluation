@@ -487,6 +487,8 @@ public function GetTotalEvaluatorAcad($facultyId){
 			$faculty->instrucScore = $row->instrucScore ;
 			$faculty->profAnswers = $this->ProfAnswers($row->id);
 			$faculty->profAnswersAcad = $this->ProfAnswersAcad($row->id);
+			$faculty->adminiAnswers = $this->AdminiAnswers($row->id);
+			$faculty->adminiAnswersAcad = $this->AdminiAnswersAcad($row->id);
 			$faculty->totalEvaluator = $row->totalEvaluator;
 			$faculty->totalEvaluatorAcad = $row->totalEvaluatorAcad;
 			$faculty->instructAnswers = $this->InstructAnswers($row->id);
