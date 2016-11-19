@@ -56,6 +56,13 @@ z-index: -999999;
 
 .eval-sum-q{
 	padding: 20px;
+	background: #fff;
+    border-bottom: 1px solid #dcdcdc;
+
+}
+
+.eval-sum-q:nth-child(even){
+	background: #f3f3f3;
 }
 .pagination_x a {
 	padding: 10px;

@@ -1,3 +1,16 @@
+<?php 
+
+	function ComputePercentage($decimal){
+
+
+		return round(100 - (((6-$decimal) / 6) * 100),2) ;
+
+
+	}
+
+?>
+
+
 <div class="slf-hl-dv">
             <a href="<?php echo base_url() .'faculty/startEval' ?>"><h1>Would like to take the evaluation?</h1></a>
             <p><?php echo $message ?></p>
@@ -59,11 +72,66 @@
 											<th><?php echo $profTotal; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/15 = <?php echo $profTotal/15; ?></div>
+								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/9/<?php echo $faculty->totalEvaluator; ?> = <?php echo round($profTotal/9/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($profTotal/9/$faculty->totalEvaluator,2))?>%)</div>
 
 								</div> <!--ends table-responsive-->
 
 
+						      </div>
+						      <div class="col-md-6">
+
+						      
+
+							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
+									  <table class="table">
+									  <h3 style="color:#333;">ADMINISTRATIVE RESPONSIBILITIES</h3>
+									  
+										<tr style="background:#428bca;">
+											<th>Qeustion #</th>
+											<th>Never</th>
+											<th>Strongly Disagree</th>
+											<th>Disagree</th>
+											<th>Neutral</th>
+											<th>Agree</th>
+											<th>Strongly Agree</th>
+											<th>Total</th>
+										</tr>
+										<?php $counter = 1; ?>
+										<?php $adminTotal = 0; ?>
+										<?php foreach($faculty->adminiAnswers as $adminiAnswer): ?>
+										<tr>
+											<td style="color: #333;"><?php echo $counter; ?></td>
+											
+											<td style="color: #333;"><?php echo $adminiAnswer[0]; ?></td>
+											<td style="color: #333;"><?php echo $adminiAnswer[1]; ?></td>
+											<td style="color: #333;"><?php echo $adminiAnswer[2]; ?></td>
+											<td style="color: #333;"><?php echo $adminiAnswer[3]; ?></td>
+											<td style="color: #333;"> <?php echo $adminiAnswer[4]; ?></td>
+											<td style="color: #333;"><?php echo $adminiAnswer[5]; ?></td>
+											<?php $adminTotal+= array_sum($adminiAnswer); ?>
+											<td style="color: #333;"><?php echo array_sum($adminiAnswer); ?></td>
+											<?php $counter++; ?>
+											
+										</tr>
+										<?php endforeach; ?>
+										<tr style="background:#428bca;">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td>Total</td>
+											<th><?php echo $adminTotal; ?></th>
+										</tr>
+									  </table>
+									  <?php if($adminTotal >0): ?>
+								<div style="color:#000000;">Total/Items/Faculty <br> Overall Rate: <?php echo $adminTotal ?>/10/<?php echo $faculty->totalEvaluator; ?> = <?php echo round($adminTotal/10/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($adminTotal/10/$faculty->totalEvaluator,2))?>%)</div>
+
+<?php endif; ?>
+								</div> <!--ends table-responsive-->
+
+						       
 						      </div>
 
 						    </div><!--ends col-md-6-->
@@ -125,7 +193,7 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/15 =<?php echo $instructTotal/15; ?></div>
+							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo round($instructTotal/28/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($instructTotal/28/$faculty->totalEvaluator,2)); ?>%)</div>
 								</div> <!--ends table-responsive-->
 
 
