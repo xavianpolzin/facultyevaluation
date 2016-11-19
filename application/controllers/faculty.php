@@ -18,6 +18,9 @@ class Faculty extends Security{
 
 
 
+
+
+
 		$this->load->Model('FacultyModel');
 
 
