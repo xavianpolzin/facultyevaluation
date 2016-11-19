@@ -81,7 +81,8 @@ class Users extends Security{
 
 		$data = array(
 				'users' =>$this->User->GetAll(),
-				'message'=>$message
+				'message'=>$message,
+				'accessLevel' => $this->userLoggedIn['accessLevel']
 			);
 
 

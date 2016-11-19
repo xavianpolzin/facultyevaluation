@@ -40,6 +40,9 @@
   <tbody>
 <?php $counter = 1 ?>
 				<?php foreach($users as $user): ?>
+                    <?php if($user->accessLevel == "admin" && $accessLevel != "admin"): ?>
+
+                    <?php else: ?>
 				<tr>
 					<td><?php echo $counter ?></td>
 					<td><?php echo $user->username; ?></td>
@@ -62,6 +65,7 @@
 					?>
 					<?php $counter++; ?>
 				</tr>
+            <?php endif; ?>
 				<?php endforeach; ?>
 
   </tbody>
