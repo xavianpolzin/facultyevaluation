@@ -15,6 +15,18 @@
 
 
 
+
+<?php 
+
+	function ComputePercentage($decimal){
+
+
+		return round(100 - (((6-$decimal) / 6) * 100),2) ;
+
+
+	}
+
+?>
 							     <div class="table-responsive" style="border:1px solid #cccccc;border-radius:5px; padding:15px; background:#fff; ">
 									  <table class="table">
 									  <h3>PROFESSIONAL RESPONSIBILITIES</h3>
@@ -59,7 +71,7 @@
 											<th><?php echo $profTotal; ?></th>
 										</tr>
 									  </table>
-								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/15 = <?php echo $profTotal/15; ?></div>
+								<div>Total/Items <br> Overall Rate: <?= $profTotal ?>/9 = <?= round($profTotal/9,2); ?>(<?= ComputePercentage($profTotal/9) ?>%)</div>
 
 								</div> <!--ends table-responsive-->
 
@@ -125,9 +137,23 @@
 						      </div>
 
 									  </table>
-							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/15 =<?php echo $instructTotal/15; ?></div>
+							<div>Total/Items <br> Overall Rate: <?= $instructTotal ?>/28 =<?= round($instructTotal/28,2); ?>(<?=ComputePercentage($instructTotal/28)?>%)</div>
 								</div> <!--ends table-responsive-->
 
+ <div class="rating-guide">
+		<div class="hd-rt">
+			<p>Rating Guide:</p>
+		</div>
+
+		<div class="rt-bdy">
+			<p>(6) Always/Almost Always = 91% to 100% of the time</p>
+			<p>(5) Most of the Time = 76% to 90% of the time</p>
+			<p>(4) Often = 51% to 75% of the time</p>
+			<p>(3) Sometimes = 26% to 50% of the time</p>
+			<p>(2) Seldome = 11% to 25% of the time</p>
+			<p>(1) Never/Almost Never = 0% to 10% of the time</p>
+		</div>
+</div> <!--ends rating-guide-->
 
 						    </div><!--ends col-md-6-->
 						    </div>

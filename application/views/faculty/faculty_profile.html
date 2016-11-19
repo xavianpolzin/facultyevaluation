@@ -297,7 +297,12 @@
 				$profTotalItself = round($profTotal/9,2);
 				$profTotalItselfPercentage = ComputePercentage($profTotalItself);
 
+				$adminTotalItself = round($adminTotal/10,2);
+				$adminTotalItselfPercentage = ComputePercentage($adminTotalItself);
 
+
+				$intructTotalItself = round($adminTotal/28,2);
+				$intructTotalItselfPercentage =  ComputePercentage($intructTotalItself);
 			?>
 
 
@@ -315,21 +320,21 @@
 
 				<div class="ovr-rslt-div">
 					<p>Administrative Responsibilities</p>
-					<span><?= round($adminTotal/10,2) ?></span>
+					<span><?= $adminTotalItself ?></span>
 
 					<div class="rank-rslt">
 						<h5>Rating</h5>
-						<p>Most of the Time with the percentage of 90%</p>
+						<p><?= PercentageToString($adminTotalItselfPercentage) ?> with the percentage of <?= $adminTotalItselfPercentage ?>%</p>
 					</div>
 				</div>
 
 				<div class="ovr-rslt-div dsbl-br">
 					<p>Instructional Responsibilities</p>
-					<span><?= round($adminTotal/28,2) ?></span>
+					<span><?= $intructTotalItself ?></span>
 
 					<div class="rank-rslt">
 						<h5>Rating</h5>
-						<p>Most of the Time with the percentage of 90%</p>
+						<p><?= PercentageToString($intructTotalItselfPercentage) ?> with the percentage of <?= $intructTotalItselfPercentage ?>%</p>
 					</div>
 				</div>
 			
@@ -456,7 +461,7 @@
 
 
 
-<div class="fc-pr-con">
+<!--div class="fc-pr-con">
 
 	<div class="de-div">
 		<h5>Name of Faculty Member :</h5> <p><?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></p>		
@@ -512,31 +517,31 @@
 	<div class="col-md-4">
 		
 	
-	</div><!--ends col-md-6-->
+	</div--><!--ends col-md-6-->
 
-	<div class=" prf-st-n">
+	<!--div class=" prf-st-n">
 
 		<ul class="nav nav-tabs" style="margin-bottom: 15px;">
 		  <li style="width: 49%;" class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
 		  <li class=""><a href="<?php echo base_url()?>faculty/schedule/<?php echo $faculty->firstName . '.'  . $faculty->id ?>">Schedule</a></li>
 		</ul>
 
-<div id="myTabContent" class="tab-content">
+<div id="myTabContent" class="tab-content"-->
 
 
 <!--Profile content-->
 
-  <div class="tab-pane fade active in prof-cs" id="Profile">
+  <!--div class="tab-pane fade active in prof-cs" id="Profile">
 
     
 
 
 
 
- </div> <!--ends tab-pane-->
+ </div--> <!--ends tab-pane-->
 
 
 
-</div>
-	</div><!--ends col-md-6-->
-</div>
+<!--/div>
+	</div--><!--ends col-md-6-->
+<!--/div -->
