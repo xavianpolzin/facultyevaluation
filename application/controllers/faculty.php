@@ -286,6 +286,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 
 			$this->load->Model('FacultyModel');
 			$postparams = $this->input->post();
+			$this->load->Model('User');
 
 			$params = array(
 				'firstName'=>$postparams['firstName'],
@@ -310,6 +311,26 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 				$anyMessage = "All field are required";
 			}
 
+			$existsUsername = $this->User->UsernameExists($postparams['username']);
+
+			if($postparams['username'] =='admin'){
+
+					$this->session->set_flashdata('anyMessage','Username admin cannot be used.	');
+					redirect('/faculty/add');
+
+			}
+
+			if($existsUsername){
+
+					//$this->session->set_flashdata('anyMessage','Username '. $$params['username'] .' already exists.');
+					//redirect('/users/add');
+					$anyMessage = "Username already exists";
+
+			}
+
+
+
+
 
 //			var_dump($postparams);
 
@@ -319,6 +340,7 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 					$this->load->Model('FacultySectionModel');
 					//$this->load->Model('FacultyCourseModel');
 					$this->load->Model('FacultySubjectModel');
+					
 				foreach ($postparams['semesters'] as  $value) {
 						$this->FacultySemesterModel->Save(array('faculty_id'=>$id_assign,'semester'=>$value));
 				}
@@ -336,10 +358,32 @@ foreach ($this->FacultySemesterModel->FindByFaculty($id) as $value) {
 				}
 
 
+				//add user here
+
+					$userDetails = array(
+
+
+					'username' => $postparams['username'],
+					'fname' => $postparams['firstName'],
+					'lname' =>$postparams['lastName'],
+					'password' => $postparams['password'],
+
+					'accessLevel' => 'faculty',
+					'faculty' =>$id_assign
+					);
+
+
+
+				$this->User->Save($userDetails);
+
 					$this->session->set_flashdata('anyMessage','Successfully added..');
 
 					redirect('/faculty/add');
 
+
+			}else{
+				$this->session->set_flashdata('anyMessage',$anyMessage);
+					redirect('/faculty/add');
 
 			}
 

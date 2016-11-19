@@ -22,6 +22,7 @@
 
 	function ComputePercentage($decimal){
 
+		if($decimal == 0) return 0;
 
 		return round(100 - (((6-$decimal) / 6) * 100),2) ;
 
@@ -74,8 +75,9 @@
 										</tr>
 									  </table>
 
+								<?php if($profTotal > 0): ?>
 								<div>Total/Items <br> Overall Rate: <?php echo $profTotal ?>/9/<?php echo $faculty->totalEvaluator; ?> = <?php echo round($profTotal/9/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($profTotal/9/$faculty->totalEvaluator,2))?>%)</div>
-
+							<?php endif; ?>
 
 								</div> <!--ends table-responsive-->
 
@@ -196,8 +198,9 @@
 						      </div>
 
 									  </table>
-
+									  <?php if($instructTotal >0): ?>
 							<div>Total/Items <br> Overall Rate: <?php echo $instructTotal ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo round($instructTotal/28/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($instructTotal/28/$faculty->totalEvaluator,2)); ?>%)</div>
+						<?php endif; ?>
 
 								</div> <!--ends table-responsive-->
 
