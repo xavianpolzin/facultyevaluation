@@ -65,122 +65,7 @@
 			</div>
 
 			<div class="clearFixed"></div>
-		</div>
-
-			<div class="title-hd-prof">
-				<h1>Faculty Itself Evaluation Result</h1>				
-			</div>
-			
-			<div class="ovr-rslt-hl">
-				<div class="ovr-rslt-div">
-					<p>Proffesional Responsibilities</p>
-					<span>4.22</span>
-					
-					<div class="rank-rslt">
-						<h5>Rating</h5>
-						<p>Most of the Time with the percentage of 90%</p>
-					</div>
-
-				</div>
-
-				<div class="ovr-rslt-div">
-					<p>Administrative Responsibilities</p>
-					<span>4.22</span>
-
-					<div class="rank-rslt">
-						<h5>Rating</h5>
-						<p>Most of the Time with the percentage of 90%</p>
-					</div>
-				</div>
-
-				<div class="ovr-rslt-div dsbl-br">
-					<p>Instructional Responsibilities</p>
-					<span>4.22</span>
-
-					<div class="rank-rslt">
-						<h5>Rating</h5>
-						<p>Most of the Time with the percentage of 90%</p>
-					</div>
-				</div>
-			
-			<div class="clearFixed"></div>
-			</div>
-
-			<div class="ovr-rslt-vw">
-				<a data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">View All Result</a>
-			</div>
-
-			<div class="ovll-rslt-div">
-				<div class="ovll-rslt-con">
-					<h1>Overall Result</h1>
-				</div>
-				<div class="ovr-rslt-divi">
-					<p>Professional Responsibilites : 4.22 with the percentage of 80% = Most of The Time</p>
-				</div>
-
-				<div class="ovr-rslt-divi">
-					<p>Administrative Responsibilites :  4.22 with the percentage of 80% = Most of The Time</p>
-				</div>
-
-				<div class="ovr-rslt-divi">
-					<p>Instructional Responsibilites :  4.22 with the percentage of 80% = Most of The Time</p>
-				</div>
-
-			</div>
-
-			<div class="print-btn-ovrl">
-				<a target="_blank" href="<?php echo base_url() . "faculty/printd/$faculty->id" ?>" >Print All Details</a>
-			</div>
-		</div>
-
-
-		
-</page>
-
-
-
-
-
-<div class="fc-pr-con">
-
-	<div class="de-div">
-		<h5>Name of Faculty Member :</h5> <p><?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></p>		
-	</div>
-	
-	<div class="de-div">
-		<h5>Semester :</h5> 
-		<p>
-			<?php foreach($faculty->semester as $semester): ?>
-
-				<?=$semester->name; ?>st Semester,
-
-			<?php endforeach; ?>
-		</p>			
-	</div>
-
-	<div class="de-div">
-		<h5>Subject Handled :</h5> 
-		<p>
-			<?php foreach($faculty->subjects as $subject): ?>
-
-				<?= $subject->name; ?>,
-
-			<?php endforeach; ?>
-		</p>		
-	</div>
-
-	<div class="de-div">
-		<h5>Section Handled :</h5> 
-		<p>
-			<?php foreach($faculty->sections as $section): ?>
-
-				<?= $section->name; ?>,
-
-			<?php endforeach; ?>
-		</p>		
-	</div>
-
-	<div class="de-div">
+			<div class="de-div">
 		<h5>Faculty Itself Evaluation Result :</h5>
 		<a href="" data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">
 		View Results
@@ -400,10 +285,58 @@
 						 
 	</div>
 
-	
-</div><div class="de-div">
-		 
-	<?php 
+		</div>
+
+			<div class="title-hd-prof">
+				<h1>Faculty Itself Evaluation Result</h1>				
+			</div>
+			
+
+			<?php
+
+				$profTotalItself = round($profTotal/9,2);
+				$profTotalItselfPercentage = ComputePercentage($profTotalItself);
+
+
+			?>
+
+
+			<div class="ovr-rslt-hl">
+				<div class="ovr-rslt-div">
+					<p>Proffesional Responsibilities</p>
+					<span><?= $profTotalItself ?></span>
+					
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p><?= PercentageToString($profTotalItselfPercentage) ?> with the percentage of <?= $profTotalItselfPercentage?>%</p>
+					</div>
+
+				</div>
+
+				<div class="ovr-rslt-div">
+					<p>Administrative Responsibilities</p>
+					<span><?= round($adminTotal/10,2) ?></span>
+
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p>Most of the Time with the percentage of 90%</p>
+					</div>
+				</div>
+
+				<div class="ovr-rslt-div dsbl-br">
+					<p>Instructional Responsibilities</p>
+					<span><?= round($adminTotal/28,2) ?></span>
+
+					<div class="rank-rslt">
+						<h5>Rating</h5>
+						<p>Most of the Time with the percentage of 90%</p>
+					</div>
+				</div>
+			
+			<div class="clearFixed"></div>
+			</div>
+
+<?php 
 
         	$overAllEvaluator = $faculty->totalEvaluator ;
 
@@ -414,15 +347,159 @@
         	$overAllEvaluator += $faculty->totalEvaluatorAcad;
 
         ?>
-     <?php if(($profTotal+$profTotalStudent+$profTotalAcad) > 0 && ($adminTotal+$adminTotalStudent+$adminTotalAcad) > 0 && ($instructTotal + $instructTotalStudent+$instructTotalAcad)> 0): ?>
-    <p>Overall Result : PROFESSIONAL RESPONSIBILITIES (<?php echo $profTotal+$profTotalStudent+$profTotalAcad; ?>/9/<?php echo $overAllEvaluator; ?>) = <?php echo round(($profTotal + $profTotalStudent+$profTotalAcad)/9/$overAllEvaluator,2); ?> |  ADMINISTRATIVE RESPONSIBILITIES (<?php echo $adminTotal+$adminTotalStudent+$adminTotalAcad; ?>/10/<?php echo $overAllEvaluator; ?>) = <?php echo round(($adminTotal + $adminTotalStudent+$adminTotalAcad)/10/$overAllEvaluator,2); ?> | INSTRUCTIONAL RESPONSIBILITIES (<?php echo $instructTotal + $instructTotalStudent + $instructTotalAcad ?>/28/<?php echo $overAllEvaluator ?>) = <?php echo round(($instructTotal + $instructTotalStudent + $instructTotalAcad)/28/$overAllEvaluator,2) ?> </p>
-    	<?php else: ?>
-	
-	
-    <h5>Overall Result : </h5>
-    <?php endif; ?>
+    
 
 
+			<div class="ovr-rslt-vw">
+				<a data-toggle="modal" data-target="#myModal<?php echo $faculty->id?>">View All Result</a>
+			</div>
+
+			<div class="ovll-rslt-div">
+				<div class="ovll-rslt-con">
+					<h1>Overall Result</h1>
+				</div>
+				<?php 
+
+						$profTotalOverall = round((($profTotal+$profTotalStudent+$profTotalAcad)/9)/$overAllEvaluator,2);
+						$adminTotalOverall = round((($adminTotal+$adminTotalStudent+$adminTotalAcad)/10)/$overAllEvaluator,2);
+						$instructTotalOverall = round((($instructTotal + $instructTotalStudent + $instructTotalAcad)/28)/$overAllEvaluator,2);
+
+						$profPercentage = ComputePercentage($profTotalOverall);
+						$adminPercentage = ComputePercentage($adminTotalOverall);
+						$instructPercentage= ComputePercentage($instructTotalOverall);
+
+				?>
+
+				<?php 
+
+	function ComputePercentage($decimal){
+
+
+		return round(100 - (((6-$decimal) / 6) * 100),2) ;
+
+
+	}
+	function PercentageToString($percentage){
+
+
+		$str= '';
+
+
+		switch(true){
+
+			case $percentage > 90:
+				$str='Always/Almost Always';
+
+				break;
+
+			case $percentage > 75:
+
+				$str = 'Most of the Time';
+
+				break;
+
+			case $percentage > 50:
+
+				$str = 'Often';
+
+				break;
+
+			case $percentage > 25:
+
+				$str = 'Sometimes';
+
+				break;
+
+			case $percentage > 10:
+
+				$str = 'Seldome';
+
+				break;
+
+			default:
+
+				$str = 'Never/Almost Never ';
+				break;
+
+		}
+
+
+		return $str;
+
+	}
+
+?>
+				<div class="ovr-rslt-divi">
+					<p>Professional Responsibilites : <?= $profTotalOverall ?> with the percentage of <?= $profPercentage ?>% = <?= PercentageToString($profPercentage)?></p>
+				</div>
+
+				<div class="ovr-rslt-divi">
+					<p>Administrative Responsibilites :  <?= $adminTotalOverall ?> with the percentage of <?= $adminPercentage ?>% = <?= PercentageToString($adminPercentage) ?></p>
+				</div>
+
+				<div class="ovr-rslt-divi">
+					<p>Instructional Responsibilites :  <?= $instructTotalOverall ?> with the percentage of <?= $instructPercentage  ?>% = <?= PercentageToString($instructPercentage) ?></p>
+				</div>
+
+			</div>
+
+			<div class="print-btn-ovrl">
+				<a target="_blank" href="<?php echo base_url() . "faculty/printd/$faculty->id" ?>" >Print All Details</a>
+			</div>
+		</div>
+
+
+		
+</page>
+
+
+
+
+
+<div class="fc-pr-con">
+
+	<div class="de-div">
+		<h5>Name of Faculty Member :</h5> <p><?php  echo $faculty->firstName?> <?php echo $faculty->middleName?> <?php echo $faculty->lastName?></p>		
+	</div>
+	
+	<div class="de-div">
+		<h5>Semester :</h5> 
+		<p>
+			<?php foreach($faculty->semester as $semester): ?>
+
+				<?=$semester->name; ?>st Semester,
+
+			<?php endforeach; ?>
+		</p>			
+	</div>
+
+	<div class="de-div">
+		<h5>Subject Handled :</h5> 
+		<p>
+			<?php foreach($faculty->subjects as $subject): ?>
+
+				<?= $subject->name; ?>,
+
+			<?php endforeach; ?>
+		</p>		
+	</div>
+
+	<div class="de-div">
+		<h5>Section Handled :</h5> 
+		<p>
+			<?php foreach($faculty->sections as $section): ?>
+
+				<?= $section->name; ?>,
+
+			<?php endforeach; ?>
+		</p>		
+	</div>
+
+	
+	
+</div><div class="de-div">
+		 
+	
 	
 	</div>
 

@@ -409,7 +409,7 @@ class Evaluation extends CI_Controller{
 			switch ($step) {
 				case 1:
 
-					if($type=='student'){
+					if($type=='Student'){
 						$this->ShowStepOne($evaluation);
 					}
 
