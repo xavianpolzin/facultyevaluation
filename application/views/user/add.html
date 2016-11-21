@@ -23,9 +23,9 @@
   <div class="ad-usr-l">
     <label for="accessLevelinput">Academic Head</label>
     <?php if($postparams): ?>
-    <input type="radio" class="rd-usr"  <?php if($postparams['accessLevel']=='academic'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="academic">
+    <input type="radio" class="rd-usr" <?php if($postparams['accessLevel']=='academic'){echo "checked";} ?> name="accessLevel" placeholder="accessLevel" value="academic">
     <?php else: ?>
-    <input type="radio" class="rd-usr"   name="accessLevel" placeholder="accessLevel" value="academic">
+    <input type="radio" class="rd-usr" name="accessLevel" placeholder="accessLevel" value="academic" checked="checked">
   <?php endif; ?>
   </div>
 
@@ -34,12 +34,12 @@
     <label for="accessLevelinput">Staff</label>
     <input type="radio" class="rd-usr" <?php if($postparams && $postparams['accessLevel']=='staff') {echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="staff">
   </div>
--->
+
 <div class="ad-usr-l">
     <label for="accessLevelinput">Faculty</label>
     <input type="radio" class="rd-usr" <?php if($postparams && $postparams['accessLevel']=='faculty'){echo "checked";} ?> id="accessLevel" name="accessLevel" placeholder="accessLevel" value="faculty" >
   </div>
-
+-->
 <div class="clearFixed"></div>
 
 
