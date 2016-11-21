@@ -601,7 +601,7 @@
 	</tr>
 	
 	<?php if($instructTotalAcad >0): ?>
-	<div style="padding:20px; text-align:center; font-family:helvetica;font-weight:normal;font-size:12px;">Total/Items/Students <br> Overall Rate: <?php echo $instructTotalAcad ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo round($instructTotalAcad/28/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($instructTotalAcad/28/$faculty->totalEvaluator,2)); ?>%)</div>
+	<div style="padding:5px; text-align:center; font-family:helvetica;font-weight:normal;font-size:12px;">Total/Items/Students <br> Overall Rate: <?php echo $instructTotalAcad ?>/28/<?php echo $faculty->totalEvaluator; ?> =<?php echo round($instructTotalAcad/28/$faculty->totalEvaluator,2); ?>(<?= ComputePercentage(round($instructTotalAcad/28/$faculty->totalEvaluator,2)); ?>%)</div>
 	<?php endif; ?>
 </table>
 </div>		
